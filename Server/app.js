@@ -1,8 +1,12 @@
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-const DB =
-  "mongodb+srv://modimanju:123088@cluster0.3mt9q.mongodb.net/merndev?retryWrites=true&w=majority";
+
+dotenv.config({path: "./config.env"});
+const DB = process.env.DATABASE;
+
+const PORT = process.env.PORT;
 
 mongoose
   .connect(DB, {
@@ -42,6 +46,6 @@ app.get("/signup", (req, res) => {
   res.send("SignupPage Server");
 });
 
-app.listen(3000, () => {
-  console.log("server is running at port no 3000");
+app.listen(PORT, () => {
+  console.log(`server is running at port no ${PORT}`);
 });
