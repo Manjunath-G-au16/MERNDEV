@@ -4,21 +4,10 @@ const express = require("express");
 const app = express();
 
 dotenv.config({path: "./config.env"});
-const DB = process.env.DATABASE;
+require("./db/conn")
 
 const PORT = process.env.PORT;
 
-mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
-  .then(() => {
-    console.log("connection successful");
-  })
-  .catch((err) => console.log("connection unsuccessful"));
 
 const middleware = (req, res, next) => {
   console.log("Hello from middleware");
