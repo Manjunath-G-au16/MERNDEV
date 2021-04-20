@@ -3,11 +3,10 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
-dotenv.config({path: "./config.env"});
-require("./db/conn")
+dotenv.config({ path: "./config.env" });
+require("./db/conn");
 
 const PORT = process.env.PORT;
-
 
 const middleware = (req, res, next) => {
   console.log("Hello from middleware");
