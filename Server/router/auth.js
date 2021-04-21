@@ -7,30 +7,58 @@ router.get("/", (req, res) => {
   res.send("HomePage Server from router");
 });
 
-router.post("/register", (req, res) => {
+//USING PROMISES
+//--------------
+
+// router.post("/register", (req, res) => {
+//   const { name, email, phone, work, password, cpassword } = req.body;
+//   if (!name || !email || !phone || !work || !password || !cpassword) {
+//     return res.status(422).json({ Error: "plz fill the field properly" });
+//   }
+//   User.findOne({ email: email })
+//     .then((userExist) => {
+//       if (userExist) {
+//         return res.status(422).json({ Error: "User already Exists" });
+//       }
+
+//       const user = new User({ name, email, phone, work, password, cpassword });
+
+//       user
+//         .save()
+//         .then(() => {
+//           res.status(201).json({ message: "User registered successfully" });
+//         })
+//         .catch((err) => {
+//           res.status(500).json({ Error: "Failed to register" });
+//         });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+
+//USING ASYNC-AWAIT
+//-----------------
+
+router.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
   if (!name || !email || !phone || !work || !password || !cpassword) {
     return res.status(422).json({ Error: "plz fill the field properly" });
   }
-  User.findOne({ email: email })
-    .then((userExist) => {
-      if (userExist) {
-        return res.status(422).json({ Error: "User already Exists" });
-      }
-
-      const user = new User({ name, email, phone, work, password, cpassword });
-
-      user.save()
-        .then(() => {
-          res.status(201).json({ message: "User registered successfully" });
-        })
-        .catch((err) => {
-          res.status(500).json({ Error: "Failed to register" });
-        });
-    })
-    .catch((err) => {
-      console.log(err);
+  try {
+    const userExist = await User.findOne({
+      $or: [{ email: email }, { phone: phone }],
     });
+    if (userExist) {
+      return res.status(422).json({ Error: "User already Exists" });
+    }
+
+    const user = new User({ name, email, phone, work, password, cpassword });
+    await user.save();
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;
