@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 require("../db/conn");
 const User = require("../model/userSchema");
+const bcrypt = require("bcryptjs");
 
 router.get("/", (req, res) => {
   res.send("HomePage Server from router");
@@ -73,10 +74,16 @@ router.post("/signin", async (req, res) => {
       return res.status(400).json({ error: "Fill both the fields" });
     }
     const userLogin = await User.findOne({ email: email });
-    if (!userLogin) {
-      return res.status(400).json({ error: "user err" });
+    if (userLogin) {
+      const isMatch = await bcrypt.compare(password, userLogin.password);
+
+      if (!isMatch) {
+        return res.status(400).json({ error: "Invalid Credentials" });
+      } else {
+        return res.json({ message: "User signedin successfully" });
+      }
     } else {
-      return res.json({ message: "User signedin successfully" });
+      return res.status(400).json({ error: "Invalid Credentials" });
     }
   } catch (err) {
     console.log(err);
