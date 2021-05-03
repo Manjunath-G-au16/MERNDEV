@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "./components/Navbar";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,11 +10,13 @@ import About from "./components/About";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import Contact from "./components/Contact";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <>
       <Router>
+      <Navbar />
         <main>
           <Switch>
             <Route path="/" exact>
