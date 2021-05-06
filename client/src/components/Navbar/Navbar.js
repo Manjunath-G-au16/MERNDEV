@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Navbar.css";
+import "./Navbar.scss";
 import { NavLink } from "react-router-dom";
 import $ from "jquery";
 
@@ -51,9 +51,9 @@ const Navbar = () => {
             <div className="right"></div>
           </div>
 
-          <li className="nav-item active">
+          <li className="nav-item ">
             <NavLink className="nav-link" to="/" exact>
-              <i className="fas fa-tachometer-alt"></i> Home
+            <i className="fas fa-house-damage"></i> Home
             </NavLink>
           </li>
 
@@ -63,12 +63,12 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-          <li className="nav-item">
+          <li className="nav-item active">
             <NavLink className="nav-link" to="/signin" exact>
               <i className="far fa-clone"></i> Signin
             </NavLink>
           </li>
-          <li className="nav-item">
+          <li className="nav-item ">
             <NavLink className="nav-link" to="/signup" exact>
               <i className="far fa-chart-bar"></i> Signup
             </NavLink>

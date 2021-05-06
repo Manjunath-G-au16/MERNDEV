@@ -68,7 +68,7 @@ router.post("/register", async (req, res) => {
 //signin route
 //------------
 
-router.post("/signin", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -82,6 +82,7 @@ router.post("/signin", async (req, res) => {
         return res.status(400).json({ error: "Invalid Credentials" });
       } else {
         const token = await userLogin.generateAuthToken();
+        console.log("token:", token);
         res.cookie("jwtoken", token, {
           expires: new Date(Date.now + 25892000000),
           httpOnly: true,
