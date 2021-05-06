@@ -4,6 +4,7 @@ require("../db/conn");
 const User = require("../model/userSchema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const authenticate = require("../middleware/authenticate")
 
 router.get("/", (req, res) => {
   res.send("HomePage Server from router");
@@ -95,6 +96,11 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+});
+//About Section
+app.get("/about", authenticate , (req, res) => {
+  console.log("Hello from About");
+  res.send("AboutPage Server");
 });
 
 module.exports = router;
