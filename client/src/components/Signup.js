@@ -27,14 +27,14 @@ const Signup = () => {
     const res = await fetch("/register", {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ name, email, phone, work, password, cpassword }),
     });
 
     const data = await res.json();
 
-    if (data.status === 422 || !data) {
+    if (res.status === 422 || !data) {
       window.alert("Invalid Registration");
       console.log("Invalid Registration");
     } else {

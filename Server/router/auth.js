@@ -98,9 +98,9 @@ router.post("/login", async (req, res) => {
   }
 });
 //About Section
-app.get("/about", authenticate , (req, res) => {
+router.get("/about", authenticate , (req, res) => {
   console.log("Hello from About");
-  res.send("AboutPage Server");
+  res.send(req.rootUser);
 });
 
 module.exports = router;
