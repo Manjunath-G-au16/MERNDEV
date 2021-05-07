@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 function About() {
   const history = useHistory();
+  const [userData, setUserData] = useState({});
   const callAboutPage = async () => {
     try {
       const res = await fetch("/about", {
@@ -14,6 +15,7 @@ function About() {
       });
       const data = await res.json();
       console.log(data);
+      setUserData(data);
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
@@ -32,14 +34,20 @@ function About() {
       <br />
       <br />
       <br />
-      <h1>About</h1>
+      <h1>Profile</h1>
       <form method="GET">
-        <input
-          type="email"
-          className="input"
-          name="email"
-          placeholder="email"
-        />
+        <p>
+          Name:  <span>{userData.name}</span>
+        </p>
+        <p>
+          Email:  <span>{userData.email}</span>
+        </p>
+        <p>
+          Phone:  <span>{userData.phone}</span>
+        </p>
+        <p>
+          Work:  <span>{userData.work}</span>
+        </p>
       </form>
     </div>
   );
