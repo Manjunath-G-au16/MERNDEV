@@ -103,4 +103,10 @@ router.get("/about", authenticate , (req, res) => {
   res.send(req.rootUser);
 });
 
+//User Data
+router.get("/userdata", authenticate , (req, res) => {
+  console.log("Hello from Userdata");
+  res.send(req.rootUser);
+});
+
 module.exports = router;
