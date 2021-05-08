@@ -53,29 +53,29 @@ const Navbar = () => {
 
           <li className="nav-item ">
             <NavLink className="nav-link" to="/" exact>
-            <i className="fas fa-house-damage"></i> Home
+            <i className="fas fa-house-damage"></i> .Home( )
             </NavLink>
           </li>
 
           <li className="nav-item">
             <NavLink className="nav-link" to="/about" exact>
-              <i className="far fa-address-book"></i> About
+              <i className="far fa-address-book"></i> .About( )
             </NavLink>
           </li>
 
           <li className="nav-item active">
             <NavLink className="nav-link" to="/signin" exact>
-              <i className="far fa-clone"></i> Signin
+              <i className="far fa-clone"></i> .Signin( )
             </NavLink>
           </li>
           <li className="nav-item ">
             <NavLink className="nav-link" to="/signup" exact>
-              <i className="far fa-chart-bar"></i> Signup
+              <i className="far fa-chart-bar"></i> .Signup( )
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/contact" exact>
-              <i className="far fa-copy"></i> Contact
+              <i className="far fa-copy"></i> .Contact( )
             </NavLink>
           </li>
         </ul>
