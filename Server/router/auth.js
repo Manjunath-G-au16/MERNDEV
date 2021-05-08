@@ -4,7 +4,7 @@ require("../db/conn");
 const User = require("../model/userSchema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const authenticate = require("../middleware/authenticate")
+const authenticate = require("../middleware/authenticate");
 
 router.get("/", (req, res) => {
   res.send("HomePage Server from router");
@@ -98,15 +98,39 @@ router.post("/login", async (req, res) => {
   }
 });
 //About Section
-router.get("/about", authenticate , (req, res) => {
+router.get("/about", authenticate, (req, res) => {
   console.log("Hello from About");
   res.send(req.rootUser);
 });
 
 //User Data
-router.get("/userdata", authenticate , (req, res) => {
+router.get("/userdata", authenticate, (req, res) => {
   console.log("Hello from Userdata");
   res.send(req.rootUser);
+});
+//Contact Section
+router.post("/contact", authenticate, async (req, res) => {
+  try {
+    const { name, email, phone, message } = req.body;
+    if (!name || !email || !phone || !message) {
+      console.log("Plz fill the contact form");
+      return res.json({ error: "plz fill the contact form" });
+    }
+    const userContact = await User.findOne({ _id: req.userID });
+
+    if (userContact) {
+      const userMessage = await userContact.addMessage(
+        name,
+        email,
+        phone,
+        message
+      );
+      await userContact.save();
+      res.status(201).json({message:"User contact data sent successfully"})
+    }
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;

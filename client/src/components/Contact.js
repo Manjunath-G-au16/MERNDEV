@@ -34,14 +34,39 @@ const Contact = () => {
   useEffect(() => {
     userContact();
   }, []);
-  
-//Storing data in states
-  const handleInputs = (e) => {
-   const name = e.target.name;
-   const value = e.target.value;
-   setUserData({...userData,[name]: value})
 
-  }
+  //Storing data in states
+  const handleInputs = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  //sending data to backend
+  const contactForm = async (e) => {
+    e.preventDefault();
+    const { name, email, phone, message } = userData;
+    const res = await fetch("/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        phone,
+        message,
+      }),
+    });
+    const data = await res.json();
+    if (!data) {
+      console.log("Message not sent");
+    } else {
+      alert("Message sent");
+      setUserData({...userData, message:""})
+    }
+  };
+
   return (
     <div>
       <br />
@@ -49,7 +74,7 @@ const Contact = () => {
       <br />
       <br />
       <h1>Contact</h1>
-      <form method="GET">
+      <form method="POST">
         <input
           type="text"
           className="input"
@@ -89,7 +114,7 @@ const Contact = () => {
           id="button"
           name="signup"
           value="Sign Up"
-          // onClick={postData}
+          onClick={contactForm}
         />
       </form>
     </div>

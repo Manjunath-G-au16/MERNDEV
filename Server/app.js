@@ -29,9 +29,9 @@ const PORT = process.env.PORT;
 //   res.send("AboutPage Server");
 // });
 
-app.get("/contact", (req, res) => {
-  res.send("ContactPage Server");
-});
+// app.get("/contact", (req, res) => {
+//   res.send("ContactPage Server");
+// });
 
 // app.get("/signin", (req, res) => {
 //   res.send("SigninPage Server");
