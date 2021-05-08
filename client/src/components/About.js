@@ -27,7 +27,7 @@ function About() {
   };
   useEffect(() => {
     callAboutPage();
-  });
+  },[]);
   return (
     <div>
       <br />
