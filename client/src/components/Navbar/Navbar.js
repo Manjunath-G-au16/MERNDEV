@@ -78,6 +78,11 @@ const Navbar = () => {
               <i className="far fa-copy"></i> .Contact( )
             </NavLink>
           </li>
+          <li className="nav-item ">
+            <NavLink className="nav-link" to="/logout" exact>
+              <i className="far fa-chart-bar"></i> .Logout( )
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>

@@ -20,7 +20,7 @@ body {
       padding: 0px;
       margin: 0px;
       display: grid;
-      grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 3fr repeat(6, auto);
       text-align: center;
       justify-items: end;
     }
@@ -103,7 +103,7 @@ body {
   .navbar {
     bottom: 0;
     #navbarContent ul {
-      grid-template-columns: auto auto auto auto auto;
+      grid-template-columns: repeat(6, auto);
 
       & li a {
         font-size: 10px;

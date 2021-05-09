@@ -126,11 +126,17 @@ router.post("/contact", authenticate, async (req, res) => {
         message
       );
       await userContact.save();
-      res.status(201).json({message:"User contact data sent successfully"})
+      res.status(201).json({ message: "User contact data sent successfully" });
     }
   } catch (error) {
     console.log(error);
   }
 });
 
+//Logout Section
+router.get("/logout", (req, res) => {
+  console.log("Hello from Logout");
+  res.clearCookie("jwtoken", { path: "/" });
+  res.status(200).send("Logout User");
+});
 module.exports = router;
