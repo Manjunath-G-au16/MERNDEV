@@ -1,4 +1,4 @@
-import React from "react";
+import React,{createContext, useReducer} from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,38 +12,51 @@ import Signup from "./components/Signup";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar/Navbar";
 import Logout from "./components/Logout";
+import {initialState,reducer} from "../src/reducer/UseReducer"
 
-function App() {
+//Context
+//--------
+export const UserContext = createContext();
+const Routing = () => {
+  return (
+    <main>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/about" exact>
+          <About />
+        </Route>
+        <Route path="/signin" exact>
+          <Signin />
+        </Route>
+        <Route path="/signup" exact>
+          <Signup />
+        </Route>
+        <Route path="/contact" exact>
+          <Contact />
+        </Route>
+        <Route path="/logout" exact>
+          <Logout />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    </main>
+  );
+};
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <>
-      <Router>
-      <Navbar />
-        <main>
-          <Switch>
-            <Route path="/" exact>
-            <Home />
-            </Route>
-            <Route path="/about" exact>
-              <About />
-            </Route>
-            <Route path="/signin" exact>
-              <Signin />
-            </Route>
-            <Route path="/signup" exact>
-              <Signup />
-            </Route>
-            <Route path="/contact" exact>
-              <Contact />
-            </Route>
-            <Route path="/logout" exact>
-            <Logout />
-            </Route>
-            <Redirect to="/" />
-          </Switch>
-        </main>
-      </Router>
+      <UserContext.Provider value = {{ state, dispatch }}>
+        <Router>
+          <Navbar />
+          <Routing />
+        </Router>
+      </UserContext.Provider>
     </>
   );
-}
+};
 
 export default App;

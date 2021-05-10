@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { UserContext } from "../App";
 
 function Signin() {
+  const { state, dispatch } = useContext(UserContext);
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +21,7 @@ function Signin() {
       window.alert("Invalid Credentials");
       console.log("Invalid Credentials");
     } else {
+      dispatch({ type: "USER", payload: false });
       window.alert("login successful");
       console.log("login successful");
       history.push("/");
