@@ -4,60 +4,169 @@ body {
   width: 100%;
   height: 100%;
 }
-#back {
-  width: 100%;
-  min-height: 100vh;
+#main {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "sec1"
+    "hero";
 }
 #sec1 {
+  grid-area: sec1;
   margin: 0 auto;
   width: 80%;
   height: 50vh;
-  background-color: #ccc;
+  background-color: #eee;
 }
+// #container {
+//   grid-area: hero;
+//   position: relative;
+//   width: 100%;
+//   min-height: 100vh;
+//   .img-container {
+//     width: 180px;
+//     height: 200px;
+//     background-color: pink;
+//   }
+//   #img-1,
+//   #img-6 {
+//     position: absolute;
+//     top: 50%;
+//     transform: translate(0, -50%);
+//     width: 150px;
+//     height: 300px;
+//     background-color: orange;
+//   }
+//   #img-1 {
+//     left: 0;
+// }
+//   #img-6 {
+//     right: 0;
+//   }
+//   .section {
+//     position: absolute;
+//     top: 50%;
+//     transform: translate(0, -50%);
+//     div {
+//       margin-top: 20px;
+//     }
+//   }
+//   .left {
+//     left: 200px;
+//   }
+//   .right {
+//     right: 200px;
+//   }
+//   .center {
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     width: 380px;
+//     height: 100vh;
+//     background-color: skyblue;
+//   }
+// }
 #container {
-  position: relative;
-  margin-top: 100px;
+  grid-area: hero;
+  display: grid;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  grid-template-columns: 2.1fr 2.3fr 2.1fr;
+  grid-template-areas: "a b c";
+  gap: 20px;
+  overflow: hidden;
+  #left {
+    grid-area: a;
+  }
+
+  #right {
+    grid-area: c;
+  }
   .img-container {
-    width: 200px;
-    height: 180px;
-    background-color: yellow;
+    box-shadow: 0px 15px 18px -8px rgba(0, 0, 0, 0.5);
   }
-  #img-1,
-  #img-6 {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    width: 150px;
-    height: 300px;
-    background-color: skyblue;
-  }
-  #img-1 {
-    left: 0;
-  }
-  #img-6 {
-    right: 0;
-  }
-  .section {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    div {
-      margin-top: 20px;
+
+  #left,
+  #right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 0.5fr 2fr 0.5fr 1fr;
+    gap: 10px;
+    #img-1 {
+      @include grid(1, 2, 3, 4);
+      background-color: pink;
+    }
+    .left {
+      @include grid(2, 3, 2, 5);
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas: "img-2" "img-3";
+      row-gap: 10px;
+      #img-2 {
+        grid-area: img-2;
+        background-color: orange;
+      }
+      #img-3 {
+        background-color: orange;
+        grid-area: img-3;
+      }
+    }
+    .right {
+      @include grid(1, 2, 2, 5);
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas: "img-4" "img-5";
+      row-gap: 10px;
+      #img-4 {
+        grid-area: img-4;
+        background-color: orange;
+      }
+      #img-5 {
+        background-color: orange;
+        grid-area: img-5;
+      }
+    }
+    #img-6 {
+      @include grid(2, 3, 3, 4);
+      background-color: pink;
     }
   }
-  .left {
-    left: 200px;
+  #center {
+    grid-area: b;
+    background-color: skyblue;
+    box-shadow: 0px 50px 18px -8px rgba(0, 0, 0, 0.5);
   }
-  .right {
-    right: 200px;
-  }
-  .center {
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    height: 100vh;
-    background-color: orange;
+}
+
+@media (max-width: 580px) {
+  #container {
+    gap: 3px $i;
+    grid-template-columns: 1.5fr 4fr 1.5fr !important;
+    
+    #img-1,
+    #img-6 {
+      display: none;
+    }
+    .left {
+      @include grid(1$i, 3$i, 2$i, 5$i);
+      grid-template-columns: 0.1fr 0.8fr 0.1fr;
+      #img-2 {
+        @include grid(1$i, 3$i, 1$i, 1$i);
+      }
+      #img-3 {
+        @include grid(2$i, 4$i, 2$i, 2$i);
+        background-color: pink $i;
+      }
+    }
+    .right {
+      @include grid(1$i, 3$i, 2$i, 5$i);
+      grid-template-columns: 0.1fr 0.8fr 0.1fr;
+      #img-4 {
+        @include grid(2$i, 4$i, 1$i, 1$i);
+      }
+      #img-5 {
+        @include grid(1$i, 3$i, 2$i, 2$i);
+        background-color: pink $i;
+      }
+    }
   }
 }
