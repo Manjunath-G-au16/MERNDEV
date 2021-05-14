@@ -6,13 +6,43 @@ import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Hero = () => {
+  let rows = [];
+  for (let i = 0; i < 650; i++) {
+    rows.push(<div className="box">1</div>);
+  }
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    gsap.to("#center", {
-      y: "-50px",
-      scrub: 3,
-      delay: 0.5,
+    gsap.to(".box", {
+      duration: 1,
+      scale: 0.9,
+      ease: "power1.inOut",
+      repeat: 1,
+      yoyo: true,
+      stagger: {
+        each: 0.1,
+        from: "edges",
+        grid: "auto",
+      },
     });
+    gsap.to(".box", {
+      delay: 6,
+      scale: 1,
+      // background:"#fff",
+    });
+
+    gsap.to(".xyz", {
+      delay: 6.5,
+      background: "none",
+    });
+    gsap.to(".xyz", {
+      delay: 10.6,
+      display: "none",
+    });
+    // gsap.to("#center", {
+    //   y: "-50px",
+    //   scrub: 3,
+    //   delay: 0.5,
+    // });
 
     gsap.to("#left,#right", {
       y: "-50px",
@@ -57,7 +87,12 @@ const Hero = () => {
   return (
     <>
       <div id="main">
-        <div id="sec1"></div>
+        <div id="sec1">
+          <div className="abc">
+            <h1>DEV PORTFOLIO</h1>
+          </div>
+          <div className="xyz">{rows}</div>
+        </div>
         <div id="container">
           <div id="left">
             <div id="img-1" className="img-container"></div>
