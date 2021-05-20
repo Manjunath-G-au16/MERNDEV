@@ -1,3 +1,4 @@
+[DEV(Portfolio) ER_Diiagram.pdf](https://github.com/Manjunath-G-au16/MERNDEV/files/6516385/DEV.Portfolio.ER_Diiagram.pdf)
 # MERNDEV
 ```
 Project Name: Dev (Developers portfolio)
