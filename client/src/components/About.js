@@ -25,9 +25,19 @@ function About() {
       history.push("/signin");
     }
   };
+  const updateWork = (id) => {
+    const newWork = prompt("Enter Work");
+    fetch("/update", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ newWork: newWork, id: id }),
+    });
+  };
   useEffect(() => {
     callAboutPage();
-  },[]);
+  }, []);
   return (
     <div>
       <br />
@@ -37,18 +47,26 @@ function About() {
       <h1>Profile</h1>
       <form method="GET">
         <p>
-          Name:  <span>{userData.name}</span>
+          Name: <span>{userData.name}</span>
         </p>
         <p>
-          Email:  <span>{userData.email}</span>
+          Email: <span>{userData.email}</span>
         </p>
         <p>
-          Phone:  <span>{userData.phone}</span>
+          Phone: <span>{userData.phone}</span>
         </p>
         <p>
-          Work:  <span>{userData.work}</span>
+          Work: <span>{userData.work}</span>
         </p>
       </form>
+
+      <button
+        onClick={() => {
+          updateWork(userData._id);
+        }}
+      >
+        Update
+      </button>
     </div>
   );
 }

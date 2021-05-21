@@ -102,7 +102,23 @@ router.get("/about", authenticate, (req, res) => {
   console.log("Hello from About");
   res.send(req.rootUser);
 });
-
+//Update Data
+router.put("/update", async (req, res) => {
+  const newWork = req.body.newWork;
+  const id = req.body.id;
+  console.log(id);
+  console.log(newWork);
+  try {
+    await User.findById(id, (error, workToUpdate) => {
+      workToUpdate.work = String(newWork);
+      workToUpdate.save();
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  console.log("updated");
+  res.send("Updated")
+});
 //User Data
 router.get("/userdata", authenticate, (req, res) => {
   console.log("Hello from Userdata");
