@@ -1,9 +1,9 @@
 const User = require("../model/userSchema");
 
 const displayuser = async (req, res, next) => {
-
+const category = req.body.category
   try {
-    const rootUser = await User.find();
+    const rootUser = await User.find({name: category});
     if (!rootUser) {
       throw new Error("User not found");
     }
