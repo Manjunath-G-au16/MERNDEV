@@ -36,6 +36,22 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  projects: [
+    {
+      projectpic: {
+        type: String,
+        required: true,
+      },
+      url: {
+        type: String,
+        required: true,
+      },
+      details: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   messages: [
     {
       name: {
@@ -96,6 +112,17 @@ userSchema.methods.addMessage = async function (name, email, phone, message) {
     this.messages = this.messages.concat({ name, email, phone, message });
     await this.save();
     return this.messages;
+  } catch (error) {
+    console.log(error);
+  }
+};
+//project Storing function
+//-------------------------
+userSchema.methods.addProject = async function (projectpic, url, details) {
+  try {
+    this.projects = this.projects.concat({ projectpic, url, details });
+    await this.save();
+    return this.projects;
   } catch (error) {
     console.log(error);
   }
