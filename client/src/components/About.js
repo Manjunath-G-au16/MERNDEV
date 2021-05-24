@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 function About() {
   const history = useHistory();
   const [userData, setUserData] = useState({});
+  const [project, setProject] = useState([]);
   const callAboutPage = async () => {
     try {
       const res = await fetch("/about", {
@@ -16,6 +17,7 @@ function About() {
       const data = await res.json();
       console.log(data);
       setUserData(data);
+      setProject(data.projects);
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
@@ -46,6 +48,7 @@ function About() {
       <br />
       <h1>Profile</h1>
       <form method="GET">
+        <img src={userData.pic} alt="" />
         <p>
           Name: <span>{userData.name}</span>
         </p>
@@ -59,6 +62,18 @@ function About() {
           Work: <span>{userData.work}</span>
         </p>
       </form>
+      {project.map((item) => {
+        return (
+          <p>
+            <br />
+            project: <br />
+            Details: <h4>{item.details}</h4>
+            <a href={item.url} target="_blank">
+              <img src={item.projectpic} alt="" />
+            </a>
+          </p>
+        );
+      })}
 
       <button
         onClick={() => {
