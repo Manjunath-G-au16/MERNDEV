@@ -218,6 +218,29 @@ router.post("/contact", authenticate, async (req, res) => {
     console.log(error);
   }
 });
+//Contact Section
+router.post("/project", authenticate, async (req, res) => {
+  try {
+    const { projectpic, url, details } = req.body;
+    if (!projectpic || !url || !details ) {
+      console.log("Plz fill the contact form");
+      return res.json({ error: "plz fill the contact form" });
+    }
+    const userProject = await User.findOne({ _id: req.userID });
+
+    if (userProject) {
+      const userProjectDetails = await userProject.addProject(
+        projectpic,
+        url,
+        details,
+      );
+      await userProject.save();
+      res.status(201).json({ message: "User project data sent successfully" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 //Logout Section
 router.get("/logout", (req, res) => {
