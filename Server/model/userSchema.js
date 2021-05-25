@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   pic: {
     type: String,
     default:
-      "https://res.cloudinary.com/modimanju/image/upload/v1621569479/ncczu7rx2bhowxeryald.jpg",
+      "https://res.cloudinary.com/modimanju/image/upload/v1621875071/bofsljusosob4v39ktsf.png",
   },
   name: {
     type: String,
@@ -36,6 +36,18 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  skills: [
+    {
+      skill: {
+        type: String,
+        required: true,
+      },
+      value: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   projects: [
     {
       projectpic: {
@@ -47,6 +59,18 @@ const userSchema = new mongoose.Schema({
         required: true,
       },
       details: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+  socials: [
+    {
+      media: {
+        type: String,
+        required: true,
+      },
+      link: {
         type: String,
         required: true,
       },
@@ -123,6 +147,28 @@ userSchema.methods.addProject = async function (projectpic, url, details) {
     this.projects = this.projects.concat({ projectpic, url, details });
     await this.save();
     return this.projects;
+  } catch (error) {
+    console.log(error);
+  }
+};
+//Socials Storing function
+//-------------------------
+userSchema.methods.addSocial = async function (media, link) {
+  try {
+    this.socials = this.socials.concat({ media, link });
+    await this.save();
+    return this.socials;
+  } catch (error) {
+    console.log(error);
+  }
+};
+//Socials Storing function
+//-------------------------
+userSchema.methods.addSkill = async function (skill, value) {
+  try {
+    this.skills = this.skills.concat({ skill, value });
+    await this.save();
+    return this.skills;
   } catch (error) {
     console.log(error);
   }
