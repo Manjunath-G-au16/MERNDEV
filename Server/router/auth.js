@@ -172,7 +172,7 @@ router.put("/updatePic", async (req, res) => {
 
 //Update Data
 router.put("/edit", async (req, res) => {
-  const { name, email, phone, work, id, pic, messages} = req.body;
+  const { name, email, phone, work, id, pic} = req.body;
   console.log(id);
   console.log(name);
   console.log(email);
@@ -185,7 +185,6 @@ router.put("/edit", async (req, res) => {
       workToUpdate.email = String(email);
       workToUpdate.phone = Number(phone);
       workToUpdate.work = String(work);
-      workToUpdate.messages = String(messages);
       workToUpdate.save();
     });
   } catch (error) {
@@ -236,6 +235,50 @@ router.post("/project", authenticate, async (req, res) => {
       );
       await userProject.save();
       res.status(201).json({ message: "User project data sent successfully" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+//Social Section
+router.post("/social", authenticate, async (req, res) => {
+  try {
+    const { media, link,  } = req.body;
+    if (!media || !link  ) {
+      console.log("Plz fill the contact form");
+      return res.json({ error: "plz fill the contact form" });
+    }
+    const userSocial = await User.findOne({ _id: req.userID });
+
+    if (userSocial) {
+      const userSocialDetails = await userSocial.addSocial(
+        media,
+        link,
+      );
+      await userSocial.save();
+      res.status(201).json({ message: "User social data sent successfully" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+//Skill Section
+router.post("/skill", authenticate, async (req, res) => {
+  try {
+    const { skill, value,  } = req.body;
+    if (!skill || !value  ) {
+      console.log("Plz fill the contact form");
+      return res.json({ error: "plz fill the contact form" });
+    }
+    const userSkill = await User.findOne({ _id: req.userID });
+
+    if (userSkill) {
+      const userSkillDetails = await userSkill.addSkill(
+        skill,
+        value,
+      );
+      await userSkill.save();
+      res.status(201).json({ message: "User skill data sent successfully" });
     }
   } catch (error) {
     console.log(error);
