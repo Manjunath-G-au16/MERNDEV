@@ -58,7 +58,7 @@ const Portfolio = () => {
               <div className="p1-sec1">
                 <div className="content1">
                   <div className="inner">
-                    {/* <img src={userData.pic} alt="" /> */}
+                    <img src={userData.pic} alt="" />
                   </div>
                 </div>
                 <div className="content2">
@@ -72,13 +72,13 @@ const Portfolio = () => {
                 <div className="content">
                   <div className="sec1">
                     <h4>
-                      {/* <i class="fas fa-map-marker-alt"></i> Bangalore,India */}
+                      <i class="fas fa-map-marker-alt"></i> Bangalore,India
                     </h4>
                     <h5>
-                      {/* <i class="fas fa-envelope"></i> {userData.email} */}
+                      <i class="fas fa-envelope"></i> {userData.email}
                     </h5>
                     <h5>
-                      {/* <i class="fas fa-phone"></i> {userData.phone} */}
+                      <i class="fas fa-phone"></i> {userData.phone}
                     </h5>
                   </div>
                   <div className="sec2">

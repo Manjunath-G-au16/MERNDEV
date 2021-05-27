@@ -79,11 +79,11 @@
           border-bottom: 1.5px solid #00f3ff;
           border-right: 1.5px solid #00f3ff;
           border-radius: 0.5rem;
-          color: $dbg;
+          color: #fff;
           padding: 0.1rem;
           @include grid-center;
           h4 span {
-            color: $dbg;
+            color: $clr;
             // text-shadow: 0 0 2px $clr;
           }
         }
@@ -272,7 +272,7 @@
         border-radius: 10px;
         box-shadow:  $dis;
         border-bottom: 1.5px solid #00f3ff;
-        border-left: 1.5px solid #00f3ff;
+        border-right: 1.5px solid #00f3ff;
       }
     }
   }
@@ -305,7 +305,7 @@
         border-radius: 10px;
         box-shadow:  $dis;
         border-bottom: 1.5px solid #00f3ff;
-        border-left: 1.5px solid #00f3ff;
+        border-right: 1.5px solid #00f3ff;
       }
     }
 
