@@ -111,7 +111,7 @@ const Portfolio = () => {
                 <h3>SKILLS</h3>
               </div>
               <div className="content2">
-                {/* {skill.map((item) => {
+                {skill.map((item) => {
                   return (
                     <>
                       <div className="sec1">
@@ -126,7 +126,7 @@ const Portfolio = () => {
                       </div>
                     </>
                   );
-                })} */}
+                })}
               </div>
             </div>
           </div>
