@@ -1,0 +1,439 @@
+@import ".././sass/default.scss";
+@import ".././sass/variables.scss";
+
+#port-main {
+  //   background: skyblue;
+  width: 100%;
+  height: 100vh;
+}
+#port-con {
+  width: 100%;
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 1fr 1.8fr;
+  grid-template-areas:
+    "p1 p2 p2 p2"
+    "p1 p4 p4 p5"
+    "p1 p3 p6 p6";
+  gap: 10px;
+  .port-panel {
+    background: #000;
+    border-radius: 10px;
+  }
+  .port-p1 {
+    grid-area: p1;
+    background: $dbg;
+    position: relative;
+    .inner {
+      @include center;
+      width: 95%;
+      height: 95%;
+      background: $dbg;
+      box-shadow: $dis, $dos;
+      display: grid;
+      grid-template-rows: 40vh 40vh;
+      grid-template-areas: "sec1" "sec2";
+      gap: 10px;
+      .p1-sec1 {
+        grid-area: sec1;
+        display: grid;
+        grid-template-rows: 1fr 0fr;
+        grid-template-columns: 0.15fr 0.7fr 0.15fr;
+        gap: 5px;
+
+        .content1 {
+          @include grid(2, 3, 1, 2);
+          border-radius: 50%;
+          overflow: hidden;
+          background: $ndbg;
+          box-shadow: $dos, $dis;
+          position: relative;
+
+          .inner {
+            @include center;
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: $dbg;
+            border-top: 1.5px solid #00f3ff;
+            border-left: 1.5px solid #00f3ff;
+            box-shadow: $dis, $dos;
+            overflow: hidden;
+            img {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 90%;
+              height: 90%;
+              object-fit: cover;
+              border-radius: 50%;
+            }
+          }
+        }
+        .content2 {
+          @include grid(2, 3, 2, 3);
+          background: $dbg;
+          box-shadow: $dis, $dos;
+          border-bottom: 1.5px solid #00f3ff;
+          border-right: 1.5px solid #00f3ff;
+          border-radius: 0.5rem;
+          color: $dbg;
+          padding: 0.1rem;
+          @include grid-center;
+          h4 span {
+            color: $dbg;
+            // text-shadow: 0 0 2px $clr;
+          }
+        }
+      }
+      .p1-sec2 {
+        grid-area: sec2;
+        display: grid;
+        grid-template-columns: 0.1fr 0.8fr 0.1fr;
+        .content {
+          grid-column: 2/3;
+          background: $ndbg;
+          box-shadow: $dis;
+          border-radius: 10px;
+          border-bottom: 1.5px solid #00f3ff;
+          border-right: 1.5px solid #00f3ff;
+          display: grid;
+          grid-template-rows: 20vh 20vh;
+          .sec1 {
+            grid-row: 1;
+            color: #fff;
+            @include grid-center;
+            i {
+              color: $clr;
+              font-size: 1rem;
+              box-shadow: 0px 5px 40px $clr;
+            }
+          }
+          .sec2 {
+            grid-row: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            .icons {
+              grid-row: 2;
+            }
+            .icons:hover li:before {
+              box-shadow: $dis;
+            }
+            .icons:hover li {
+              box-shadow: $dos;
+            }
+
+            .icons li {
+              list-style: none;
+              display: inline-flex;
+              flex-direction: column;
+              margin: 1rem 1rem;
+              width: 2.5rem;
+              height: 2.5rem;
+              cursor: pointer;
+              border-radius: 50%;
+              background: $ndbg;
+              box-shadow: $dis;
+              align-items: center;
+              justify-content: center;
+
+              &:before {
+                position: relative;
+                content: "";
+                width: 2.25rem;
+                height: 0.75rem;
+                background: $clr;
+                border-radius: 50%;
+                box-shadow: 0px 5px 40px $clr;
+              }
+
+              a {
+                color: #b6bbc5;
+                font-size: 1.25rem;
+              }
+
+              &:hover a {
+                color: $clr;
+                text-shadow: 0 0 15px $clr;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .port-p2 {
+    grid-area: p2;
+    position: relative;
+    .inner {
+      @include center;
+      width: 95%;
+      height: 80%;
+      background: $ndbg;
+      box-shadow: $dis, $dos;
+      border-left: 1.5px solid #00f3ff;
+      border-right: 1.5px solid #00f3ff;
+      border-radius: 10px;
+      .content{
+        color: $clr;
+        text-transform: uppercase;
+        @include center;
+      }
+    }
+  }
+  .port-p3 {
+    grid-area: p3;
+    position: relative;
+    .inner {
+      @include center;
+      width: 95%;
+      height: 95%;
+      background: $dbg;
+      box-shadow: $dos, $dis;
+      display: grid;
+      grid-template-rows: 0.2fr 0.8fr;
+      gap: 10px;
+      .content1 {
+        grid-row: 1;
+        color: $clr;
+        @include grid-center;
+        background: $ndbg;
+        border-radius: 10px;
+        box-shadow: $dos, $dis;
+        border-top: 1.5px solid #00f3ff;
+        border-left: 1.5px solid #00f3ff;
+      }
+      .content2::-webkit-scrollbar {
+        width: 1vw;
+        &-track {
+          background: $ndbg;
+          box-shadow: $dis;
+          border-radius: 20px;
+        }
+        &-thumb {
+          background: $dbg;
+          box-shadow: $dos;
+          border-radius: 20px;
+          border-bottom: 1.5px solid #00f3ff;
+          border-left: 1.5px solid #00f3ff;
+        }
+        &-thumb:hover {
+          background: $clr;
+        }
+      }
+
+      .content2 {
+        grid-row: 2;
+        color: $clr;
+        display: grid;
+        grid-template-columns: 0.3fr 0.7fr;
+        overflow-y: scroll;
+        .sec1 {
+          grid-column: 1;
+          color: #fff;
+        }
+        .sec2 {
+          grid-column: 2;
+        }
+      }
+    }
+  }
+  .port-p4 {
+    grid-area: p4;
+    position: relative;
+    .inner {
+      @include center;
+      width: 97%;
+      height: 94%;
+      background: $dbg;
+      box-shadow: $dos, $dis;
+      border-radius: 10px;
+      display: grid;
+      grid-template-rows: 0.2fr 0.8fr;
+      gap: 10px;
+      .content1{
+        grid-row: 1;
+        background: $ndbg;
+        border-radius: 10px;
+        color: $clr;
+        text-transform: capitalize;
+        @include grid-center;
+        box-shadow: $dos, $dis;
+        border-top: 1.5px solid #00f3ff;
+        border-left: 1.5px solid #00f3ff;
+      }
+      .content2{
+        grid-row: 2;
+        background: $ndbg;
+        border-radius: 10px;
+        box-shadow:  $dis;
+        border-bottom: 1.5px solid #00f3ff;
+        border-left: 1.5px solid #00f3ff;
+      }
+    }
+  }
+  .port-p5 {
+    grid-area: p5;
+    position: relative;
+    .inner {
+      @include center;
+      width: 97%;
+      height: 94%;
+      background: $dbg;
+      box-shadow: $dos, $dis;
+      border-radius: 10px;      display: grid;
+      grid-template-rows: 0.2fr 0.8fr;
+      gap: 10px;
+      .content1{
+        grid-row: 1;
+        background: $ndbg;
+        border-radius: 10px;
+        color: $clr;
+        text-transform: capitalize;
+        @include grid-center;
+        box-shadow: $dos, $dis;
+        border-top: 1.5px solid #00f3ff;
+        border-left: 1.5px solid #00f3ff;
+      }
+      .content2{
+        grid-row: 2;
+        background: $ndbg;
+        border-radius: 10px;
+        box-shadow:  $dis;
+        border-bottom: 1.5px solid #00f3ff;
+        border-left: 1.5px solid #00f3ff;
+      }
+    }
+
+  }
+  .port-p6 {
+    grid-area: p6;
+    position: relative;
+    .inner{
+      @include center;
+      width: 98%;
+      height: 95%;
+      background: $dbg;
+      box-shadow: $dis, $dos;
+      border-radius:10px;
+      display: grid;
+      grid-template-rows: 0.2fr 0.8fr;
+      gap: 10px;
+      .content1{
+        grid-row: 1;
+        @include grid-center;
+        background: $ndbg;
+        border-radius: 10px;
+        color:$clr;
+        text-transform: capitalize;
+        border-top: 1.5px solid #00f3ff;
+        border-left: 1.5px solid #00f3ff;
+        box-shadow: $dos, $dis;
+      }
+      .content2::-webkit-scrollbar {
+        width: 1vw;
+        &-track {
+          background: $ndbg;
+          box-shadow: $dis;
+          border-radius: 20px;
+        }
+        &-thumb {
+          background: $dbg;
+          box-shadow: $dos;
+          border-radius: 20px;
+          border-bottom: 1.5px solid #00f3ff;
+          border-left: 1.5px solid #00f3ff;
+        }
+        &-thumb:hover {
+          background: $clr;
+        }
+      }
+      .content2{
+        grid-row: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        justify-content: space-around;
+        row-gap: 15px;
+
+        .section{
+          display: inline-flex;
+          width:22vw;
+          height:36vh;
+          background: $ndbg;
+          border-radius:10px;
+          box-shadow:  $dis;
+          position: relative;
+          border-top: 1.5px solid #00f3ff;
+          border-left: 1.5px solid #00f3ff;
+          .project{
+            @include center;
+            width: 90%;
+            height: 90%;
+            background: $dbg;
+            border-radius:10px;
+            box-shadow:  $dos;
+            overflow: hidden;
+            border-bottom: 1.5px solid #00f3ff;
+            border-right: 1.5px solid #00f3ff;
+            a img{
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 97%;
+              height: 95%;
+              object-fit: cover;
+              border-radius: 10px;
+              
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+}
+/* background: */
+progress::-webkit-progress-bar {
+  background-color: $ndbg;
+  width: 100%;
+  height: 10px;
+  border-radius: 50px;
+  box-shadow: $dis, $dos;
+}
+progress {
+  background-color: $ndbg;
+  border-radius: 50px;
+  height: 10px;
+}
+
+/* value: */
+progress::-webkit-progress-value {
+  background-color: $clr !important;
+  border-radius: 50px;
+  box-shadow: -5px -5px 10px #01494d, 5px 5px 15px #025f64;
+}
+// progress::-moz-progress-bar {background-color: $clr !important;border-radius: 50px;}
+// progress {color: $clr;border-radius: 50px;}
+@media (max-width: 580px) {
+  #port-con {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+      "p1"
+      "p2"
+      "p3"
+      "p4"
+      "p5"
+      "p6";
+    height: 500vh;
+  }
+}
