@@ -151,7 +151,7 @@ const Portfolio = () => {
                 <h3>projects</h3>
               </div>
               <div className="content2">
-                {/* {project.map((item) => {
+                {project.map((item) => {
                   return (
                     <div className="section">
                       <div className="project">
@@ -161,7 +161,7 @@ const Portfolio = () => {
                       </div>
                     </div>
                   );
-                })} */}
+                })}
               </div>
             </div>
           </div>
