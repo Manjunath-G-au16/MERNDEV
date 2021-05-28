@@ -172,7 +172,7 @@ router.put("/updatePic", async (req, res) => {
 
 //Update Data
 router.put("/edit", async (req, res) => {
-  const { name, email, phone, work, id, pic} = req.body;
+  const { name, email, phone, work, id, pic, cv} = req.body;
   console.log(id);
   console.log(name);
   console.log(email);
@@ -185,6 +185,7 @@ router.put("/edit", async (req, res) => {
       workToUpdate.email = String(email);
       workToUpdate.phone = Number(phone);
       workToUpdate.work = String(work);
+      workToUpdate.cv = String(cv);
       workToUpdate.save();
     });
   } catch (error) {
