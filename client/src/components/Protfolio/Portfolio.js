@@ -1,8 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./Portfolio.scss";
+import { gsap } from "gsap";
 
 const Portfolio = () => {
+  // // Gsap
+  // gsap.fromTo("#port-con",{rotateY:"65deg",scale:0.63,x:"-19vw",y:"-3vh"},{rotateY:"0",scale:1,x:"0",y:"0",duration:7,delay:5});
+  // // gsap.fromTo(".port-p1",{z:"20vw",x:"5vw",y:"0vh"});
+  // gsap.fromTo(".port-p2",{z:"10vw",x:"12vw",y:"-10vh"},{z:0,x:0,y:0,duration:5,delay:5});
+  // gsap.fromTo(".port-p4",{z:"20vw",x:"13vw"},{z:0,x:0,duration:5,delay:5});
+  // gsap.fromTo(".port-p3",{z:"18vw",x:"10vw",y:"11vh"},{z:0,x:0,y:0,duration:5,delay:5});
+  // gsap.fromTo(".port-p6",{z:"25vw",x:"30vw",y:"15vh"},{z:0,x:0,y:0,duration:5,delay:5});
+  // gsap.fromTo(".port-p5",{z:"50vw",x:"40vw"},{z:0,x:0,duration:5,delay:5});
+  // gsap.fromTo("#skill",{z:"50vw",x:"40vw"},{z:0,x:0,duration:5,delay:5});
+  // gsap.fromTo("#project",{z:"50vw",y:"-40vh"},{z:0,y:0,duration:2,delay:7.5});
+
+  //////////////////////////////
   const history = useHistory();
   const [userData, setUserData] = useState({});
   const [project, setProject] = useState([]);
@@ -62,10 +75,19 @@ const Portfolio = () => {
                   </div>
                 </div>
                 <div className="content2">
-                  <h4>
-                    Hi I'm <span>{userData.name}</span>
-                  </h4>
-                  <h4>{userData.work}</h4>
+                  <div className="panel1">
+                    <h5>
+                      Hi I'm <span>{userData.name}</span>
+                    </h5>
+                    <h5>{userData.work}</h5>
+                  </div>
+                  <div className="panel2">
+                    <h1>
+                      <a href="/photo/2015/04/23/22/00/tree-736885__480.jpg"  download="modimanju.pdf" target="_blank">
+                      <i class="fas fa-cloud-download-alt"></i>
+                      </a>
+                    </h1>
+                  </div>
                 </div>
               </div>
               <div className="p1-sec2">
@@ -105,17 +127,27 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
+
+          <div className="port-panel port-p4">
+            <div className="inner">
+              <div className="content1">
+                <h3>about</h3>
+              </div>
+              <div className="content2"></div>
+            </div>
+          </div>
           <div className="port-panel port-p3">
             <div className="inner">
               <div className="content1">
                 <h3>SKILLS</h3>
               </div>
-              <div className="content2">
+              <div className="content2" id="skill">
                 {skill.map((item) => {
                   return (
                     <>
-                      <div className="sec1">
+                      <div className="sec1" id="skillName">
                         <h3>{item.skill} :</h3>
+                        {/* <i className={item.skill}></i> */}
                       </div>
                       <div className="sec2">
                         <progress
@@ -130,21 +162,14 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-          <div className="port-panel port-p4">
-            <div className="inner">
-              <div className="content1">
-                <h3>about</h3>
-              </div>
-              <div className="content2"></div>
-            </div>
-          </div>
           <div className="port-panel port-p5">
             <div className="inner">
               <div className="content1">
                 <h3>work/experience</h3>
               </div>
               <div className="content2"></div>
-            </div></div>
+            </div>
+          </div>
           <div className="port-panel port-p6">
             <div className="inner">
               <div className="content1">
@@ -153,7 +178,7 @@ const Portfolio = () => {
               <div className="content2">
                 {project.map((item) => {
                   return (
-                    <div className="section">
+                    <div className="section" id="project">
                       <div className="project">
                         <a href={item.url} target="_blank">
                           <img src={item.projectpic} alt="" />
