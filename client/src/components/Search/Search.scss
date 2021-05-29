@@ -1,0 +1,110 @@
+@import ".././sass/default.scss";
+@import ".././sass/variables.scss";
+
+#srh-main {
+  background: $dbg;
+  width: 100%;
+  height: 90vh;
+  #srh-con {
+    width: 100%;
+    height: 90vh;
+    background: $dbg;
+    display: grid;
+    grid-template-rows: 0.1fr 0.9fr;
+    gap: 10px;
+    .srh-panel {
+      background: $dbg;
+    }
+    .srh-p1 {
+      grid-row: 1;
+      display: grid;
+      grid-template-columns: 0.5fr 0.3fr 0.2fr;
+      gap: 10px;
+      .sec1 {
+        grid-column: 1;
+        background: $ndbg;
+        border-radius: 10px;
+        box-shadow: $dis;
+      }
+      .sec2 {
+        grid-column: 2;
+        background: $ndbg;
+        border-radius: 10px;
+        box-shadow: $dis;
+      }
+      .sec3 {
+        grid-column: 3;
+        background: $ndbg;
+        border-radius: 10px;
+        box-shadow: $dis;
+      }
+    }
+    .srh-p2 {
+      grid-row: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      overflow-y: scroll;
+      gap: 10px;
+      .sec {
+        display: inline-flex;
+        width: 30vw;
+        height: 30vh;
+        background: $ndbg;
+        border-radius: 10px;
+        box-shadow: $dis;
+        position: relative;
+        .profile {
+          @include center;
+          width: 90%;
+          height: 90%;
+          background: $dbg;
+          border-radius: 10px;
+          box-shadow: $dos;
+          overflow: hidden;
+          border-bottom: 1.5px solid #00f3ff;
+          border-right: 1.5px solid #00f3ff;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+          .content1{
+              grid-column: 1;
+              background: $ndbg;
+              position: relative;
+              .inner {
+                @include center;
+                width: 90%;
+                height: 90%;
+                border-radius: 50%;
+                background: $dbg;
+                border-top: 1.5px solid #00f3ff;
+                border-left: 1.5px solid #00f3ff;
+                box-shadow: $dis, $dos;
+                overflow: hidden;
+              img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 90%;
+                height: 90%;
+                object-fit: cover;
+                border-radius: 50%;
+              }
+            }
+          }
+          .content2{
+              grid-column: 2;
+              background: $dbg;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              color:$clr;
+          }
+        }
+      }
+    }
+  }
+}
