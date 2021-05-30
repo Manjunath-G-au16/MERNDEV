@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const authenticate = require("../middleware/authenticate");
 const finduser = require("../middleware/finduser");
 const displayuser = require("../middleware/displayuser");
+const userprofile = require("../middleware/userprofile");
 
 router.get("/", (req, res) => {
   res.send("HomePage Server from router");
@@ -104,6 +105,12 @@ router.get("/about", authenticate, (req, res) => {
   console.log("Hello from About");
   res.send(req.rootUser);
 });
+//User Profile Section
+router.post("/xxyyzz", userprofile, (req, res) => {
+  console.log("Hello from userProfile");
+  res.send(req.rootUser);
+});
+
 //User Data
 router.get("/userdata", authenticate, (req, res) => {
   console.log("Hello from Userdata");
