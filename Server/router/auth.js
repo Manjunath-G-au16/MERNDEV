@@ -8,6 +8,7 @@ const authenticate = require("../middleware/authenticate");
 const finduser = require("../middleware/finduser");
 const displayuser = require("../middleware/displayuser");
 const userprofile = require("../middleware/userprofile");
+const deleteskill = require("../middleware/deleteskill");
 
 router.get("/", (req, res) => {
   res.send("HomePage Server from router");
@@ -121,6 +122,12 @@ router.post("/finduser", finduser, (req, res) => {
   console.log("Hello from Userdata");
   res.send(req.rootUser);
 });
+//Delete Skill
+router.delete("/deleteskill", deleteskill, (req, res) => {
+  console.log("Hello from Userdata");
+  res.send(req.rootUser);
+  // res.send(req.rootUser);
+});
 //Display all
 router.post("/displayuser", displayuser, (req, res) => {
   console.log("Hello from Userdata");
@@ -179,7 +186,7 @@ router.put("/updatePic", async (req, res) => {
 
 //Update Data
 router.put("/edit", async (req, res) => {
-  const { name, email, phone, work, id, pic, cv} = req.body;
+  const { name, email, phone, work, id, pic} = req.body;
   console.log(id);
   console.log(name);
   console.log(email);
@@ -192,7 +199,6 @@ router.put("/edit", async (req, res) => {
       workToUpdate.email = String(email);
       workToUpdate.phone = Number(phone);
       workToUpdate.work = String(work);
-      workToUpdate.cv = String(cv);
       workToUpdate.save();
     });
   } catch (error) {
