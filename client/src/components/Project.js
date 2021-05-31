@@ -22,7 +22,12 @@ const Project = () => {
     setSLink(e.target.value);
   };
   const handleSkill = (e) => {
-    setSSkill(e.target.value);
+    const skillData = document.getElementById("skillData").value;
+    const skillData_val = document.querySelector(
+      "#skill-data" + " option[value='" + skillData + "']"
+    ).dataset.value;
+
+    setSSkill(skillData_val);
   };
   const handleValue = (e) => {
     setSValue(e.target.value);
@@ -165,11 +170,20 @@ const Project = () => {
       <h1>Socials</h1>
       <select onChange={handleSocial}>
         <option value="fab fa-linkedin">Linkedin</option>
-        <option value="fab fa-github-square">Github</option>
+        <option value="fab fa-github">Github</option>
         <option value="fab fa-codepen">Codepen</option>
-        <option value="fab fa-facebook-square">Facebook</option>
-        <option value="fab fa-instagram-square">Instagram</option>
+        <option value="fab fa-facebook-f">Facebook</option>
+        <option value="fab fa-instagram">Instagram</option>
       </select>
+
+      {/* <input list="social-icon" onChange={handleSocial}/>
+      <datalist id="social-icon" >
+        <option value="fab fa-linkedin">Linkedin</option>
+        <option value="fab fa-github">Github</option>
+        <option value="fab fa-codepen">Codepen</option>
+        <option value="fab fa-facebook-f">Facebook</option>
+        <option value="fab fa-instagram">Instagram</option>
+      </datalist> */}
       <input
         type="text"
         className="input"
@@ -177,29 +191,54 @@ const Project = () => {
         onChange={handleLink}
         placeholder="link"
       />
+
       <button onClick={addSocial}>Add</button>
       <br />
       <br />
       {/* Skills section  */}
       <h1>Skills</h1>
-      <input
+      <input list="skill-data" id="skillData" onChange={handleSkill} />
+
+      <datalist id="skill-data">
+        <option data-value="fab fa-python" value="Python"></option>
+        <option data-value="fab fa-js-square" value="Javascript"></option>
+        <option data-value="fab fa-php" value="PHP"></option>
+        <option data-value="fab fa-html5" value="Html5"></option>
+        <option data-value="fab fa-css3-alt" value="Css3"></option>
+        <option data-value="fab fa-sass" value="Sass"></option>
+        <option data-value="fab fa-react" value="React Js"></option>
+        <option data-value="fab fa-node-js" value="Node Js"></option>
+        <option data-value="devicon-mongodb-plain" value="Mongo DB"></option>
+        <option data-value="devicon-android-plain" value="Android"></option>
+        <option data-value="devicon-angularjs-plain" value="Angular"></option>
+        <option data-value="devicon-babel-plain" value="Bable"></option>
+        <option data-value="devicon-c-plain" value="C lang"></option>
+        <option data-value="devicon-cplusplus-plain" value="C++ lang"></option>
+        <option data-value="devicon-csharp-plain" value="C# sharp"></option>
+        <option data-value="devicon-django-plain" value="Django"></option>
+        <option
+          data-value="devicon-express-original"
+          value="Express JS"
+        ></option>
+      </datalist>
+      {/* <input
         type="text"
         className="input"
         name="skill"
         onChange={handleSkill}
         placeholder="skill"
-      />
+      /> */}
       <input
         name="value"
         type="range"
         min="1"
-        max="10"  
+        max="10"
         step="1"
         defaultValue="5"
         onChange={handleValue}
         placeholder="value"
       />
-      
+
       <button onClick={addSkill}>Add</button>
     </div>
   );
