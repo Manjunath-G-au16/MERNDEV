@@ -1,0 +1,180 @@
+@import ".././sass/default.scss";
+@import ".././sass/variables.scss";
+
+#contactus {
+  width: 100%;
+  height:110vh;
+	background: linear-gradient(90deg, #fff 50%, rgb(20, 20, 20) 50%);
+//   background-color: #2d3436;
+// background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+  div,
+  h1,
+  h2,
+  form,
+  fieldset,
+  input,
+  textarea,
+  footer,
+  p {
+    border: none;
+    outline: none;
+  }
+  
+  #layer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    width:50%;
+    height: 40vh;
+    background: transparent;
+    mix-blend-mode: difference;
+    border: 10px solid #fff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  &:hover  #layer{
+    animation: ani-border 4s  ease-in-out infinite;
+
+  }
+  @keyframes ani-border {
+    0% {
+      border-left: 10px solid #fff;
+      border-right: 10px solid #fff;
+    }
+    50% {
+      border-left: 50px solid #fff;
+      border-right: 50px solid #fff;
+    }
+  }
+  #wrap {
+    width: 530px;
+    margin: 0 auto 0;
+    height: 110vh;
+  }
+  .text{
+    background: linear-gradient(90deg, #000 50%, #fff 50%);
+    border-radius: 10px;
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      padding: 10px;
+      color: #fff;
+      mix-blend-mode: difference;
+    }
+  }
+  #form-wrap {
+    //   overflow: hidden;
+    height: 447px;
+    position: relative;
+    top: 0;
+    transition: all 1s ease-in-out 0.3s;
+    cursor: pointer;
+  }
+  #form-wrap:before {
+    content: "";
+    position: absolute;
+    bottom: 67px;
+    left: 0;
+    background: url("../../assets/back.png");
+    width: 530px;
+    height: 190px;
+    z-index: 0;
+  }
+  #form-wrap .img-Box{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: 2s;
+    margin-top: -8px;
+    z-index: 99;
+    transform-origin: top;
+    transition: 2s ease-in-out 1s ;
+  }
+
+  #form-wrap:hover .img-Box{
+      transform: rotateX(150deg);
+      z-index: 1;
+      transition: 0.5s ease-in-out 0s;
+  }
+  #form-wrap:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url("../../assets/after.png");
+    width: 530px;
+    height: 259px;
+    z-index: 2;
+  }
+  #form-wrap.hide:after,
+  #form-wrap.hide:before {
+    display: none;
+  }
+  #form-wrap:hover {
+    height: 777px;
+    top: -200px;
+  }
+  form {
+    background: #fff;
+    position: relative;
+    top: 200px;
+    overflow: hidden;
+    height: 200px;
+    width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-right: 3px;
+    transition: all 1s ease-in-out 0.3s;
+    z-index: 2;
+  }
+  #form-wrap:hover form {
+    height: 530px;
+  }
+  label {
+    margin: 11px 20px 0 0;
+    font-size: 15px;
+    color: gray;
+    text-transform: uppercase;
+  }
+
+  input[type="text"],
+  textarea {
+    font: 14px normal uppercase;
+    color: dimgray;
+    background: none;
+    width: 380px;
+    height: 37px;
+    padding: 0px 10px;
+    margin: 0 0 10px 0;
+    border: 1px solid #969594;
+    border-radius: 5px;
+  }
+
+  textarea {
+    height: 80px;
+    padding-top: 14px;
+  }
+  textarea:focus,
+  input[type="text"]:focus {
+    background: white;
+  }
+  #form-wrap input[type="submit"] {
+    position: relative;
+    font-size: 24px;
+    color: gray;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    background: none;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: opacity 0.7s ease-in-out 0s;
+  }
+  #form-wrap:hover input[type="submit"] {
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out 1.3s;
+  }
+}
