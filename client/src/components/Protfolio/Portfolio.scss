@@ -1,15 +1,101 @@
 @import ".././sass/default.scss";
 @import ".././sass/variables.scss";
-
+::-webkit-scrollbar {
+  width: 2vw;
+  &-track {
+    background: $dbg;
+    // box-shadow: $dis;
+    border-radius: 20px;
+  }
+  &-thumb {
+    background: $dbg;
+    // box-shadow: $dos;
+    border-radius: 20px;
+    // border-bottom: 1.5px solid #00f3ff;
+    // border-left: 1.5px solid #00f3ff;
+  }
+  &-thumb:hover {
+    background: $clr;
+  }
+}
+#imgup {
+  input[type="file"] {
+    display: none;
+  }
+  button {
+    position: relative;
+    bottom: 0;
+  }
+}
+label,
+#upload {
+  color: #fff;
+  position: absolute;
+  background: #000;
+  width: 100%;
+  height: 30%;
+  @include flex-center;
+  opacity: 0.7;
+  font-size: 2rem;
+  cursor: pointer;
+}
+label {
+  bottom: 0;
+}
+#upload {
+  opacity: 0.3;
+  i {
+    opacity: 0.3;
+  }
+}
+#btn {
+  padding: 5px;
+  background: $dbg;
+  color: #fff;
+  box-shadow: $dis;
+  border-radius: 10px;
+  border-bottom: 1.5px solid #00f3ff;
+  border-left: 1.5px solid #00f3ff;
+  cursor: pointer;
+}
+#btn:hover {
+  color: $clr;
+  box-shadow: $dos;
+  border-top: 1.5px solid #00f3ff;
+  border-right: 1.5px solid #00f3ff;
+  border-bottom: none;
+  border-left: none;
+}
+#input-field {
+  color: $clr;
+  background: $ndbg;
+  outline: none;
+  box-shadow: $dos;
+  border-bottom: 1.5px solid #00f3ff;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 5px;
+}
+#input-fieldD {
+  color: $clr;
+  width: 70%;
+  background: $dbg;
+  outline: none;
+  box-shadow: $dos;
+  border-bottom: 1.5px solid #00f3ff;
+  text-align: center;
+}
 #port-main {
-  //   background: skyblue;
+  background: $clr-1;
   width: 100%;
   height: 100vh;
+  // perspective: 1000px;
 }
 #port-con {
   width: 100%;
   height: 90vh;
   display: grid;
+  background: $theme-1;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 0.2fr 1fr 1.8fr;
   grid-template-areas:
@@ -20,6 +106,8 @@
   .port-panel {
     background: #000;
     border-radius: 10px;
+    // transform: perspective(1000px);
+    perspective: 1000px;
   }
   .port-p1 {
     grid-area: p1;
@@ -29,8 +117,7 @@
       @include center;
       width: 95%;
       height: 95%;
-      background: $dbg;
-      box-shadow: $dis, $dos;
+      background: $clr-2;
       display: grid;
       grid-template-rows: 40vh 40vh;
       grid-template-areas: "sec1" "sec2";
@@ -46,8 +133,7 @@
           @include grid(2, 3, 1, 2);
           border-radius: 50%;
           overflow: hidden;
-          background: $ndbg;
-          box-shadow: $dos, $dis;
+          background: $theme-2;
           position: relative;
 
           .inner {
@@ -55,10 +141,9 @@
             width: 90%;
             height: 90%;
             border-radius: 50%;
-            background: $dbg;
-            border-top: 1.5px solid #00f3ff;
-            border-left: 1.5px solid #00f3ff;
-            box-shadow: $dis, $dos;
+            background: $clr-2;
+            border-top: 2.5px solid $clr-1;
+            border-left: 2.5px solid $clr-1;
             overflow: hidden;
             img {
               position: absolute;
@@ -69,22 +154,41 @@
               height: 90%;
               object-fit: cover;
               border-radius: 50%;
+              border-bottom: 2.5px solid $clr-1;
+              border-right: 2.5px solid $clr-1;
             }
           }
         }
         .content2 {
           @include grid(2, 3, 2, 3);
-          background: $dbg;
-          box-shadow: $dis, $dos;
-          border-bottom: 1.5px solid #00f3ff;
-          border-right: 1.5px solid #00f3ff;
+          background: $theme-1;
           border-radius: 0.5rem;
           color: #fff;
           padding: 0.1rem;
+          text-align: center;
           @include grid-center;
-          h4 span {
-            color: $clr;
-            // text-shadow: 0 0 2px $clr;
+          grid-template-columns: 0.7fr 0.3fr;
+          .panel1 {
+            grid-column: 1;
+            h5 {
+              mix-blend-mode: difference;
+              span {
+                color: $clr-1;
+                // text-shadow: 0 0 2px $clr;
+              }
+            }
+          }
+          .panel2 {
+            grid-column: 2;
+            background: $ndbg;
+            border-radius: 50%;
+            @include grid-center;
+            cursor: pointer;
+            // border-bottom: 1.5px solid #00f3ff;
+            // border-right: 1.5px solid #00f3ff;
+            h1 a i {
+              color: $clr;
+            }
           }
         }
       }
@@ -94,19 +198,19 @@
         grid-template-columns: 0.1fr 0.8fr 0.1fr;
         .content {
           grid-column: 2/3;
-          background: $ndbg;
-          box-shadow: $dis;
+          background: $theme-2;
           border-radius: 10px;
-          border-bottom: 1.5px solid #00f3ff;
-          border-right: 1.5px solid #00f3ff;
+          // border-bottom: 1.5px solid #00f3ff;
+          // border-right: 1.5px solid #00f3ff;
           display: grid;
-          grid-template-rows: 20vh 20vh;
+          grid-template-rows: 25vh 15vh;
           .sec1 {
             grid-row: 1;
             color: #fff;
+            mix-blend-mode: difference;
             @include grid-center;
             i {
-              color: $clr;
+              color: $clr-1;
               font-size: 1rem;
               box-shadow: 0px 5px 40px $clr;
             }
@@ -136,23 +240,26 @@
               height: 2.5rem;
               cursor: pointer;
               border-radius: 50%;
-              background: $ndbg;
-              box-shadow: $dis;
+              background: $clr-2;
+              // box-shadow: $dis;
+              mix-blend-mode: difference;
               align-items: center;
               justify-content: center;
+              border: 1px solid #fff;
 
               &:before {
                 position: relative;
                 content: "";
-                width: 2.25rem;
-                height: 0.75rem;
-                background: $clr;
+                width: 2.3rem;
+                height: 0.82rem;
+                background: $clr-1;
+                // mix-blend-mode: difference;
                 border-radius: 50%;
                 box-shadow: 0px 5px 40px $clr;
               }
 
               a {
-                color: #b6bbc5;
+                color: #fff;
                 font-size: 1.25rem;
               }
 
@@ -169,19 +276,26 @@
   .port-p2 {
     grid-area: p2;
     position: relative;
+    perspective: 1000px;
     .inner {
       @include center;
       width: 95%;
       height: 80%;
-      background: $ndbg;
-      box-shadow: $dis, $dos;
-      border-left: 1.5px solid #00f3ff;
-      border-right: 1.5px solid #00f3ff;
+      background: $clr-1;
+      // box-shadow: $dis, $dos;
+      // border-left: 1.5px solid #00f3ff;
+      // border-right: 1.5px solid #00f3ff;
       border-radius: 10px;
-      .content{
-        color: $clr;
+      .content {
         text-transform: uppercase;
+        background: $theme-2;
+        padding: 10px;
+        border-radius: 10px;
         @include center;
+        h3 {
+          color: $clr-1;
+          mix-blend-mode: difference;
+        }
       }
     }
   }
@@ -192,31 +306,43 @@
       @include center;
       width: 95%;
       height: 95%;
-      background: $dbg;
-      box-shadow: $dos, $dis;
+      background: $theme-2;
+      // box-shadow: $dos, $dis;
       display: grid;
       grid-template-rows: 0.2fr 0.8fr;
       gap: 10px;
+      border-radius: 10px;
       .content1 {
         grid-row: 1;
-        color: $clr;
         @include grid-center;
-        background: $ndbg;
+        background: $clr-1;
         border-radius: 10px;
-        box-shadow: $dos, $dis;
-        border-top: 1.5px solid #00f3ff;
-        border-left: 1.5px solid #00f3ff;
+        // box-shadow: $dos, $dis;
+        // border-top: 1.5px solid #00f3ff;
+        // border-left: 1.5px solid #00f3ff;
+        position: relative;
+        .content {
+          background: $theme-1;
+          padding: 10px;
+          border-radius: 10px;
+          @include center;
+          h3 {
+            color: $clr-1;
+            mix-blend-mode: difference;
+          }
+        }
       }
       .content2::-webkit-scrollbar {
         width: 1vw;
         &-track {
-          background: $ndbg;
-          box-shadow: $dis;
+          background: $clr-2;
+          // box-shadow: $dis;
           border-radius: 20px;
+          border: 1px solid $clr-1;
         }
         &-thumb {
           background: $dbg;
-          box-shadow: $dos;
+          // box-shadow: $dos;
           border-radius: 20px;
           border-bottom: 1.5px solid #00f3ff;
           border-left: 1.5px solid #00f3ff;
@@ -230,14 +356,22 @@
         grid-row: 2;
         color: $clr;
         display: grid;
-        grid-template-columns: 0.3fr 0.7fr;
+        grid-template-columns: 0.2fr 0.8fr;
         overflow-y: scroll;
         .sec1 {
           grid-column: 1;
-          color: #fff;
+          color: $clr-1;
+          font-size: 1.2rem;
+          @include grid-center;
+          margin-bottom: 10px;
+          display: flex;
+          justify-content: space-around;
+          cursor: pointer;
         }
         .sec2 {
           grid-column: 2;
+          @include grid-center;
+          margin-bottom: 10px;
         }
       }
     }
@@ -249,30 +383,48 @@
       @include center;
       width: 97%;
       height: 94%;
-      background: $dbg;
-      box-shadow: $dos, $dis;
+      background: $theme-2;
+      // box-shadow: $dos, $dis;
       border-radius: 10px;
       display: grid;
       grid-template-rows: 0.2fr 0.8fr;
       gap: 10px;
-      .content1{
+      .content1 {
         grid-row: 1;
-        background: $ndbg;
+        background: $clr-1;
         border-radius: 10px;
-        color: $clr;
         text-transform: capitalize;
         @include grid-center;
-        box-shadow: $dos, $dis;
-        border-top: 1.5px solid #00f3ff;
-        border-left: 1.5px solid #00f3ff;
+        position: relative;
+
+        // box-shadow: $dos, $dis;
+        // border-top: 1.5px solid #00f3ff;
+        // border-left: 1.5px solid #00f3ff;
+        .content {
+          background: $theme-1;
+          padding: 10px;
+          border-radius: 10px;
+          @include center;
+
+          h3 {
+            color: $clr-1;
+            mix-blend-mode: difference;
+          }
+        }
       }
-      .content2{
+      .content2 {
         grid-row: 2;
-        background: $ndbg;
+        background: $theme-2;
         border-radius: 10px;
-        box-shadow:  $dis;
-        border-bottom: 1.5px solid #00f3ff;
-        border-right: 1.5px solid #00f3ff;
+        // box-shadow: $dis;
+        // border-bottom: 1.5px solid #00f3ff;
+        // border-right: 1.5px solid #00f3ff;
+        p{
+          padding: 10px;
+          color: $clr-1;
+          mix-blend-mode: difference;
+          font-size: 14px;
+        }
       }
     }
   }
@@ -283,76 +435,103 @@
       @include center;
       width: 97%;
       height: 94%;
-      background: $dbg;
-      box-shadow: $dos, $dis;
-      border-radius: 10px;      display: grid;
+      background: $theme-1;
+      // box-shadow: $dos, $dis;
+      border-radius: 10px;
+      display: grid;
       grid-template-rows: 0.2fr 0.8fr;
       gap: 10px;
-      .content1{
+      .content1 {
         grid-row: 1;
-        background: $ndbg;
+        background: $clr-1;
         border-radius: 10px;
-        color: $clr;
         text-transform: capitalize;
         @include grid-center;
-        box-shadow: $dos, $dis;
-        border-top: 1.5px solid #00f3ff;
-        border-left: 1.5px solid #00f3ff;
+        // box-shadow: $dos, $dis;
+        // border-top: 1.5px solid #00f3ff;
+        // border-left: 1.5px solid #00f3ff;
+        position: relative;
+        .content {
+          background: $theme-2;
+          padding: 10px;
+          border-radius: 10px;
+          @include center;
+
+          h3 {
+            color: $clr-1;
+            mix-blend-mode: difference;
+          }
+        }
       }
-      .content2{
+      .content2 {
         grid-row: 2;
-        background: $ndbg;
+        background: $theme-1;
         border-radius: 10px;
-        box-shadow:  $dis;
-        border-bottom: 1.5px solid #00f3ff;
-        border-right: 1.5px solid #00f3ff;
+        // box-shadow: $dis;
+        // border-bottom: 1.5px solid #00f3ff;
+        // border-right: 1.5px solid #00f3ff;
+        p{
+          padding: 10px;
+          color: $clr-1;
+          mix-blend-mode: difference;
+          font-size: 14px;
+        }
       }
     }
-
   }
   .port-p6 {
     grid-area: p6;
     position: relative;
-    .inner{
+    .inner {
       @include center;
       width: 98%;
       height: 95%;
-      background: $dbg;
-      box-shadow: $dis, $dos;
-      border-radius:10px;
+      background: $theme-1;
+      // box-shadow: $dis, $dos;
+      border-radius: 10px;
       display: grid;
       grid-template-rows: 0.2fr 0.8fr;
       gap: 10px;
-      .content1{
+      .content1 {
         grid-row: 1;
         @include grid-center;
-        background: $ndbg;
+        background: $clr-1;
         border-radius: 10px;
-        color:$clr;
         text-transform: capitalize;
-        border-top: 1.5px solid #00f3ff;
-        border-left: 1.5px solid #00f3ff;
-        box-shadow: $dos, $dis;
+        // border-top: 1.5px solid #00f3ff;
+        // border-left: 1.5px solid #00f3ff;
+        // box-shadow: $dos, $dis;
+        position: relative;
+        .content {
+          background: $theme-2;
+          padding: 10px;
+          border-radius: 10px;
+          @include center;
+          h3 {
+            color: $clr-1;
+            mix-blend-mode: difference;
+          }
+        }
       }
       .content2::-webkit-scrollbar {
         width: 1vw;
         &-track {
-          background: $ndbg;
-          box-shadow: $dis;
+          background: $clr-1;
+          // box-shadow: $dis;
           border-radius: 20px;
+          border: 1px solid #fff;
         }
         &-thumb {
-          background: $dbg;
-          box-shadow: $dos;
+          background: $clr-2;
+          // box-shadow: $dos;
           border-radius: 20px;
-          border-bottom: 1.5px solid #00f3ff;
-          border-left: 1.5px solid #00f3ff;
+          border: 1px solid #fff;
         }
         &-thumb:hover {
           background: $clr;
         }
       }
-      .content2{
+      .content2 {
         grid-row: 2;
         display: flex;
         align-items: center;
@@ -362,27 +541,27 @@
         justify-content: space-around;
         row-gap: 15px;
 
-        .section{
+        .section {
           display: inline-flex;
-          width:22vw;
-          height:36vh;
-          background: $ndbg;
-          border-radius:10px;
-          box-shadow:  $dis;
+          width: 22vw;
+          height: 36vh;
+          background: $theme-2;
+          border-radius: 10px;
+          // box-shadow: $dis;
           position: relative;
-          border-top: 1.5px solid #00f3ff;
-          border-left: 1.5px solid #00f3ff;
-          .project{
+          // border-top: 1.5px solid #00f3ff;
+          // border-left: 1.5px solid #00f3ff;
+          .project {
             @include center;
             width: 90%;
             height: 90%;
-            background: $dbg;
-            border-radius:10px;
-            box-shadow:  $dos;
+            background: $theme-1;
+            border-radius: 10px;
+            // box-shadow: $dos;
             overflow: hidden;
-            border-bottom: 1.5px solid #00f3ff;
-            border-right: 1.5px solid #00f3ff;
-            a img{
+            // border-bottom: 1.5px solid #00f3ff;
+            // border-right: 1.5px solid #00f3ff;
+            a img {
               position: absolute;
               top: 50%;
               left: 50%;
@@ -391,35 +570,34 @@
               height: 95%;
               object-fit: cover;
               border-radius: 10px;
-              
             }
           }
-
         }
       }
-
     }
   }
 }
 /* background: */
 progress::-webkit-progress-bar {
-  background-color: $ndbg;
+  background-color: $clr-1;
   width: 100%;
   height: 10px;
   border-radius: 50px;
-  box-shadow: $dis, $dos;
+  border: 1px solid #fff;
+  // box-shadow: $dis, $dos;
 }
 progress {
-  background-color: $ndbg;
+  background-color: $clr-1;
   border-radius: 50px;
   height: 10px;
 }
 
 /* value: */
 progress::-webkit-progress-value {
-  background-color: $clr !important;
+  background-color: $clr-1 !important;
   border-radius: 50px;
-  box-shadow: -5px -5px 10px #01494d, 5px 5px 15px #025f64;
+  mix-blend-mode: difference;
+  // box-shadow: -5px -5px 10px #01494d, 5px 5px 15px #025f64;
 }
 // progress::-moz-progress-bar {background-color: $clr !important;border-radius: 50px;}
 // progress {color: $clr;border-radius: 50px;}

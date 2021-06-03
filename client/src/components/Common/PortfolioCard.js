@@ -25,9 +25,10 @@ const PortfolioCard = (props) => {
                   </div>
                   <div className="panel2">
                     <h1>
-                      <a href="" download target="_blank">
+                      {/* <a href="" download target="_blank">
                         <i className="fas fa-cloud-download-alt"></i>
-                      </a>
+                      </a> */}
+                      <i class="fas fa-edit" onClick={props.onClick}></i>
                     </h1>
                   </div>
                 </div>
@@ -73,23 +74,28 @@ const PortfolioCard = (props) => {
           <div className="port-panel port-p4">
             <div className="inner">
               <div className="content1">
-                <h3>about</h3>
+              <div className="content">
+                <h3>about</h3></div>
               </div>
-              <div className="content2"></div>
+              <div className="content2">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque nam aut non aliquid porro perspiciatis sint nostrum soluta dignissimos laboriosam minus, et ab provident voluptate expedita reiciendis recusandae, temporibus nemo vero. Qui, quis distinctio facilis aliquam porro commodi explicabo nostrum.</p>
+              </div>
             </div>
           </div>
           <div className="port-panel port-p3">
             <div className="inner">
               <div className="content1">
+              <div className="content">
                 <h3>SKILLS</h3>
+              </div>
               </div>
               <div className="content2" id="skill">
                 {props.skill.map((item) => {
                   return (
                     <>
                       <div className="sec1" id="skillName">
-                        <h3>{item.skill} :</h3>
-                        {/* <i className={item.skill}></i> */}
+                        {/* <h3>{item.skill} :</h3> */}
+                        <i className={item.skill}></i>
                       </div>
                       <div className="sec2">
                         <progress
@@ -107,15 +113,19 @@ const PortfolioCard = (props) => {
           <div className="port-panel port-p5">
             <div className="inner">
               <div className="content1">
-                <h3>work/experience</h3>
+              <div className="content">
+                <h3>work/experience</h3></div>
               </div>
-              <div className="content2"></div>
+              <div className="content2">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae necessitatibus modi neque, non quaerat ducimus?</p>
+              </div>
             </div>
           </div>
           <div className="port-panel port-p6">
             <div className="inner">
               <div className="content1">
-                <h3>projects</h3>
+              <div className="content">
+                <h3>projects</h3></div>
               </div>
               <div className="content2">
                 {props.project.map((item) => {
