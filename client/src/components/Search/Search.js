@@ -48,8 +48,6 @@ const Search = () => {
     setOption(e.target.value);
   };
   const displayPortfolio = async () => {
-    
-
     setActive("third");
     console.log("clicked");
     const name = port;
@@ -112,42 +110,44 @@ const Search = () => {
       <br />
       <br />
       <br />
-      {active == "third" && (
-        <PortfolioCard
-          pic={userProfile.pic}
-          name={userProfile.name}
-          work={userProfile.work}
-          email={userProfile.email}
-          phone={userProfile.phone}
-          social={social}
-          skill={skill}
-          project={project}
-        />
-      )}
+
       <div id="srh-main">
         <div id="srh-con">
           <div className="srh-panel srh-p1">
             <div className="sec1"></div>
             <div className="sec2">
-              <input
-                type="text"
-                className="input"
-                name="name"
-                onChange={handleInputs}
-                placeholder="name"
-              />
-              <button onClick={userContact}>Find</button>
+              <div className="content1">
+                <input
+                  type="text"
+                  className="input"
+                  name="name"
+                  onChange={handleInputs}
+                  placeholder="name"
+                />
+              </div>
+              <div className="content2">
+                <button onClick={userContact}>
+                  <i className="fas fa-search"></i>
+                </button>
+              </div>
             </div>
             <div className="sec3">
-              <select onChange={handleOption}>
-                <option value="">Categories</option>
-                <option value="modimanju">Modimanju</option>
-                <option value="abc">Abc</option>
-                <option value="test3">Test3</option>
-              </select>
-              <button onClick={displayUser}>Select</button>
+              <div className="content1">
+                <select onChange={handleOption}>
+                  <option value="">Categories</option>
+                  <option value="modimanju">Modimanju</option>
+                  <option value="abc">Abc</option>
+                  <option value="test3">Test3</option>
+                </select>
+              </div>
+              <div className="content2">
+                <button onClick={displayUser}>
+                  <i className="far fa-check-circle"></i>
+                </button>
+              </div>
             </div>
           </div>
+
           <div className="srh-panel srh-p2">
             {displayAllUser.map((item) => {
               return (
@@ -160,19 +160,26 @@ const Search = () => {
                             <img
                               src={item.pic}
                               alt=""
+                              onMouseEnter={() => {
+                                setPort(item._id)
+                              }}
                               onClick={() => {
                                 displayPortfolio();
-                                setPort(item.name);
+                                setPort(item._id);
                               }}
                               // onClick={displayPortfolio}
                             />
                           </div>
                         </div>
                         <div className="content2">
+                        <div className="inner">
+                        <div className="content">
                           <h5>{item.name}</h5>
                           <h5>{item.phone}</h5>
                           <h5>{item.email}</h5>
                           <h5>{item.work}</h5>
+                          </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -188,6 +195,24 @@ const Search = () => {
                 email={userData.email}
                 phone={userData.phone}
                 work={userData.work}
+                onMouseEnter={() => {
+                  setPort(userData._id);
+                }}
+                onClick={displayPortfolio}
+              />
+            )}
+          </div>
+          <div className="srh-panel srh-p3">
+            {active == "third" && (
+              <PortfolioCard
+                pic={userProfile.pic}
+                name={userProfile.name}
+                work={userProfile.work}
+                email={userProfile.email}
+                phone={userProfile.phone}
+                social={social}
+                skill={skill}
+                project={project}
               />
             )}
           </div>
