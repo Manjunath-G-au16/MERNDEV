@@ -4,7 +4,7 @@ const userprofile = async (req, res, next) => {
   try {
     const token = req.body.name;
     const rootUser = await User.findOne({
-      "name": token,
+      "_id": token,
     });
     if (!rootUser) {
       throw new Error("User not found");

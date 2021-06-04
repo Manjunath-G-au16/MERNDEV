@@ -3,9 +3,10 @@ const User = require("../model/userSchema");
 const finduser = async (req, res, next) => {
   try {
     const token = req.body.name;
-    const rootUser = await User.findOne({
-      "name": token,
-    });
+    // const rootUser = await User.findOne({
+    //   "name": token,
+    // });
+    const rootUser = await User.findOne({ $or: [ { "name": token }, { "email": token }, { "work": token } ] });
     if (!rootUser) {
       throw new Error("User not found");
     }
