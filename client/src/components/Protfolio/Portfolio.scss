@@ -3,7 +3,7 @@
 .Modal {
   @include center;
   min-width: 50vw;
-  height: 30vh;
+  min-height: 30vh;
   background: rgba(255, 255, 255, 0.35);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
@@ -13,6 +13,82 @@
   display: grid;
   grid-template-columns: auto 5vh;
   grid-template-rows: auto 10vh;
+  .project {
+    grid-row: 1;
+    grid-column: 1;
+    @include grid-center;
+    display: grid;
+    grid-template-rows: 10vh auto auto;
+    .sec0{
+      grid-area: 1;
+      text-align: center;
+    }
+    .sec1 {
+      grid-row: 2;
+      @include grid-center;
+      margin-bottom: 10px;
+      h1 {
+        padding: 10px;
+      }
+      .sec {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.35);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+
+        input[type="file"] {
+          display: none;
+        }
+        button {
+          color: #fff;
+          position: absolute;
+          background: #000;
+          width: 100%;
+          height: 30%;
+          @include flex-center;
+          opacity: 1;
+          font-size: 2rem;
+          cursor: pointer;
+        }
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 90%;
+          height: 90%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+    }
+    .sec2 {
+      grid-row: 3;
+      @include grid-center;
+      gap: 10px;
+      input,textarea{
+        width: 100%;
+        padding: 10px;
+        outline: none;
+        border: none;
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        cursor: pointer;
+
+      }
+    }
+  }
   .skill {
     grid-row: 1;
     grid-column: 1;
@@ -37,6 +113,18 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+        border: none;
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
       input[type="range"]::-webkit-slider-runnable-track {
         width: 100%;
         // background: rgba(255, 255, 255, 0.45);
@@ -313,21 +401,52 @@ label {
               box-shadow: 0px 5px 40px $clr;
             }
           }
+          .sec2::-webkit-scrollbar {
+            width: 1vw;
+            &-track {
+              background: $clr-2;
+              // box-shadow: $dis;
+              border-radius: 20px;
+              border: 1px solid $clr-1;
+            }
+            &-thumb {
+              background: $clr-1;
+              // box-shadow: $dos;
+              border-radius: 20px;
+              border: 2px solid $clr-2;
+            }
+            &-thumb:hover {
+              background: $clr;
+            }
+          }
           .sec2 {
             grid-row: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            display: grid;
+            overflow-y: scroll;
+            .abtn {
+              button {
+                padding: 5px;
+                color: $clr-1;
+                background: $clr-2;
+                border-radius: 50%;
+                outline: none;
+                border: none;
+                cursor: pointer;
+              }
+            }
             .icons {
               grid-row: 2;
             }
-            .icons:hover li:before {
-              box-shadow: $dis;
-            }
-            .icons:hover li {
-              box-shadow: $dos;
-            }
+            // .icons:hover li:before {
+            //   box-shadow: $dis;
+            // }
+            // .icons:hover li {
+            //   box-shadow: $dos;
+            // }
 
             .icons li {
               list-style: none;
@@ -362,8 +481,8 @@ label {
               }
 
               &:hover a {
-                color: $clr;
-                text-shadow: 0 0 15px $clr;
+                transition: all 0.5s ease-in-out;
+                transform: scale(1.1);
               }
             }
           }
@@ -434,11 +553,11 @@ label {
           top: 50%;
           left: 90%;
           transform: translate(-50%, -50%);
-          button{
+          button {
             padding: 10px;
             background: $clr-2;
             color: #fff;
-            border:none;
+            border: none;
             outline: none;
             cursor: pointer;
             border-radius: 50%;
@@ -614,6 +733,21 @@ label {
         // border-left: 1.5px solid #00f3ff;
         // box-shadow: $dos, $dis;
         position: relative;
+        .modal {
+          position: absolute;
+          top: 50%;
+          left: 90%;
+          transform: translate(-50%, -50%);
+          button {
+            padding: 10px;
+            background: $clr-2;
+            color: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 50%;
+          }
+        }
         .content {
           background: $theme-2;
           padding: 10px;

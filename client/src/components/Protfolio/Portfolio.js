@@ -34,6 +34,8 @@ const Portfolio = () => {
   const [skill, setSkill] = useState([]);
   const [active, setActive] = useState("second");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpenSocial, setModalIsOpenSocial] = useState(false);
+  const [modalIsOpenProject, setModalIsOpenProject] = useState(false);
 
   const [activeUpload, setActiveUpload] = useState("");
 
@@ -105,6 +107,100 @@ const Portfolio = () => {
       });
 
     console.log("pic:", picc);
+  };
+  //Add projects
+
+  //Pic Update
+  const [image2, setImage2] = useState("");
+  const [picc2, setPic2] = useState("");
+  const [pjpic, setPjpic] = useState("");
+
+  const updatePic2 = () => {
+    const data = new FormData();
+    data.append("file", image2);
+    data.append("upload_preset", "merndev");
+    data.append("cloud_name", "modimanju");
+    fetch("https://api.cloudinary.com/v1_1/modimanju/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.secure_url);
+        setPic2(data.secure_url);
+        setPjpic(data.secure_url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    console.log("pic:", picc2);
+  };
+  const [urll, setUrll] = useState("");
+  const [detailss, setDetailss] = useState("");
+  const handleUrl = (e) => {
+    setUrll(e.target.value);
+  };
+  const handleDetails = (e) => {
+    setDetailss(e.target.value);
+  };
+
+  //sending data to backend
+  const projectForm = async (e) => {
+    e.preventDefault();
+    const url = urll;
+    const details = detailss;
+    const projectpic = picc2;
+    console.log(userData);
+    const res = await fetch("/project", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        projectpic,
+        url,
+        details,
+      }),
+    });
+    const data = await res.json();
+    if (!data) {
+      console.log("Project not sent");
+    } else {
+      alert("Project sent");
+    }
+  };
+  //Add Socials
+  const [socials, setSocials] = useState("");
+  const [slink, setSLink] = useState("");
+  const handleSocial = (e) => {
+    setSocials(e.target.value);
+  };
+  const handleLink = (e) => {
+    setSLink(e.target.value);
+  };
+
+  //sending data to backend
+  const addSocial = async (e) => {
+    e.preventDefault();
+    const media = socials;
+    const link = slink;
+    const res = await fetch("/social", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        media,
+        link,
+      }),
+    });
+    const data = await res.json();
+    if (!data) {
+      console.log("Socials not sent");
+    } else {
+      alert("Socials sent");
+    }
   };
   //Add Skills
   const [sskill, setSSkill] = useState("");
@@ -341,6 +437,60 @@ const Portfolio = () => {
                         </button>
                       </div>
                       <div className="sec2">
+                        <div className="abtn">
+                          <button onClick={() => setModalIsOpenSocial(true)}>
+                            <i className="fas fa-plus"></i>
+                          </button>
+
+                          <Modal
+                            isOpen={modalIsOpenSocial}
+                            className="Modal"
+                            overlayClassName="Overlay"
+                          >
+                            <div className="cbtn">
+                              <button
+                                onClick={() => setModalIsOpenSocial(false)}
+                              >
+                                <i className="fas fa-times"></i>
+                              </button>
+                            </div>
+                            <div className="skill">
+                              <div className="sec1">
+                                <input
+                                  list="social-icon"
+                                  onChange={handleSocial}
+                                />
+                                <datalist id="social-icon">
+                                  <option value="fab fa-linkedin">
+                                    Linkedin
+                                  </option>
+                                  <option value="fab fa-github">Github</option>
+                                  <option value="fab fa-codepen">
+                                    Codepen
+                                  </option>
+                                  <option value="fab fa-facebook-f">
+                                    Facebook
+                                  </option>
+                                  <option value="fab fa-instagram">
+                                    Instagram
+                                  </option>
+                                </datalist>
+                              </div>
+                              <div className="sec2">
+                                <input
+                                  type="text"
+                                  className="input"
+                                  name="link"
+                                  onChange={handleLink}
+                                  placeholder="link"
+                                />
+                              </div>
+                            </div>
+                            <div className="abtn">
+                              <button onClick={addSocial}>Add</button>
+                            </div>
+                          </Modal>
+                        </div>
                         <div className="icons">
                           {social.map((item) => {
                             return (
@@ -379,7 +529,9 @@ const Portfolio = () => {
                     <h3>SKILLS</h3>
 
                     <div className="modal">
-                      <button onClick={() => setModalIsOpen(true)}><i className="fas fa-plus"></i></button>
+                      <button onClick={() => setModalIsOpen(true)}>
+                        <i className="fas fa-plus"></i>
+                      </button>
                       <Modal
                         isOpen={modalIsOpen}
                         className="Modal"
@@ -387,101 +539,104 @@ const Portfolio = () => {
                       >
                         <div className="cbtn">
                           <button onClick={() => setModalIsOpen(false)}>
-                          <i className="fas fa-times"></i>
+                            <i className="fas fa-times"></i>
                           </button>
                         </div>
                         <div className="skill">
-                        <div className="sec1">
-                          <h1>Choose Skill</h1>
-                        <input
-                          list="skill-data"
-                          id="skillData"
-                          onChange={handleSkill}
-                          name="xxyz"
-                        />
-                        <datalist id="skill-data">
-                          <option
-                            data-value="fab fa-python"
-                            value="Python"
-                          ></option>
-                          <option
-                            data-value="fab fa-js-square"
-                            value="Javascript"
-                          ></option>
-                          <option data-value="fab fa-php" value="PHP"></option>
-                          <option
-                            data-value="fab fa-html5"
-                            value="Html5"
-                          ></option>
-                          <option
-                            data-value="fab fa-css3-alt"
-                            value="Css3"
-                          ></option>
-                          <option
-                            data-value="fab fa-sass"
-                            value="Sass"
-                          ></option>
-                          <option
-                            data-value="fab fa-react"
-                            value="React Js"
-                          ></option>
-                          <option
-                            data-value="fab fa-node-js"
-                            value="Node Js"
-                          ></option>
-                          <option
-                            data-value="devicon-mongodb-plain"
-                            value="Mongo DB"
-                          ></option>
-                          <option
-                            data-value="devicon-android-plain"
-                            value="Android"
-                          ></option>
-                          <option
-                            data-value="devicon-angularjs-plain"
-                            value="Angular"
-                          ></option>
-                          <option
-                            data-value="devicon-babel-plain"
-                            value="Bable"
-                          ></option>
-                          <option
-                            data-value="devicon-c-plain"
-                            value="C lang"
-                          ></option>
-                          <option
-                            data-value="devicon-cplusplus-plain"
-                            value="C++ lang"
-                          ></option>
-                          <option
-                            data-value="devicon-csharp-plain"
-                            value="C# sharp"
-                          ></option>
-                          <option
-                            data-value="devicon-django-plain"
-                            value="Django"
-                          ></option>
-                          <option
-                            data-value="devicon-express-original"
-                            value="Express JS"
-                          ></option>
-                        </datalist>
-                        
-                        </div>
-                        <div className="sec2">
-                        <input
-                          name="value"
-                          type="range"
-                          min="1"
-                          max="10"
-                          step="1"
-                          defaultValue="5"
-                          onChange={handleValue}
-                          placeholder="value"
-                        /></div>
+                          <div className="sec1">
+                            <h1>Choose Skill</h1>
+                            <input
+                              list="skill-data"
+                              id="skillData"
+                              onChange={handleSkill}
+                              name="xxyz"
+                            />
+                            <datalist id="skill-data">
+                              <option
+                                data-value="fab fa-python"
+                                value="Python"
+                              ></option>
+                              <option
+                                data-value="fab fa-js-square"
+                                value="Javascript"
+                              ></option>
+                              <option
+                                data-value="fab fa-php"
+                                value="PHP"
+                              ></option>
+                              <option
+                                data-value="fab fa-html5"
+                                value="Html5"
+                              ></option>
+                              <option
+                                data-value="fab fa-css3-alt"
+                                value="Css3"
+                              ></option>
+                              <option
+                                data-value="fab fa-sass"
+                                value="Sass"
+                              ></option>
+                              <option
+                                data-value="fab fa-react"
+                                value="React Js"
+                              ></option>
+                              <option
+                                data-value="fab fa-node-js"
+                                value="Node Js"
+                              ></option>
+                              <option
+                                data-value="devicon-mongodb-plain"
+                                value="Mongo DB"
+                              ></option>
+                              <option
+                                data-value="devicon-android-plain"
+                                value="Android"
+                              ></option>
+                              <option
+                                data-value="devicon-angularjs-plain"
+                                value="Angular"
+                              ></option>
+                              <option
+                                data-value="devicon-babel-plain"
+                                value="Bable"
+                              ></option>
+                              <option
+                                data-value="devicon-c-plain"
+                                value="C lang"
+                              ></option>
+                              <option
+                                data-value="devicon-cplusplus-plain"
+                                value="C++ lang"
+                              ></option>
+                              <option
+                                data-value="devicon-csharp-plain"
+                                value="C# sharp"
+                              ></option>
+                              <option
+                                data-value="devicon-django-plain"
+                                value="Django"
+                              ></option>
+                              <option
+                                data-value="devicon-express-original"
+                                value="Express JS"
+                              ></option>
+                            </datalist>
+                          </div>
+                          <div className="sec2">
+                            <input
+                              name="value"
+                              type="range"
+                              min="1"
+                              max="10"
+                              step="1"
+                              defaultValue="5"
+                              onChange={handleValue}
+                              placeholder="value"
+                            />
+                          </div>
                         </div>
                         <div className="abtn">
-                        <button onClick={addSkill}>Add</button>
+                          <button onClick={addSkill}>Add</button>
                         </div>
                       </Modal>
                     </div>
@@ -529,6 +684,66 @@ const Portfolio = () => {
                 <div className="inner">
                   <div className="content1">
                     <h3>projects</h3>
+                    <div className="modal">
+                      <button onClick={() => setModalIsOpenProject(true)}>
+                        <i className="fas fa-plus"></i>
+                      </button>
+                      <Modal
+                        isOpen={modalIsOpenProject}
+                        className="Modal"
+                        overlayClassName="Overlay"
+                      >
+                        <div className="cbtn">
+                          <button onClick={() => setModalIsOpenProject(false)}>
+                            <i className="fas fa-times"></i>
+                          </button>
+                        </div>
+                        <div className="project">
+                        <div className="sec0">
+                          <h1>Upload Project</h1>
+
+                        </div>
+                          <div className="sec1">
+                          <div className="sec">
+                          <img src={pjpic} alt="" />
+                          
+                        <label htmlFor="file2">
+                          <i className="fas fa-camera"></i>
+                        </label>
+                            <input
+                            id="file2"
+                              type="file"
+                              className="input"
+                              name="projectpic"
+                              onChange={(e) => setImage2(e.target.files[0])}
+                            />
+                            <button onClick={updatePic2} id="upload">
+                          <i className="fas fa-upload"></i></button>
+                            </div>
+                          </div>
+                          <div className="sec2">
+                            <input
+                              type="text"
+                              className="input"
+                              name="url"
+                              onChange={handleUrl}
+                              placeholder="url"
+                            />
+                            <textarea
+                              className="textarea"
+                              name="details"
+                              onChange={handleDetails}
+                              id=""
+                              cols="30"
+                              rows="10"
+                            ></textarea>
+                          </div>
+                        </div>
+                        <div className="abtn">
+                          <button onClick={projectForm}>Add</button>
+                        </div>
+                      </Modal>
+                    </div>
                   </div>
                   <div className="content2">
                     {project.map((item) => {
