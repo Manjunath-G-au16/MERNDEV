@@ -1,5 +1,103 @@
 @import ".././sass/default.scss";
 @import ".././sass/variables.scss";
+.Modal {
+  @include center;
+  min-width: 50vw;
+  height: 30vh;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: grid;
+  grid-template-columns: auto 5vh;
+  grid-template-rows: auto 10vh;
+  .skill {
+    grid-row: 1;
+    grid-column: 1;
+    @include grid-center;
+    .sec1 {
+      text-align: center;
+      input {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+        border: none;
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        cursor: pointer;
+      }
+    }
+    .sec2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      input[type="range"]::-webkit-slider-runnable-track {
+        width: 100%;
+        // background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        // color: red;
+        cursor: pointer;
+      }
+    }
+  }
+  .abtn {
+    grid-row: 2;
+    grid-column: 1;
+    @include grid-center;
+    button {
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+    }
+  }
+  .cbtn {
+    grid-row: 1;
+    grid-column: 2;
+    button {
+      padding: 7px;
+      color: #000;
+      float: right;
+      background: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+    }
+  }
+}
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.Contm {
+  color: red;
+}
 ::-webkit-scrollbar {
   width: 2vw;
   &-track {
@@ -54,35 +152,35 @@ label {
   color: #fff;
   box-shadow: $dis;
   border-radius: 10px;
-  border-bottom: 1.5px solid #00f3ff;
-  border-left: 1.5px solid #00f3ff;
+  // border-bottom: 1.5px solid #00f3ff;
+  // border-left: 1.5px solid #00f3ff;
   cursor: pointer;
 }
 #btn:hover {
-  color: $clr;
+  color: $clr-1;
   box-shadow: $dos;
-  border-top: 1.5px solid #00f3ff;
-  border-right: 1.5px solid #00f3ff;
+  // border-top: 1.5px solid #00f3ff;
+  // border-right: 1.5px solid #00f3ff;
   border-bottom: none;
   border-left: none;
 }
 #input-field {
-  color: $clr;
+  color: $clr-1;
   background: $ndbg;
   outline: none;
-  box-shadow: $dos;
-  border-bottom: 1.5px solid #00f3ff;
+  // box-shadow: $dos;
+  // border-bottom: 1.5px solid #00f3ff;
   text-align: center;
   font-size: 0.8rem;
   padding: 5px;
 }
 #input-fieldD {
-  color: $clr;
+  color: $clr-1;
   width: 70%;
   background: $dbg;
   outline: none;
   box-shadow: $dos;
-  border-bottom: 1.5px solid #00f3ff;
+  // border-bottom: 1.5px solid #00f3ff;
   text-align: center;
 }
 #port-main {
@@ -198,7 +296,7 @@ label {
         grid-template-columns: 0.1fr 0.8fr 0.1fr;
         .content {
           grid-column: 2/3;
-          background: $theme-2;
+          background: linear-gradient(120deg, $clr-2 50%, $clr-1 50%);
           border-radius: 10px;
           // border-bottom: 1.5px solid #00f3ff;
           // border-right: 1.5px solid #00f3ff;
@@ -331,6 +429,21 @@ label {
             mix-blend-mode: difference;
           }
         }
+        .modal {
+          position: absolute;
+          top: 50%;
+          left: 90%;
+          transform: translate(-50%, -50%);
+          button{
+            padding: 10px;
+            background: $clr-2;
+            color: #fff;
+            border:none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 50%;
+          }
+        }
       }
       .content2::-webkit-scrollbar {
         width: 1vw;
@@ -341,11 +454,10 @@ label {
           border: 1px solid $clr-1;
         }
         &-thumb {
-          background: $dbg;
+          background: $clr-1;
           // box-shadow: $dos;
           border-radius: 20px;
-          border-bottom: 1.5px solid #00f3ff;
-          border-left: 1.5px solid #00f3ff;
+          border: 2px solid $clr-2;
         }
         &-thumb:hover {
           background: $clr;
@@ -402,7 +514,7 @@ label {
         // border-left: 1.5px solid #00f3ff;
         .content {
           background: $theme-1;
-          padding: 10px;
+          padding: 5px;
           border-radius: 10px;
           @include center;
 
@@ -414,12 +526,12 @@ label {
       }
       .content2 {
         grid-row: 2;
-        background: $theme-2;
+        background: linear-gradient(230deg, $clr-2 50%, $clr-1 50%);
         border-radius: 10px;
         // box-shadow: $dis;
         // border-bottom: 1.5px solid #00f3ff;
         // border-right: 1.5px solid #00f3ff;
-        p{
+        p {
           padding: 10px;
           color: $clr-1;
           mix-blend-mode: difference;
@@ -435,7 +547,7 @@ label {
       @include center;
       width: 97%;
       height: 94%;
-      background: $theme-1;
+      background: $theme-2;
       // box-shadow: $dos, $dis;
       border-radius: 10px;
       display: grid;
@@ -452,8 +564,8 @@ label {
         // border-left: 1.5px solid #00f3ff;
         position: relative;
         .content {
-          background: $theme-2;
-          padding: 10px;
+          background: $theme-1;
+          padding: 5px;
           border-radius: 10px;
           @include center;
 
@@ -465,12 +577,12 @@ label {
       }
       .content2 {
         grid-row: 2;
-        background: $theme-1;
+        background: linear-gradient(230deg, $clr-2 50%, $clr-1 50%);
         border-radius: 10px;
         // box-shadow: $dis;
         // border-bottom: 1.5px solid #00f3ff;
         // border-right: 1.5px solid #00f3ff;
-        p{
+        p {
           padding: 10px;
           color: $clr-1;
           mix-blend-mode: difference;
@@ -542,7 +654,7 @@ label {
         row-gap: 15px;
 
         .section {
-          display: inline-flex;
+          // display: inline-flex;
           width: 22vw;
           height: 36vh;
           background: $theme-2;
@@ -604,14 +716,14 @@ progress::-webkit-progress-value {
 @media (max-width: 580px) {
   #port-con {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: 10vh 100vh 50vh 50vh 50vh 100vh;
     grid-template-areas:
-      "p1"
       "p2"
+      "p1"
       "p3"
       "p4"
       "p5"
       "p6";
-    height: 500vh;
+    height: 360vh;
   }
 }
