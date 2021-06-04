@@ -1,6 +1,40 @@
 import React, { useEffect, useState } from "react";
 
 const Update = () => {
+  const [skill, setSkill] = useState([]);
+
+  const [profileId, setProfileId] = useState("");
+  const [skillId, setSkillId] = useState("");
+
+  const refresh = () => {
+    userUpdate();
+  };
+  const delSkill = async () => {
+    console.log("clicked");
+    const pid = profileId;
+    const sid = skillId;
+    try {
+      const res = await fetch("/deleteskill", {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          pid,
+          sid,
+        }),
+      });
+      const data = await res.json();
+
+      console.log(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   // const [msg, setMsg] = useState([
   //   {
   //     messages: "",
@@ -12,6 +46,7 @@ const Update = () => {
     phone: "",
     work: "",
     id: "",
+    pic: "",
   });
   const userUpdate = async () => {
     try {
@@ -31,8 +66,13 @@ const Update = () => {
         email: data.email,
         phone: data.phone,
         work: data.work,
+        pic: data.pic,
         id: data._id,
       });
+
+      setPic(data.pic);
+      setSkill(data.skills);
+      setProfileId(data._id);
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
@@ -108,7 +148,7 @@ const Update = () => {
     e.preventDefault();
     const { name, email, phone, work, id } = userData;
     const pic = picc;
-    const cv = cvv;
+    // const cv = cvv;
     // const messages = msg;
     // const pic = data.url;
     console.log(userData);
@@ -119,7 +159,7 @@ const Update = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        cv,
+        // cv,
         pic,
         name,
         email,
@@ -138,8 +178,7 @@ const Update = () => {
       <br />
       <br />
       <h1>Update</h1>
-      <form method="POST">
-        {/* <input
+      {/* <input
           type="text"
           className="input"
           name="pic"
@@ -147,50 +186,48 @@ const Update = () => {
           onUpdate={handleInputs}
           placeholder="pic"
         /> */}
-
-        <input
-          type="text"
-          className="input"
-          name="name"
-          value={userData.name}
-          onChange={handleInputs}
-          placeholder="name"
-        />
-        <input
-          type="email"
-          className="input"
-          name="email"
-          value={userData.email}
-          onChange={handleInputs}
-          placeholder="email"
-        />
-        <input
-          type="phone"
-          className="input"
-          name="phone"
-          value={userData.phone}
-          onChange={handleInputs}
-          placeholder="phone"
-        />
-
-        <input
-          type="text"
-          className="input"
-          name="work"
-          value={userData.work}
-          onChange={handleInputs}
-          placeholder="work"
-        />
-
-        <input
+      <input
+        type="text"
+        className="input"
+        name="name"
+        value={userData.name}
+        onChange={handleInputs}
+        placeholder="name"
+      />
+      <input
+        type="email"
+        className="input"
+        name="email"
+        value={userData.email}
+        onChange={handleInputs}
+        placeholder="email"
+      />
+      <input
+        type="phone"
+        className="input"
+        name="phone"
+        value={userData.phone}
+        onChange={handleInputs}
+        placeholder="phone"
+      />
+      <input
+        type="text"
+        className="input"
+        name="work"
+        value={userData.work}
+        onChange={handleInputs}
+        placeholder="work"
+      />
+      {/* <input
           type="submit"
           className="button"
           id="button"
           name="update"
           value="Update"
           onClick={updateForm}
-        />
-      </form>
+        /> */}
+      <button onClick={updateForm}>update</button>
+      <br />
       {/* {msg.map((item) => {
         return (
           <input
@@ -204,6 +241,14 @@ const Update = () => {
         );
       })} */}
       <input
+        type="hidden"
+        className="input"
+        name="pic"
+        value={userData.pic}
+        onChange={handleInputs}
+        placeholder="pic"
+      />
+      <input
         type="file"
         className="input"
         name="file"
@@ -216,10 +261,30 @@ const Update = () => {
       >
         upload
       </button>
-{/* CV Upload  */}
-<br /> <br />
-<h3>CV Upload</h3>
-      <input
+      {/* CV Upload  */}
+      <br /> <br />
+      {skill.map((item) => {
+        return (
+          <h3>
+            {item.skill}:
+            <progress id="barr" value={item.value} max="10"></progress>
+            <button
+              onMouseEnter={() => {
+                setSkillId(item._id);
+              }}
+              onClick={() => {
+                delSkill();
+                refresh();
+              }}
+              // onClick={delSkill}
+            >
+              Delete
+            </button>
+          </h3>
+        );
+      })}
+      <h3>CV Upload</h3>
+      {/* <input
         type="file"
         className="input"
         name="file"
@@ -231,7 +296,7 @@ const Update = () => {
         }}
       >
         upload
-      </button>
+      </button> */}
     </div>
   );
 };

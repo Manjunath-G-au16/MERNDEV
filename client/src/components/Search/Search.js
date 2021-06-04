@@ -163,11 +163,11 @@ const Search = () => {
                               onMouseEnter={() => {
                                 setPort(item._id)
                               }}
-                              onClick={() => {
-                                displayPortfolio();
-                                setPort(item._id);
-                              }}
-                              // onClick={displayPortfolio}
+                              // onClick={() => {
+                              //   displayPortfolio();
+                              //   setPort(item._id);
+                              // }}
+                              onClick={displayPortfolio}
                             />
                           </div>
                         </div>
@@ -198,7 +198,9 @@ const Search = () => {
                 onMouseEnter={() => {
                   setPort(userData._id);
                 }}
-                onClick={displayPortfolio}
+                onClick={() => {
+                  displayPortfolio((userData._id))
+                }}
               />
             )}
           </div>

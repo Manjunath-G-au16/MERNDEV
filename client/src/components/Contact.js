@@ -46,6 +46,7 @@ const Contact = () => {
   const contactForm = async (e) => {
     e.preventDefault();
     const { name, email, phone, message } = userData;
+    console.log(userData);
     const res = await fetch("/contact", {
       method: "POST",
       headers: {

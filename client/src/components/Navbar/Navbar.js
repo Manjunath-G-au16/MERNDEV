@@ -12,24 +12,39 @@ const Navbar = () => {
         <>
           <li className="nav-item active">
             <NavLink className="nav-link" to="/" exact>
-              <i className="fas fa-house-damage"></i> .Home( )
+              <i className="fas fa-house-damage"></i> .Home
+            </NavLink>
+          </li>
+          <li className="nav-item ">
+            <NavLink className="nav-link" to="/search" exact>
+              <i className="far fa-address-book"></i> .Search
             </NavLink>
           </li>
 
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/about" exact>
-              <i className="far fa-address-book"></i> .Profile( )
+          <li className="nav-item ">
+            <NavLink className="nav-link" to="/portfolio" exact>
+              <i className="far fa-address-book"></i> .Portfolio
+            </NavLink>
+          </li>
+          <li className="nav-item ">
+            <NavLink className="nav-link" to="/update" exact>
+              <i className="far fa-envelope"></i> .Update
+            </NavLink>
+          </li>
+          <li className="nav-item ">
+            <NavLink className="nav-link" to="/project" exact>
+              <i className="far fa-envelope"></i> .Project
             </NavLink>
           </li>
 
-          <li className="nav-item">
+          <li className="nav-item ">
             <NavLink className="nav-link" to="/contact" exact>
-              <i className="far fa-envelope"></i> .Contact( )
+              <i className="far fa-envelope"></i> .Contact
             </NavLink>
           </li>
           <li className="nav-item ">
             <NavLink className="nav-link" to="/logout" exact>
-            <i className="fas fa-sign-out-alt"></i> .Logout( )
+            <i className="fas fa-sign-out-alt"></i> .Logout
             </NavLink>
           </li>
         </>
@@ -39,29 +54,29 @@ const Navbar = () => {
         <>
           <li className="nav-item active">
             <NavLink className="nav-link" to="/" exact>
-              <i className="fas fa-house-damage"></i> .Home( )
+              <i className="fas fa-house-damage"></i> .Home
+            </NavLink>
+          </li>
+          <li className="nav-item ">
+            <NavLink className="nav-link" to="/search" exact>
+              <i className="far fa-address-book"></i> .Search
             </NavLink>
           </li>
 
           <li className="nav-item">
-            <NavLink className="nav-link" to="/about" exact>
-            <i className="fas fa-id-badge"></i> .Profile( )
+            <NavLink className="nav-link" to="/portfolio" exact>
+            <i className="fas fa-id-badge"></i> .Portfolio
             </NavLink>
           </li>
 
-          <li className="nav-item">
+          <li className="nav-item ">
             <NavLink className="nav-link" to="/signin" exact>
-            <i className="fas fa-user"></i> .Signin( )
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/signup" exact>
-            <i className="fas fa-users"></i> .Signup( )
+            <i className="fas fa-user"></i> .Signin
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/contact" exact>
-              <i className="far fa-envelope"></i> .Contact( )
+              <i className="far fa-envelope"></i> .Contact
             </NavLink>
           </li>
         </>

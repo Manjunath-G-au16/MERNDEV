@@ -29,6 +29,9 @@ const Project = () => {
 
     setSSkill(skillData_val);
   };
+  const resetInputField = () => {
+    console.log("xxyz");
+  };
   const handleValue = (e) => {
     setSValue(e.target.value);
   };
@@ -103,8 +106,8 @@ const Project = () => {
     }
   };
   //sending data to backend
-  const addSkill = async (e) => {
-    e.preventDefault();
+  const addSkill = async () => {
+    // e.preventDefault();
     const skill = sskill;
     const value = svalue;
     const res = await fetch("/skill", {
@@ -118,6 +121,7 @@ const Project = () => {
       }),
     });
     const data = await res.json();
+    
     if (!data) {
       console.log("Skills not sent");
     } else {
@@ -176,14 +180,14 @@ const Project = () => {
         <option value="fab fa-instagram">Instagram</option>
       </select>
 
-      {/* <input list="social-icon" onChange={handleSocial}/>
+      <input list="social-icon" onChange={handleSocial}/>
       <datalist id="social-icon" >
         <option value="fab fa-linkedin">Linkedin</option>
         <option value="fab fa-github">Github</option>
         <option value="fab fa-codepen">Codepen</option>
         <option value="fab fa-facebook-f">Facebook</option>
         <option value="fab fa-instagram">Instagram</option>
-      </datalist> */}
+      </datalist>
       <input
         type="text"
         className="input"
@@ -197,7 +201,7 @@ const Project = () => {
       <br />
       {/* Skills section  */}
       <h1>Skills</h1>
-      <input list="skill-data" id="skillData" onChange={handleSkill} />
+      <input list="skill-data" id="skillData" onChange={handleSkill} name="xxyz" />
 
       <datalist id="skill-data">
         <option data-value="fab fa-python" value="Python"></option>
@@ -239,7 +243,15 @@ const Project = () => {
         placeholder="value"
       />
 
-      <button onClick={addSkill}>Add</button>
+      <button
+      // onClick={addSkill}
+      onClick={() => {
+        addSkill();
+        resetInputField();
+      }}
+      >
+        Add
+      </button>
     </div>
   );
 };

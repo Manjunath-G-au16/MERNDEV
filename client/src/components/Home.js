@@ -32,13 +32,13 @@ const Home = () => {
       <br />
       <br />
       <br />
-      {/* <h1>Welcome,</h1>
+      <h1>Welcome,</h1>
       <h1>console.log("{userNameData}");</h1>
       <h2>
         {show ? "You are onBoard() ,${Developer}" : "We are ${Developers}"}
       </h2>
-      <br /> */}
-      <Hero />
+      <br />
+      {/* <Hero /> */}
     </div>
   );
 };

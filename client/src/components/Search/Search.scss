@@ -36,17 +36,18 @@
         gap: 5px;
         .content1 {
           grid-column: 1;
+          background: $theme-1;
           .input {
             width: 100%;
             height: 100%;
-            background: $theme-2;
             // box-shadow: $dis;
             border-radius: 10px;
             // border-bottom: 1.5px solid #00f3ff;
             // border-right: 1.5px solid #00f3ff;
             outline: none;
-            color: $clr-1;
+            color: $clr-2;
             padding: 10px;
+            mix-blend-mode: difference;
           }
         }
         .content2 {
@@ -222,11 +223,6 @@
     }
     .sec3 {
       @include grid(2$i, 4$i, 2, 3);
-    }
-  }
-  .srh-p2 {
-    .sec {
-      width: 100% $i;
     }
   }
 }

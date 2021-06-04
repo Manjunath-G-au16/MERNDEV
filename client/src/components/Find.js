@@ -91,12 +91,15 @@ const Contact = () => {
         placeholder="name"
       />
       <button onClick={userContact}>Find</button>
+
       <select onChange={handleOption}>
+        <option value="all">All</option>
         <option value="modimanju">Modimanju</option>
         <option value="abc">Abc</option>
         <option value="test3">Test3</option>
       </select>
       <button onClick={displayUser}>Select</button>
+      
       {displayAllUser.map((item) => {
         return (
           <div>

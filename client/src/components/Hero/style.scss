@@ -4,47 +4,58 @@ body {
   width: 100%;
   height: 100%;
 }
+
 #main {
   display: grid;
   grid-template-rows: auto auto;
   grid-template-areas:
     "sec1"
     "hero";
+  background: #fff;
+}
+#sec3 {
+  width: 100%;
+  height: 100vh;
+  background: pink;
 }
 #sec1 {
   grid-area: sec1;
   margin: 0 auto;
   width: 80%;
   height: 50vh;
-  background-color:#fff;
+  background-color: #fff;
   text-align: center;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr ;
-  grid-template-columns:1fr 1fr 1fr ;
-.abc{
-  grid-column:1/4 ;
-  grid-row: 1/3;
-  display:grid;
-  align-items: center;
-  justify-content:center;
-  background: #000;
-  color: #fff;
-}
-  .xyz{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 10vh;
+  .abc {
+    grid-column: 1/4;
+    grid-row: 1/3;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: #fff;
+  }
+  .xyz {
     grid-column: 1/4;
     grid-row: 1/3;
     display: grid;
     grid-template-columns: repeat(50, auto);
-    grid-auto-rows:auto;
+    grid-auto-rows: auto;
     gap: 0px;
-    background:#fff;
+    background: #fff;
 
-
-    .box{
+    .box {
       text-align: center;
       background-color: #000;
       color: transparent;
-      transform: scale(0.01)
+      transform: scale(0.01);
+      // box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1),
+      //   inset 2px 2px 6px rgba(0, 0, 0, 0.8),
+      //   -5px -5px 10px rgba(255, 255, 255, 0.05),
+      //    5px 5px 15px rgba(0, 0, 0, 0.5);
     }
   }
 }
@@ -95,6 +106,10 @@ body {
 //     background-color: skyblue;
 //   }
 // }
+// #xxx{
+//   height:250vh;
+//   background-color: rgb(250, 104, 104);
+// }
 #container {
   grid-area: hero;
   display: grid;
@@ -112,61 +127,124 @@ body {
     grid-area: c;
   }
   .img-container {
-    box-shadow: 0px 15px 18px -8px rgba(0, 0, 0, 0.5);
+    
+    background: #000;
+    border-radius: 10%;
+    // box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1),
+    // inset 2px 2px 6px rgba(0, 0, 0, 0.8),
+    // -5px -5px 10px rgba(255, 255, 255, 0.05),
+    //  5px 5px 15px rgba(0, 0, 0, 0.5);
+    // box-shadow: inset -3px -3px 7px #ffffff73,
+    //   inset 3px 3px 5px rgba(94, 104, 121, 0.288), -3px -3px 7px #ffffff73,
+    //   3px 3px 5px rgba(94, 104, 121, 0.288);
   }
 
   #left,
   #right {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 0.5fr 2fr 0.5fr 1fr;
-    gap: 10px;
+    grid-template-rows: 0.5fr 0.75fr 0.25fr 2fr 0.25fr 0.75fr 0.5fr;
+    gap: 20px;
     #img-1 {
-      @include grid(1, 2, 3, 4);
-      background-color: pink;
+      @include grid(1, 2, 3, 6);
     }
     .left {
-      @include grid(2, 3, 2, 5);
+      @include grid(2, 3, 2, 7);
       display: grid;
       grid-template-rows: 1fr 1fr;
       grid-template-areas: "img-2" "img-3";
       row-gap: 10px;
       #img-2 {
         grid-area: img-2;
-        background-color: orange;
+        // background-color: orange;
       }
       #img-3 {
-        background-color: orange;
         grid-area: img-3;
+        // background-color: pink;
       }
     }
     .right {
-      @include grid(1, 2, 2, 5);
+      @include grid(1, 2, 2, 7);
       display: grid;
       grid-template-rows: 1fr 1fr;
       grid-template-areas: "img-4" "img-5";
       row-gap: 10px;
       #img-4 {
         grid-area: img-4;
-        background-color: orange;
+        // background-color: orange;
       }
       #img-5 {
-        background-color: orange;
         grid-area: img-5;
+        // background-color: pink;
       }
     }
     #img-6 {
-      @include grid(2, 3, 3, 4);
-      background-color: pink;
+      @include grid(2, 3, 3, 6);
+      // background-color: greenyellow;
     }
   }
   #center {
     grid-area: b;
-    background-color: skyblue;
-    box-shadow: 0px 50px 18px -8px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: 0.15fr 0.5fr 0.5fr 0.15fr;
+    // overflow: hidden;
+    // box-shadow: 0px 50px 18px -8px rgba(0, 0, 0, 0.5);
+
+    #psc {
+      grid-column: 2/4;
+      grid-row: 1;
+      background: transparent;
+      display: grid;
+      grid-template-rows: 0.5fr 1fr 0.5fr;
+      grid-template-columns: 1fr 1fr;
+      background-image: url("../../assets/hero-phone-frame-v2.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+
+
+      #b1 {
+        grid-row: 2/2;
+        grid-column: 1/3;
+        background: lightblue;
+        @include grid-center;
+      }
+      #b2 {
+        grid-column: 1/3;
+        grid-row: 2/2;
+        background: lightcoral;
+        @include grid-center;
+      }
+    }
+    #ps1 {
+      grid-column: 2/4;
+      grid-row: 1;
+      // background: pink;
+      background-image: url("../../assets/hero-phone-frame-v2.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    #ps2 {
+      grid-column: 2/4;
+      grid-row: 1;
+      // background: pink;
+      background-image: url("../../assets/hero-phone-frame-v2.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
   }
 }
-
+.center::before {
+  content: "";
+  grid-column: 1/5;
+  z-index: -1;
+  grid-row: 1;
+  background: transparent;
+  // box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1),
+  //   inset 2px 2px 6px rgba(0, 0, 0, 0.8),
+  //   -5px -5px 10px rgba(255, 255, 255, 0.05),
+  //    5px 5px 15px rgba(0, 0, 0, 0.5);
+}
 @media (max-width: 580px) {
   #container {
     gap: 3px $i;

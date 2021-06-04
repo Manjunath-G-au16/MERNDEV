@@ -4,3 +4,15 @@ $font-1:'Playfair Display', serif;
 $font-2: "Original Surfer", cursive;
 $clr-1: #fff;
 $clr-2: #000;
+$theme-1: linear-gradient(90deg, $clr-1 50%, $clr-2 50%);
+$theme-2: linear-gradient(90deg, $clr-2 50%, $clr-1 50%);
+$clr: #00f3ff;
+$lbg: #eee;
+$dbg: #111;
+$nlbg: #dde1e7;
+$ndbg: rgb(61, 61, 61);
+$lis: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, 0.288);
+$dis: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+$los: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+$dos: -5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.5);
+

@@ -11,6 +11,7 @@ body {
   width: 100%;
   background-color: $clr-2;
   padding: 0px;
+  z-index: 100;
 
   #navbarContent {
     overflow: hidden;
@@ -20,9 +21,9 @@ body {
       padding: 0px;
       margin: 0px;
       display: grid;
-      grid-template-columns: 3fr repeat(5, auto);
+      grid-template-columns:  repeat(8, 1fr);
       text-align: center;
-      justify-items: end;
+      // justify-items: end;
     }
     & ul li a i {
       margin-right: 10px;

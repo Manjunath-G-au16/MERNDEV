@@ -4,6 +4,8 @@ function About() {
   const history = useHistory();
   const [userData, setUserData] = useState({});
   const [project, setProject] = useState([]);
+  const [social, setSocial] = useState([]);
+  const [skill, setSkill] = useState([]);
   const callAboutPage = async () => {
     try {
       const res = await fetch("/about", {
@@ -18,6 +20,8 @@ function About() {
       console.log(data);
       setUserData(data);
       setProject(data.projects);
+      setSocial(data.socials);
+      setSkill(data.skills);
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
@@ -62,6 +66,17 @@ function About() {
           Work: <span>{userData.work}</span>
         </p>
       </form>
+      <br />
+      skills: <br />
+      {skill.map((item) => {
+        return (
+          <h4>
+            {item.skill}: <progress id="bar" value={item.value} max="10"></progress>
+          </h4>
+        );
+      })}
+      <br />
+      <br />
       {project.map((item) => {
         return (
           <p>
@@ -74,7 +89,20 @@ function About() {
           </p>
         );
       })}
-
+      <br />
+      <br />
+      socials: <br />
+      {social.map((item) => {
+        return (
+          <p>
+            <h1>
+              <a href={item.link} target="_blank">
+                <i class={item.media}></i>
+              </a>
+            </h1>
+          </p>
+        );
+      })}
       <button
         onClick={() => {
           updateWork(userData._id);

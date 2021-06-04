@@ -2,6 +2,8 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+
+const User = require("./model/userSchema");
 const cookieParser = require("cookie-Parser");
 app.use(cookieParser());
 
@@ -40,6 +42,10 @@ const PORT = process.env.PORT;
 // app.get("/signup", (req, res) => {
 //   res.send("SignupPage Server");
 // });
+
+app.get("/find", (req, res) => {
+  res.send("SignupPage Server");
+});
 
 app.listen(PORT, () => {
   console.log(`server is running at port no ${PORT}`);

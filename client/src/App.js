@@ -13,6 +13,14 @@ import Contact from "./components/Contact";
 import Navbar from "./components/Navbar/Navbar";
 import Logout from "./components/Logout";
 import {initialState,reducer} from "../src/reducer/UseReducer"
+import Update from "./components/Update";
+import Find from "./components/Find";
+import Project from "./components/Project";
+import Portfolio from "./components/Protfolio/Portfolio";
+import Search from "./components/Search/Search";
+import SignUpIn from "./components/SignUpIn/SignUpIn"
+import ContactUs from "./components/ContactUs/ContactUs"
+import Hero from "./components/Hero/Hero";
 
 //Context
 //--------
@@ -22,19 +30,25 @@ const Routing = () => {
     <main>
       <Switch>
         <Route path="/" exact>
-          <Home />
+        <Hero />
         </Route>
-        <Route path="/about" exact>
-          <About />
+        <Route path="/search" exact>
+          <Search />
+        </Route>
+        <Route path="/portfolio" exact>
+          <Portfolio />
         </Route>
         <Route path="/signin" exact>
-          <Signin />
+          <SignUpIn />
         </Route>
-        <Route path="/signup" exact>
-          <Signup />
+        <Route path="/update" exact>
+          <Update />
+        </Route>
+        <Route path="/project" exact>
+          <Project />
         </Route>
         <Route path="/contact" exact>
-          <Contact />
+          <ContactUs />
         </Route>
         <Route path="/logout" exact>
           <Logout />

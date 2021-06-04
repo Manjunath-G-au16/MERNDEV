@@ -3,6 +3,24 @@ import { useHistory } from "react-router-dom";
 
 const Signup = () => {
   const history = useHistory();
+  // const [image, setImage] = useState("");
+  // const postDetails = () => {
+  //   const data = new FormData();
+  //   data.append("file", image);
+  //   data.append("upload_preset", "merndev");
+  //   data.append("cloud_name", "modimanju");
+  //   fetch("https://api.cloudinary.com/v1_1/modimanju/image/upload", {
+  //     method: "post",
+  //     body: data,
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -101,6 +119,8 @@ const Signup = () => {
             onChange={handleInputs}
             placeholder="cpassword"
           />
+
+        
           <input
             type="submit"
             className="button"
@@ -110,6 +130,14 @@ const Signup = () => {
             onClick={postData}
           />
         </form>
+{/*         
+        <input
+            type="file"
+            className="input"
+            name="file"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+          <button onClick={() => postDetails()}>upload</button> */}
       </div>
     </div>
   );

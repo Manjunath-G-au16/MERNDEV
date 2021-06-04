@@ -130,6 +130,7 @@
     z-index: 2;
   }
   #form-wrap:hover form {
+    top:250px;
     height: 530px;
   }
   label {
@@ -140,6 +141,8 @@
   }
 
   input[type="text"],
+  input[type="email"],
+  input[type="phone"],
   textarea {
     font: 14px normal uppercase;
     color: dimgray;

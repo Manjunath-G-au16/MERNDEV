@@ -78,7 +78,7 @@ const PortfolioCard = (props) => {
                 <h3>about</h3></div>
               </div>
               <div className="content2">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque nam aut non aliquid porro perspiciatis sint nostrum soluta dignissimos laboriosam minus, et ab provident voluptate expedita reiciendis recusandae, temporibus nemo vero. Qui, quis distinctio facilis aliquam porro commodi explicabo nostrum.</p>
+              <p></p>
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@ const PortfolioCard = (props) => {
                 <h3>work/experience</h3></div>
               </div>
               <div className="content2">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae necessitatibus modi neque, non quaerat ducimus?</p>
+              <p></p>
               </div>
             </div>
           </div>

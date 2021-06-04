@@ -6,7 +6,7 @@ import { CSSRulePlugin, cssRule } from "gsap/all";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const Hero = () => {
+const Demo = () => {
   let rows = [];
   for (let i = 0; i < 650; i++) {
     rows.push(<div className="box">1</div>);
@@ -23,7 +23,6 @@ const Hero = () => {
       },
       cssRule: {
         scaleX: 3,
-        background: "#fff",
         ease: "power1.inOut",
       },
     });
@@ -33,7 +32,6 @@ const Hero = () => {
       scale: 0.9,
       ease: "power1.inOut",
       repeat: 1,
-      repeatDelay: 2,
       yoyo: true,
       stagger: {
         each: 0.1,
@@ -65,8 +63,8 @@ const Hero = () => {
     //   { x:0,
     //   duration:5,}
     // );
-    gsap.fromTo("#sec1", { scaleX: 0 }, { scaleX: 1, duration: 2 });
-    gsap.fromTo("#psc,#ps1,#ps2", { y: 100 }, { y: 0, duration: 2, delay: 3 });
+    gsap.fromTo("#sec1",{scaleX:0},{scaleX:1,duration:2})
+    gsap.fromTo("#psc,#ps1,#ps2", { y: 100 }, { y: 0, duration: 2 ,delay:3});
     gsap.fromTo(
       "#img-1,.left,.right,#img-6",
       {
@@ -75,10 +73,9 @@ const Hero = () => {
       {
         stagger: 0.1,
         y: 0,
-        duration: 4.5,
+        duration: 1,
       }
     );
-
     gsap.fromTo(
       CSSRulePlugin.getRule(".center:before"),
       {
@@ -118,17 +115,6 @@ const Hero = () => {
       background: "#000",
       ease: "power1.inOut",
     });
-    gsap.to(".img-container", {
-      scrollTrigger: {
-        trigger: "#sec1",
-        start: "top top ",
-        scrub: 3,
-        // end: "bottom top",
-      },
-      background: "#ffffff73",
-      opacity:0.7,
-      ease: "power1.inOut",
-    });
     gsap.to("#psc,#left,#right", {
       scrollTrigger: {
         trigger: "#sec1",
@@ -140,50 +126,6 @@ const Hero = () => {
       scale: 0.8,
       // ease: "Expo.easeInOut",
     });
-    gsap.from("#b2", {
-      scrollTrigger: {
-        trigger: "#container",
-        start: "top top",
-        scrub: 3,
-        // pin: "#container",
-        // end: "bottom top",
-      },
-      visibility: "hidden",
-      // ease: "Expo.easeInOut",
-    });
-    gsap.to("#b2", {
-      scrollTrigger: {
-        trigger: "#container",
-        start: "top top",
-        scrub: 1,
-        // pin: "#container",
-        // end: "bottom top",
-      },
-      visibility: "visible",
-      // ease: "Expo.easeInOut",
-    });
-    gsap.from("#ps1,#ps2", {
-      scrollTrigger: {
-        trigger: "#container",
-        start: "top top",
-        scrub: 3,
-        // pin: "#container",
-        // end: "bottom top",
-      },
-      scale: 0.6,
-      // ease: "Expo.easeInOut",
-    });
-    gsap.to("#ps1,#ps2", {
-      scrollTrigger: {
-        trigger: "#container",
-        start: "top top",
-        scrub: 3,
-        // pin: "#container",
-        // end: "bottom top",
-      },
-      scale: 0.8,
-      // ease: "Expo.easeInOut",
-    });
     gsap.to("#ps1,#ps2", {
       scrollTrigger: {
         trigger: "#sec1",
@@ -192,7 +134,7 @@ const Hero = () => {
         // pin: "#container",
         // end: "bottom top",
       },
-      scale: 0.6,
+      scale: 0.65,
       // ease: "Expo.easeInOut",
     });
     gsap.to("#ps2", {
@@ -207,22 +149,6 @@ const Hero = () => {
       ease: "power1.inOut",
       // ease: "Expo.easeInOut",
     });
-    // gsap.fromTo(
-    //   "#ps2",
-    //   {
-    //     y: 100,
-    //   },
-    //   {
-    //     y: 0,
-    //     duration: 1,
-    //     scrollTrigger: {
-    //       trigger: "#container",
-    //       start: "top top",
-    //       pin: "#container",
-    //     },
-    //   }
-    // );
-
     gsap.to("#ps1", {
       scrollTrigger: {
         trigger: "#container",
@@ -272,7 +198,6 @@ const Hero = () => {
   }, []);
   return (
     <>
-    <br /><br /><br />
       <div id="main">
         <div id="sec1">
           <div className="abc">
@@ -290,11 +215,10 @@ const Hero = () => {
               </div>
             </div>
             <div id="center" className="section center">
-              <div id="ps1" ></div>
-              <div id="ps2" ></div>
-              <div id="psc" >
-                {/* <div id="b1"><h1>BOX1</h1></div>
-                <div id="b2"><h1>BOX2</h1></div> */}
+              <div id="ps1" className="img-container"></div>
+              <div id="ps2" className="img-container"></div>
+              <div id="psc" className="img-container">
+                MERNDEV
               </div>
             </div>
             <div id="right">
@@ -306,12 +230,10 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div id="sec3">
-          <h1>Section 3</h1>
-        </div>
+        <div id="sec3"></div>
       </div>
     </>
   );
 };
 
-export default Hero;
+export default Demo;
