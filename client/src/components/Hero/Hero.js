@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import img1 from "../../assets/mobile.png";
 import img2 from "../../assets/Screenshot 2021-06-08 143550.jpg";
 import img3 from "../../assets/download.png";
+import img from "../../assets/Modimanju.jpg";
 import { SkillItems } from "./SkillItems";
 import { ProjectItems } from "./ProjectItems";
 import { ProfileItems } from "./ProfileItems";
@@ -431,10 +432,10 @@ const Hero = () => {
                                 <div className="content2x">
                                   <div className="innerx">
                                     <div className="contentx">
-                                    <h5>{item.name}</h5>
-                                    <h5>{item.email}</h5>
-                                    <h5>{item.phone}</h5>
-                                    <h5>{item.work}</h5>
+                                      <h5>{item.name}</h5>
+                                      <h5>{item.email}</h5>
+                                      <h5>{item.phone}</h5>
+                                      <h5>{item.work}</h5>
                                     </div>
                                   </div>
                                 </div>
@@ -457,8 +458,50 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div id="sec3">
-          <h1>Section 3</h1>
+        <div id="honey">
+          <ul className="honeycomb">
+            <li className="honeycomb-cell">
+              <img src={img} alt="" className="honeycomb-cell-img" />
+            </li>
+            <li className="honeycomb-cell">
+              <img src={img} alt="" className="honeycomb-cell-img" />
+            </li>
+            <li className="honeycomb-cell">
+              <img src={img} alt="" className="honeycomb-cell-img" />
+            </li>
+            <li className="honeycomb-cell">
+              <img src={img} alt="" className="honeycomb-cell-img" />
+            </li>
+            <li className="honeycomb-cell">
+              <img src={img} alt="" className="honeycomb-cell-img" />
+            </li>
+            <li className="honeycomb-cell">
+              <img src={img} alt="" className="honeycomb-cell-img" />
+            </li>
+            <li className="honeycomb-cell">
+              <img src={img} alt="" className="honeycomb-cell-img" />
+            </li>
+            <li className="honeycomb-cell honeycomb_Hidden"></li>
+          </ul>
+        </div>
+        <div id="footer">
+          <div className="footer">
+          <div className="f1">
+            <div className="text">Follow Me</div>
+            <div className="social">
+              <a href="https://github.com/Manjunath-G-au16" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://codepen.io/Modimanju" target="_blank">
+                <i class="fab fa-codepen"></i>
+              </a>
+              <a href="https://www.instagram.com/ig_modimanju/" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div></div>
+            <div className="logo">MERNDEV PORTFOLIO</div>
+            <div className="copyright">© 2021 Modimanju</div>
+          </div>
         </div>
       </div>
     </>
