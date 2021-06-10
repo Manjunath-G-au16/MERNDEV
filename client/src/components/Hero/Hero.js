@@ -14,7 +14,7 @@ import { ProjectItems } from "./ProjectItems";
 import { ProfileItems } from "./ProfileItems";
 
 import img2x from "../../assets/pavan.jpg";
-import img8 from "../../assets/Screenshot 2021-06-10 165756.png";
+import img8 from "../../assets/koushik.jpg";
 import img3x from "../../assets/sham.jpg";
 import img4 from "../../assets/vyshak 2edit3.jpg";
 import img5 from "../../assets/kush.jpg";
@@ -469,26 +469,32 @@ const Hero = () => {
           <ul className="honeycomb">
             <li className="honeycomb-cell">
               <img src={img} alt="" className="honeycomb-cell-img" />
+              <div className="honeycomb-cell_title">Modimanju <h6>FullStack Developer</h6></div>
             </li>
             <li className="honeycomb-cell">
               <img src={img2x} alt="" className="honeycomb-cell-img" />
-            </li>
-            <li className="honeycomb-cell">
-              <img src={img3x} alt="" className="honeycomb-cell-img" />
+              <div className="honeycomb-cell_title">Pavan S <h6>Frontend UI/UX</h6></div>
             </li>
             <li className="honeycomb-cell">
               <img src={img4} alt="" className="honeycomb-cell-img" />
+              <div className="honeycomb-cell_title">Vyshak <h6>Developer</h6></div>
             </li>
             <li className="honeycomb-cell">
-              <img src={img5} alt="" className="honeycomb-cell-img" />
+              <img src={img3x} alt="" className="honeycomb-cell-img" />
+              <div className="honeycomb-cell_title">Shaman Gowda <h6>Developer</h6></div>
             </li>
             <li className="honeycomb-cell">
-              <img src={img7} alt="" className="honeycomb-cell-img" />
+              <img src={img6} alt="" className="honeycomb-cell-img" />
+              <div className="honeycomb-cell_title">Rithesh<h6>Backend Developer</h6></div>
             </li>
             <li className="honeycomb-cell">
               <img src={img8} alt="" className="honeycomb-cell-img" />
+              <div className="honeycomb-cell_title">Koushik MR<h6>Frontend Developer</h6></div>
             </li>
-            <li className="honeycomb-cell honeycomb_Hidden"></li>
+            <li className="honeycomb-cell">
+              <img src={img5} alt="" className="honeycomb-cell-img" />
+              <div className="honeycomb-cell_title">Kushal <h6>UI/UX</h6></div>
+            </li>
           </ul>
         </div>
         <div id="footer">

@@ -21,7 +21,7 @@ body {
       padding: 0px;
       margin: 0px;
       display: grid;
-      grid-template-columns:  repeat(8, 1fr);
+      grid-template-columns: repeat(8, 1fr);
       text-align: center;
       // justify-items: end;
     }
@@ -31,6 +31,10 @@ body {
     & li {
       list-style-type: none;
       float: left;
+      .nav-link {
+        @include flex-center;
+        flex-direction: row;
+      }
     }
     & ul li a {
       color: rgba(255, 255, 255, 0.5);
@@ -101,13 +105,16 @@ body {
 }
 
 @media (max-width: 580px) {
+  #nav-text{
+    display: none;
+  }
   .navbar {
     bottom: 0;
     #navbarContent ul {
       grid-template-columns: repeat(6, auto);
 
       & li a {
-        font-size: 10px;
+        font-size: 20px;
       }
     }
   }
