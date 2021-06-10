@@ -10,6 +10,9 @@ const PortfolioCard = (props) => {
         <div id="port-con">
           <div className="port-panel port-p1">
             <div className="inner">
+            <div id="pdf-btn">
+              <button onClick={props.onPdf}><i className={props.pdfIcon}></i></button>
+            </div>
               <div className="p1-sec1">
                 <div className="content1">
                   <div className="inner">

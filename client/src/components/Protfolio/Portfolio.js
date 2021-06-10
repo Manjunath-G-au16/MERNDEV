@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./Portfolio.scss";
+import "./Pdf.scss";
 import { gsap } from "gsap";
 import PortfolioCard from "../Common/PortfolioCard";
 import Modal from "react-modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "@progress/kendo-theme-material/dist/all.css";
+import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
 
 const Portfolio = () => {
   // var FileSaver = require('file-saver');
@@ -27,11 +30,25 @@ const Portfolio = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenSocial, setModalIsOpenSocial] = useState(false);
   const [modalIsOpenProject, setModalIsOpenProject] = useState(false);
-
+  const skillpdf = skill.slice(1, 2);
   const [activeUpload, setActiveUpload] = useState("");
   const edit = () => {
     setActive("second");
   };
+
+  const pdfExportComponent = useRef(null);
+
+  const pdf = () => {
+    setActive("pdf");
+  };
+  const back = () => {
+    setActive("first");
+  };
+
+  const handleExportWithComponent = (event) => {
+    pdfExportComponent.current.save();
+  };
+
   const exit = () => {
     setModalIsOpen(true);
   };
@@ -348,6 +365,88 @@ const Portfolio = () => {
   }, []);
   return (
     <>
+      {active === "pdf" && (
+        <>
+          <br />
+          <br />
+          <br />
+          <div id="pdf-btn">
+          <button onClick={back} className="b1"><i className="fas fa-chevron-circle-left"></i></button>
+            
+          <button onClick={handleExportWithComponent} className="b2"><i className="fas fa-cloud-download-alt"></i></button>
+          </div>
+          <PDFExport ref={pdfExportComponent} paperSize="A4">
+            <div id="pdf">
+              <div className="pdf-con">
+                <div className="pdf-sec1">
+                  <div className="pdf-con1">
+                    <div className="pdf-s1">
+                      <div className="pdf-c1">
+                        <h3>Personal Details</h3>
+                      </div>
+                      <div className="pdf-c2">
+                        <h5>Name: {userData.name}</h5>
+                        <h5>Email: {userData.email}</h5>
+                        <h5>Phone: {userData.phone}</h5>
+                        <h5>Work: {userData.work}</h5>
+                      </div>
+                    </div>
+                    <div className="pdf-s2">
+                      <div className="pdf-c1">
+                        <h3>Skills</h3>
+                      </div>
+                      <div className="pdf-c2">
+                        {skill.map((item) => {
+                          return (
+                            <>
+                            <div className="pdfs1">
+                              <i className={item.skill}></i>
+                        
+                            </div>
+                            <div className="pdfs2">
+                              {item.value}
+                            </div>
+                            </>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="pdf-con2"></div>
+                </div>
+                <div className="pdf-sec2">
+                  <div className="pdf-con1">
+                    <div className="pdf-s1">
+                      <h3>RESUME</h3>
+                    </div>
+                    <div className="pdf-s2">
+                    <h4>About:</h4>
+                    <p>
+                      {userData.about}</p>
+                    <h4>Experience:</h4>
+                    <p>
+                      {userData.exp}</p>
+                    </div>
+                    <div className="pdf-s3">
+                    <h4>Projects:</h4>
+                    {project.map((item) => {
+                          return (
+                            <>
+                            <p>{item.details}</p>
+
+                          
+                            </>
+                          );
+                        })}
+                    </div>
+                  </div>
+                  <div className="pdf-con2"></div>
+                </div>
+              </div>
+            </div>
+          </PDFExport>
+        </>
+      )}
       {active === "first" && (
         <PortfolioCard
           pic={userData.pic}
@@ -365,6 +464,8 @@ const Portfolio = () => {
           //   setActive("second");
           // }}
           onClick={edit}
+          onPdf={pdf}
+          pdfIcon="fas fa-file"
         />
       )}
       {active === "second" && (
@@ -742,8 +843,7 @@ const Portfolio = () => {
                     <h3>work/experience</h3>
                   </div>
                   <div className="content2">
-                  
-                  <textarea
+                    <textarea
                       className="exp"
                       name="exp"
                       value={userData.exp}

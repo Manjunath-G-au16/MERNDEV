@@ -213,6 +213,8 @@ const Search = () => {
                 work={userProfile.work}
                 email={userProfile.email}
                 phone={userProfile.phone}
+                about={userProfile.about}
+                exp={userProfile.exp}
                 social={social}
                 skill={skill}
                 project={project}

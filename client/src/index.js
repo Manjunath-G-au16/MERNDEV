@@ -21,6 +21,7 @@ ReactDOM.render(
     {/* <Portfolio /> */}
     {/* <SignUpIn /> */}
     {/* <ContactUs /> */}
+    {/* <Pdf /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

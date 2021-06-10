@@ -1,0 +1,142 @@
+@import ".././sass/default.scss";
+@import ".././sass/variables.scss";
+#pdf-btn{
+    position: absolute;
+    width: 100%;
+    button{
+        color: $clr-2;
+        background: $clr-1;
+        padding: 8px;
+        float: right;
+        border-radius: 50%;
+        i{
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+}
+#pdf {
+  .pdf-con {
+    width: 100%;
+    height: 150vh;
+    display: grid;
+    grid-template-columns: 0.6fr 1.4fr;
+    .pdf-sec1 {
+      grid-column: 1;
+      background: $clr-2;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      .pdf-con1 {
+        grid-row: 1;
+        display: grid;
+        grid-template-rows: 0.8fr 1.2fr;
+        .pdf-s1 {
+          grid-row: 1;
+          display: grid;
+          grid-template-rows: 0.2fr 0.8fr;
+          .pdf-c1 {
+            grid-row: 1;
+            display: grid;
+            margin-left: 10%;
+            color: $clr-1;
+            border-bottom: 2px solid $clr-1;
+          }
+          .pdf-c2 {
+            grid-row: 2;
+            margin-top: 5%;
+            margin-left: 10%;
+            display: grid;
+            justify-content: center;
+            h5 {
+              color: $clr-1;
+            }
+          }
+        }
+        .pdf-s2 {
+          grid-row: 2;
+          width: 100%;
+          display: grid;
+          grid-template-rows: 0.2fr 0.8fr;
+          .pdf-c1 {
+            grid-row: 1;
+            color: $clr-1;
+            display: grid;
+            margin-top: 5%;
+            margin-left: 10%;
+            border-bottom: 2px solid $clr-1;
+          }
+          .pdf-c2 {
+            grid-row: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            color: $clr-1;
+            margin-top: 5%;
+            .pdfs1{
+                grid-column: 1;
+                @include grid-center;
+            }
+            .pdfs2{
+                grid-column: 2;
+                @include grid-center;
+            }
+
+
+
+          }
+        }
+      }
+      .pdf-con2 {
+        grid-row: 2;
+        background: $clr-2;
+      }
+    }
+    .pdf-sec2 {
+      grid-column: 2;
+      background: $clr-1;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      .pdf-con1{
+          grid-row: 1;
+          display: grid;
+          grid-template-rows: 0.08fr 0.42fr 0.5fr ;
+          .pdf-s1{
+              grid-row: 1;
+              @include grid-center;
+              border-bottom: 2px solid $clr-2;
+              
+          }
+          .pdf-s2{
+              grid-row: 2;
+              border-bottom: 2px solid $clr-2;
+              h4{
+                margin-top: 2%;
+                margin-left: 5%;
+              }
+              p{
+                  font-size: 15px;
+                  margin-top: 2%;
+                  margin-left: 5%;
+              }
+
+          }
+          .pdf-s3{
+              grid-row: 3;
+              h4{
+                margin-top: 2%;
+                margin-left: 5%;
+              }
+              p{
+                  font-size: 15px;
+                  margin-top: 2%;
+                  margin-left: 5%;
+              }
+          }
+
+      }
+      .pdf-con2{
+          grid-row: 2;
+          background: $clr-2;
+      }
+    }
+  }
+}
