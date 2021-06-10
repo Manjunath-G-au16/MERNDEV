@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#port-main {
+  width: 100%;
+  height: 100vh;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+#port-con {
+  background: lightgreen;
+  margin: 10vh auto;
+  width: 90%;
+  height: 80vh;
+  -webkit-transform: rotateY(65deg);
+          transform: rotateY(65deg);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.5fr 1fr 1fr 1fr;
+      grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-areas: "p1 p2 p2 p2" "p1 p3 p4 p5" "p1 p6 p6 p6";
+  gap: 10px;
+}
+
+#port-con .port-p1 {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  grid-area: p1;
+  background: orange;
+  -webkit-box-shadow: 0px 50px 18px -8px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 50px 18px -8px rgba(0, 0, 0, 0.5);
+}
+
+#port-con .port-p2 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-area: p2;
+  background: orange;
+  -webkit-transform: perspective(2000px) translateZ(500px) translateX(150px);
+          transform: perspective(2000px) translateZ(500px) translateX(150px);
+  -webkit-box-shadow: 0px 20px 18px -2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 20px 18px -2px rgba(0, 0, 0, 0.5);
+}
+
+#port-con .port-p3 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: p3;
+  background: greenyellow;
+  -webkit-transform: perspective(1600px) translateZ(500px) translateX(100px);
+          transform: perspective(1600px) translateZ(500px) translateX(100px);
+  -webkit-box-shadow: 0px 20px 18px -2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 20px 18px -2px rgba(0, 0, 0, 0.5);
+}
+
+#port-con .port-p4 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: p4;
+  background: pink;
+  -webkit-transform: perspective(1000px) translateZ(600px) translateX(500px);
+          transform: perspective(1000px) translateZ(600px) translateX(500px);
+  -webkit-box-shadow: 0px 20px 18px -2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 20px 18px -2px rgba(0, 0, 0, 0.5);
+}
+
+#port-con .port-p5 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 4;
+  grid-area: p5;
+  background: #a8e5fd;
+  -webkit-transform: perspective(1600px) translateZ(500px) translateX(100px);
+          transform: perspective(1600px) translateZ(500px) translateX(100px);
+  -webkit-box-shadow: 0px 20px 18px -2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 20px 18px -2px rgba(0, 0, 0, 0.5);
+}
+
+#port-con .port-p6 {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-area: p6;
+  background: orange;
+  -webkit-transform: perspective(1600px) translateZ(0px) translateX(200px) translateY(50px);
+          transform: perspective(1600px) translateZ(0px) translateX(200px) translateY(50px);
+  -webkit-box-shadow: 0px 20px 18px -2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 20px 18px -2px rgba(0, 0, 0, 0.5);
+}
+/*# sourceMappingURL=PortfolioDemo.css.map */

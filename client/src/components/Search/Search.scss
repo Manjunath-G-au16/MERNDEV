@@ -16,6 +16,7 @@
       background: $theme-1;
     }
     .srh-p1 {
+      z-index: 5;
       grid-row: 1;
       display: grid;
       grid-template-columns: 0.5fr 0.3fr 0.2fr;
@@ -209,9 +210,15 @@
         }
       }
     }
+    .srh-p3{
+      margin-top: -80px;
+    }
   }
 }
 @media (max-width: 580px) {
+  #srh-main{
+    margin-top: -10vh $i;
+  }
   .srh-p1 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -223,6 +230,11 @@
     }
     .sec3 {
       @include grid(2$i, 4$i, 2, 3);
+    }
+  }
+  .srh-p2{
+    .sec{
+      width: 100% $i;
     }
   }
 }

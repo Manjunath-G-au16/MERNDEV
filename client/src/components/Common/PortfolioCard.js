@@ -25,10 +25,7 @@ const PortfolioCard = (props) => {
                   </div>
                   <div className="panel2">
                     <h1>
-                      {/* <a href="" download target="_blank">
-                        <i className="fas fa-cloud-download-alt"></i>
-                      </a> */}
-                      <i class="fas fa-edit" onClick={props.onClick}></i>
+                      <i class={props.icon} onClick={props.onClick}></i>
                     </h1>
                   </div>
                 </div>
@@ -78,7 +75,16 @@ const PortfolioCard = (props) => {
                 <h3>about</h3></div>
               </div>
               <div className="content2">
-              <p></p>
+              <p>{props.about}</p>
+                    {/* <p>
+                      I enjoy taking Complex problems and turing them into
+                      simple & beautiful interface designs. I also love the
+                      logic and structure of coding and always strive to write
+                      elegant and efficient code,whether it be React, Scss or
+                      Nodejs
+                    </p>
+                    <p>When I'm not coding or creating pixels, you'll find me in gym or
+                     on the battle ground in virtual reality!</p> */}
               </div>
             </div>
           </div>
@@ -94,7 +100,6 @@ const PortfolioCard = (props) => {
                   return (
                     <>
                       <div className="sec1" id="skillName">
-                        {/* <h3>{item.skill} :</h3> */}
                         <i className={item.skill}></i>
                       </div>
                       <div className="sec2">
@@ -117,7 +122,10 @@ const PortfolioCard = (props) => {
                 <h3>work/experience</h3></div>
               </div>
               <div className="content2">
-              <p></p>
+              <p>{props.exp}</p>
+          
+                    {/* <p>FrontEnd Developer:  &nbsp; 2+ years</p>
+                    <p>FullStack Developer: &nbsp; 6+ months</p> */}
               </div>
             </div>
           </div>

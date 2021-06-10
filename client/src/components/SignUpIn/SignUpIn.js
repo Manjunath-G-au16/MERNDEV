@@ -47,10 +47,10 @@ const SignUpIn = () => {
     const data = await res.json();
 
     if (res.status === 422 || !data) {
-      window.alert("Invalid Registration");
+      toast.dark("Invalid Registration");
       console.log("Invalid Registration");
     } else {
-      window.alert("Registration Success");
+      toast.dark("Registration Success");
       console.log("Registration Success");
     }
     history.push("/signin");
@@ -78,8 +78,7 @@ const SignUpIn = () => {
       console.log("Invalid Credentials");
     } else {
       dispatch({ type: "USER", payload: false });
-      window.alert("login successful");
-      // toast("Wow so easy!");
+      toast.dark("login successful");
       console.log("login successful");
       history.push("/");
     }

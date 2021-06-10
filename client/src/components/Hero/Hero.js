@@ -5,7 +5,12 @@ import { CSSRulePlugin, cssRule } from "gsap/all";
 // import { useRef } from "react";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import img1 from "../../assets/mobile.png";
+import img2 from "../../assets/Screenshot 2021-06-08 143550.jpg";
+import img3 from "../../assets/download.png";
+import { SkillItems } from "./SkillItems";
+import { ProjectItems } from "./ProjectItems";
+import { ProfileItems } from "./ProfileItems";
 const Hero = () => {
   let rows = [];
   for (let i = 0; i < 650; i++) {
@@ -27,7 +32,7 @@ const Hero = () => {
         ease: "power1.inOut",
       },
     });
-
+    // gsap.fromTo("#xrt",{y:0},{y:"-40vh",duration:2,delay:1.5});
     gsap.to(".box", {
       duration: 1,
       scale: 0.9,
@@ -46,7 +51,6 @@ const Hero = () => {
       scale: 1,
       // background:"#fff",
     });
-
     gsap.to(".xyz", {
       delay: 6.5,
       background: "none",
@@ -78,7 +82,6 @@ const Hero = () => {
         duration: 4.5,
       }
     );
-
     gsap.fromTo(
       CSSRulePlugin.getRule(".center:before"),
       {
@@ -102,7 +105,6 @@ const Hero = () => {
     //   scrub: 3,
     //   delay: 2,
     // });
-
     // gsap.to("#left,#right", {
     //   y: "-50px",
     //   scrub: 3,
@@ -126,7 +128,7 @@ const Hero = () => {
         // end: "bottom top",
       },
       background: "#ffffff73",
-      opacity:0.7,
+      opacity: 0.7,
       ease: "power1.inOut",
     });
     gsap.to("#psc,#left,#right", {
@@ -162,6 +164,39 @@ const Hero = () => {
       visibility: "visible",
       // ease: "Expo.easeInOut",
     });
+    // gsap.from("#xrt", {
+    //   scrollTrigger: {
+    //     trigger: "#sec1",
+    //     start: "top top",
+    //     scrub: 3,
+    //     // pin: "#container",
+    //     // end: "bottom top",
+    //   },
+    //   y: 0,
+    //   // ease: "Expo.easeInOut",
+    // });
+    gsap.to("#m1,#ms1,#ms2,#m3", {
+      scrollTrigger: {
+        trigger: "#container",
+        start: "top top",
+        scrub: 3,
+        // pin: "#container",
+        // end: "bottom top",
+      },
+      y: "-85vh",
+      // ease: "Expo.easeInOut",
+    });
+    gsap.to("#m3", {
+      scrollTrigger: {
+        trigger: "#container",
+        start: "top top",
+        scrub: 3,
+        // pin: "#container",
+        // end: "bottom top",
+      },
+      y: "-80vh",
+      // ease: "Expo.easeInOut",
+    });
     gsap.from("#ps1,#ps2", {
       scrollTrigger: {
         trigger: "#container",
@@ -184,17 +219,17 @@ const Hero = () => {
       scale: 0.8,
       // ease: "Expo.easeInOut",
     });
-    gsap.to("#ps1,#ps2", {
-      scrollTrigger: {
-        trigger: "#sec1",
-        start: "top top",
-        scrub: 3,
-        // pin: "#container",
-        // end: "bottom top",
-      },
-      scale: 0.6,
-      // ease: "Expo.easeInOut",
-    });
+    // gsap.to("#ps1,#ps2", {
+    //   scrollTrigger: {
+    //     trigger: "#sec1",
+    //     start: "top top",
+    //     scrub: 3,
+    //     // pin: "#container",
+    //     // end: "bottom top",
+    //   },
+    //   scale: 0.6,
+    //   // ease: "Expo.easeInOut",
+    // });
     gsap.to("#ps2", {
       scrollTrigger: {
         trigger: "#container",
@@ -222,7 +257,6 @@ const Hero = () => {
     //     },
     //   }
     // );
-
     gsap.to("#ps1", {
       scrollTrigger: {
         trigger: "#container",
@@ -235,7 +269,6 @@ const Hero = () => {
       ease: "power1.inOut",
       // ease: "Expo.easeInOut",
     });
-
     gsap.to("#left", {
       scrollTrigger: {
         trigger: "#container",
@@ -272,7 +305,9 @@ const Hero = () => {
   }, []);
   return (
     <>
-    <br /><br /><br />
+      <br />
+      <br />
+      <br />
       <div id="main">
         <div id="sec1">
           <div className="abc">
@@ -290,11 +325,127 @@ const Hero = () => {
               </div>
             </div>
             <div id="center" className="section center">
-              <div id="ps1" ></div>
-              <div id="ps2" ></div>
-              <div id="psc" >
-                {/* <div id="b1"><h1>BOX1</h1></div>
-                <div id="b2"><h1>BOX2</h1></div> */}
+              <div id="ps1">
+                <img src={img1} alt="" className="img-1" />
+                <div className="content">
+                  <div className="s1">
+                    <h3>SKILLS</h3>
+                  </div>
+                  <div className="s2">
+                    {SkillItems.map((item, index) => {
+                      return (
+                        <>
+                          <div className="c1" id="ms1">
+                            <i className={item.skill}></i>
+                          </div>
+                          <div className="c2" id="ms2">
+                            <progress value={item.value} max="10"></progress>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+              <div id="ps2">
+                <img src={img1} alt="" className="img-1" />
+                <div className="content">
+                  <div className="s1">
+                    <h3>PROJECTS</h3>
+                  </div>
+                  <div className="s2">
+                    {ProjectItems.map((item, index) => {
+                      return (
+                        <>
+                          <div className="c" id="m3">
+                            <div className="s">
+                              <a href={item.link} target="_blank">
+                                <img src={item.pic} alt="" />
+                              </a>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+              <div id="psc">
+                <img src={img1} alt="" className="img-1" />
+                <div className="content">
+                  <div className="inner" id="m1">
+                    <div className="sec1">
+                      <div className="inner">
+                        <img src={img3} alt="" />
+                      </div>
+                    </div>
+                    <div className="sec2">
+                      <h5>Hi I'm Manunath G</h5>
+                      <h5>FullStack Developer</h5>
+                    </div>
+                    <div className="sec3">
+                      <div className="panel1">
+                        <h4>
+                          <i className="fas fa-map-marker-alt"></i>
+                          Bangalore,India
+                        </h4>
+                        <h5>
+                          <i className="fas fa-envelope"></i>
+                          modimanju2019@gmail.com
+                        </h5>
+                        <h5>
+                          <i className="fas fa-phone"></i> 7348933532
+                        </h5>
+                      </div>
+                      <div className="panel2">
+                        <div className="icons">
+                          <li>
+                            <a href="" target="_blank">
+                              <span className="fas fa-envelope"></span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="" target="_blank">
+                              <span className="fas fa-envelope"></span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="" target="_blank">
+                              <span className="fas fa-envelope"></span>
+                            </a>
+                          </li>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="sec4">
+                      {ProfileItems.map((item, index) => {
+                        return (
+                          <>
+                            <div className="secx" id="pcard">
+                              <div className="profilex">
+                                <div className="content1x">
+                                  <div className="innerx">
+                                    <img src={item.pic} alt="" />
+                                  </div>
+                                </div>
+                                <div className="content2x">
+                                  <div className="innerx">
+                                    <div className="contentx">
+                                    <h5>{item.name}</h5>
+                                    <h5>{item.email}</h5>
+                                    <h5>{item.phone}</h5>
+                                    <h5>{item.work}</h5>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div id="right">

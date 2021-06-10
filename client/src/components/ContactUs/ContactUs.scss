@@ -130,7 +130,7 @@
     z-index: 2;
   }
   #form-wrap:hover form {
-    top:250px;
+    top:230px;
     height: 530px;
   }
   label {
@@ -179,5 +179,21 @@
     z-index: 1;
     opacity: 1;
     transition: opacity 0.5s ease-in-out 1.3s;
+  }
+}
+
+@media (max-width: 580px) {
+  #contactus{
+    overflow: hidden;
+    #layer{
+      width:90%;
+    }
+  }
+  #wrap{
+    transform: scale(0.7);
+    
+  }
+  #form-wrap{
+    transform: translateX(-22.5%);
   }
 }

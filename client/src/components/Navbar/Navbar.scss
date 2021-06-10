@@ -63,8 +63,8 @@ body {
   border-top-right-radius: 15px;
   margin-top: 10px;
 
-  & .right,
-  & .left {
+  & .rgt,
+  & .lft {
     position: absolute;
     width: 25px;
     height: 25px;
@@ -82,7 +82,7 @@ body {
     }
   }
 
-  & .right {
+  & .rgt {
     right: -25px;
 
     &:before {
@@ -90,7 +90,7 @@ body {
       right: -25px;
     }
   }
-  & .left {
+  & .lft {
     left: -25px;
 
     &:before {
@@ -118,8 +118,8 @@ body {
     border-bottom-right-radius: 15px;
     margin-top: -10px;
 
-    & .right,
-    & .left {
+    & .rgt,
+    & .lft {
       top: 10px;
       bottom: none;
 

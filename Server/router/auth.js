@@ -186,11 +186,14 @@ router.put("/updatePic", async (req, res) => {
 
 //Update Data
 router.put("/edit", async (req, res) => {
-  const { name, email, phone, work, id, pic} = req.body;
+  const { name, email, phone, work, id, pic, about, exp} = req.body;
   console.log(id);
   console.log(name);
   console.log(email);
   console.log(phone);
+  console.log(about);
+  console.log(exp);
+
   try {
     await User.findById(id, (error, workToUpdate) => {
       
@@ -199,6 +202,8 @@ router.put("/edit", async (req, res) => {
       workToUpdate.email = String(email);
       workToUpdate.phone = Number(phone);
       workToUpdate.work = String(work);
+      workToUpdate.about = String(about);
+      workToUpdate.exp = String(exp);
       workToUpdate.save();
     });
   } catch (error) {
@@ -213,7 +218,7 @@ router.post("/contact", authenticate, async (req, res) => {
     const { name, email, phone, message } = req.body;
     if (!name || !email || !phone || !message) {
       console.log("Plz fill the contact form");
-      return res.json({ error: "plz fill the contact form" });
+      return res.status(422).json({ error: "plz fill the contact form" });
     }
     const userContact = await User.findOne({ _id: req.userID });
 
@@ -237,7 +242,7 @@ router.post("/project", authenticate, async (req, res) => {
     const { projectpic, url, details } = req.body;
     if (!projectpic || !url || !details ) {
       console.log("Plz fill the contact form");
-      return res.json({ error: "plz fill the contact form" });
+      return res.status(422).json({ error: "plz fill the contact form" });
     }
     const userProject = await User.findOne({ _id: req.userID });
 
@@ -260,7 +265,7 @@ router.post("/social", authenticate, async (req, res) => {
     const { media, link,  } = req.body;
     if (!media || !link  ) {
       console.log("Plz fill the contact form");
-      return res.json({ error: "plz fill the contact form" });
+      return res.status(422).json({ error: "plz fill the contact form" });
     }
     const userSocial = await User.findOne({ _id: req.userID });
 
@@ -282,7 +287,7 @@ router.post("/skill", authenticate, async (req, res) => {
     const { skill, value,  } = req.body;
     if (!skill || !value  ) {
       console.log("Plz fill the contact form");
-      return res.json({ error: "plz fill the contact form" });
+      return res.status(422).json({ error: "plz fill the contact form" });
     }
     const userSkill = await User.findOne({ _id: req.userID });
 

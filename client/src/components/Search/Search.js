@@ -135,9 +135,10 @@ const Search = () => {
               <div className="content1">
                 <select onChange={handleOption}>
                   <option value="">Categories</option>
-                  <option value="modimanju">Modimanju</option>
-                  <option value="abc">Abc</option>
-                  <option value="test3">Test3</option>
+                  <option value="FrontEnd Developer">FrontEnd Developer</option>
+                  <option value="BackEnd Developer">BackEnd Developer</option>
+                  <option value="FullStack Developer">FullStack Developer</option>
+                  <option value="UI">UI/UX</option>
                 </select>
               </div>
               <div className="content2">

@@ -2,23 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./Portfolio.scss";
 import { gsap } from "gsap";
-import { saveAs } from "file-saver";
 import PortfolioCard from "../Common/PortfolioCard";
 import Modal from "react-modal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Portfolio = () => {
   // var FileSaver = require('file-saver');
-  // // Gsap
-  // gsap.fromTo("#port-con",{rotateY:"65deg",scale:0.63,x:"-19vw",y:"-3vh"},{rotateY:"0",scale:1,x:"0",y:"0",duration:7,delay:5});
-  // // gsap.fromTo(".port-p1",{z:"20vw",x:"5vw",y:"0vh"});
-  // gsap.fromTo(".port-p2",{z:"10vw",x:"12vw",y:"-10vh"},{z:0,x:0,y:0,duration:5,delay:5});
-  // gsap.fromTo(".port-p4",{z:"20vw",x:"13vw"},{z:0,x:0,duration:5,delay:5});
-  // gsap.fromTo(".port-p3",{z:"18vw",x:"10vw",y:"11vh"},{z:0,x:0,y:0,duration:5,delay:5});
-  // gsap.fromTo(".port-p6",{z:"25vw",x:"30vw",y:"15vh"},{z:0,x:0,y:0,duration:5,delay:5});
-  // gsap.fromTo(".port-p5",{z:"50vw",x:"40vw"},{z:0,x:0,duration:5,delay:5});
-  // gsap.fromTo("#skill",{z:"50vw",x:"40vw"},{z:0,x:0,duration:5,delay:5});
-  // gsap.fromTo("#project",{z:"50vw",y:"-40vh"},{z:0,y:0,duration:2,delay:7.5});
-
+  // gsap.killTweensOf(".gift");
   //////////////////////////////
   const history = useHistory();
   const [userData, setUserData] = useState({
@@ -32,13 +23,18 @@ const Portfolio = () => {
   const [project, setProject] = useState([]);
   const [social, setSocial] = useState([]);
   const [skill, setSkill] = useState([]);
-  const [active, setActive] = useState("second");
+  const [active, setActive] = useState("first");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenSocial, setModalIsOpenSocial] = useState(false);
   const [modalIsOpenProject, setModalIsOpenProject] = useState(false);
 
   const [activeUpload, setActiveUpload] = useState("");
-
+  const edit = () => {
+    setActive("second");
+  };
+  const exit = () => {
+    setModalIsOpen(true);
+  };
   const callAboutPage = async () => {
     try {
       const res = await fetch("/about", {
@@ -60,6 +56,8 @@ const Portfolio = () => {
         work: data.work,
         pic: data.pic,
         id: data._id,
+        about: data.about,
+        exp: data.exp,
       });
       setProject(data.projects);
       setSocial(data.socials);
@@ -164,10 +162,11 @@ const Portfolio = () => {
       }),
     });
     const data = await res.json();
-    if (!data) {
-      console.log("Project not sent");
+    callAboutPage();
+    if (res.status === 422 || !data) {
+      toast.dark("Fill all the fields!");
     } else {
-      alert("Project sent");
+      toast.dark("Project added");
     }
   };
   //Add Socials
@@ -196,10 +195,11 @@ const Portfolio = () => {
       }),
     });
     const data = await res.json();
-    if (!data) {
-      console.log("Socials not sent");
+    callAboutPage();
+    if (res.status === 422 || !data) {
+      toast.dark("Fill all the fields!");
     } else {
-      alert("Socials sent");
+      toast.dark("Socials added");
     }
   };
   //Add Skills
@@ -233,11 +233,12 @@ const Portfolio = () => {
       }),
     });
     const data = await res.json();
+    callAboutPage();
 
-    if (!data) {
-      console.log("Skills not sent");
+    if (res.status === 422 || !data) {
+      toast.dark("Fill all the fields!");
     } else {
-      alert("Skills sent");
+      toast.dark("Skills added");
     }
   };
   //Delete Skill
@@ -276,7 +277,7 @@ const Portfolio = () => {
   //sending data to backend
   const updateForm = (e) => {
     e.preventDefault();
-    const { name, email, phone, work, id } = userData;
+    const { name, email, phone, work, id, about, exp } = userData;
     const pic = picc;
     // const cv = cvv;
     // const messages = msg;
@@ -297,11 +298,52 @@ const Portfolio = () => {
         phone,
         work,
         id,
+        about,
+        exp,
         // messages,
       }),
     });
   };
+
+  // gsap.to("#project", { z: 0, y: 0, duration: 2, delay: 7.5 });
   useEffect(() => {
+    // // Gsap
+    // gsap.fromTo(
+    //   "#port-con",
+    //   { rotateY: "65deg", scale: 0.63, x: "-19vw", y: "-3vh" },
+    //   { rotateY: "0", scale: 1, x: "0", y: "0", duration: 7, delay: 4 }
+    // );
+    // // gsap.fromTo(".port-p1",{z:"20vw",x:"5vw",y:"0vh"});
+    // gsap.fromTo(
+    //   ".port-p2",
+    //   { z: "10vw", x: "12vw", y: "-10vh" },
+    //   { z: 0, x: 0, y: 0, duration: 4, delay: 4 }
+    // );
+    // gsap.fromTo(
+    //   ".port-p4",
+    //   { z: "20vw", x: "13vw" },
+    //   { z: 0, x: 0, duration: 4, delay: 4 }
+    // );
+    // gsap.fromTo(
+    //   ".port-p3",
+    //   { z: "18vw", x: "10vw", y: "11vh" },
+    //   { z: 0, x: 0, y: 0, duration: 4, delay: 4 }
+    // );
+    // gsap.fromTo(
+    //   ".port-p6",
+    //   { z: "25vw", x: "30vw", y: "15vh" },
+    //   { z: 0, x: 0, y: 0, duration: 4, delay: 4 }
+    // );
+    // gsap.fromTo(
+    //   ".port-p5",
+    //   { z: "50vw", x: "40vw" },
+    //   { z: 0, x: 0, duration: 4, delay: 4 }
+    // );
+    // gsap.fromTo(
+    //   "#skill",
+    //   { z: "50vw", x: "40vw" },
+    //   { z: 0, x: 0, duration: 4, delay: 4 }
+    // );
     callAboutPage();
   }, []);
   return (
@@ -313,12 +355,16 @@ const Portfolio = () => {
           work={userData.work}
           email={userData.email}
           phone={userData.phone}
+          about={userData.about}
+          exp={userData.exp}
           social={social}
           skill={skill}
           project={project}
-          onClick={() => {
-            setActive("second");
-          }}
+          icon={"fas fa-edit"}
+          // onClick={() => {
+          //   setActive("second");
+          // }}
+          onClick={edit}
         />
       )}
       {active === "second" && (
@@ -456,11 +502,7 @@ const Portfolio = () => {
                             </div>
                             <div className="skill">
                               <div className="sec1">
-                                <input
-                                  list="social-icon"
-                                  onChange={handleSocial}
-                                />
-                                <datalist id="social-icon">
+                                <select onChange={handleSocial}>
                                   <option value="fab fa-linkedin">
                                     Linkedin
                                   </option>
@@ -474,7 +516,7 @@ const Portfolio = () => {
                                   <option value="fab fa-instagram">
                                     Instagram
                                   </option>
-                                </datalist>
+                                </select>
                               </div>
                               <div className="sec2">
                                 <input
@@ -520,7 +562,26 @@ const Portfolio = () => {
                   <div className="content1">
                     <h3>about</h3>
                   </div>
-                  <div className="content2"></div>
+                  <div className="content2">
+                    <textarea
+                      className="about"
+                      name="about"
+                      value={userData.about}
+                      onChange={handleInputs}
+                      id="about"
+                    ></textarea>
+                    {/* <p>
+                      I enjoy taking Complex problems and turing them into
+                      simple & beautiful interface designs. I also love the
+                      logic and structure of coding and always strive to write
+                      elegant and efficient code,whether it be React, Scss or
+                      Nodejs
+                    </p>
+                    <p>
+                      When I'm not coding or creating pixels, you'll find me in
+                      gym or on the battle ground in virtual reality!
+                    </p> */}
+                  </div>
                 </div>
               </div>
               <div className="port-panel port-p3">
@@ -529,7 +590,10 @@ const Portfolio = () => {
                     <h3>SKILLS</h3>
 
                     <div className="modal">
-                      <button onClick={() => setModalIsOpen(true)}>
+                      <button
+                        // onClick={() => setModalIsOpen(true)}
+                        onClick={exit}
+                      >
                         <i className="fas fa-plus"></i>
                       </button>
                       <Modal
@@ -677,7 +741,18 @@ const Portfolio = () => {
                   <div className="content1">
                     <h3>work/experience</h3>
                   </div>
-                  <div className="content2"></div>
+                  <div className="content2">
+                  
+                  <textarea
+                      className="exp"
+                      name="exp"
+                      value={userData.exp}
+                      onChange={handleInputs}
+                      id="exp"
+                    ></textarea>
+                    {/* <p>FrontEnd Developer: &nbsp; 2+ years</p>
+                    <p>FullStack Developer: &nbsp; 6+ months</p> */}
+                  </div>
                 </div>
               </div>
               <div className="port-panel port-p6">
@@ -699,26 +774,26 @@ const Portfolio = () => {
                           </button>
                         </div>
                         <div className="project">
-                        <div className="sec0">
-                          <h1>Upload Project</h1>
-
-                        </div>
+                          <div className="sec0">
+                            <h1>Upload Project</h1>
+                          </div>
                           <div className="sec1">
-                          <div className="sec">
-                          <img src={pjpic} alt="" />
-                          
-                        <label htmlFor="file2">
-                          <i className="fas fa-camera"></i>
-                        </label>
-                            <input
-                            id="file2"
-                              type="file"
-                              className="input"
-                              name="projectpic"
-                              onChange={(e) => setImage2(e.target.files[0])}
-                            />
-                            <button onClick={updatePic2} id="upload">
-                          <i className="fas fa-upload"></i></button>
+                            <div className="sec">
+                              <img src={pjpic} alt="" />
+
+                              <label htmlFor="file2">
+                                <i className="fas fa-camera"></i>
+                              </label>
+                              <input
+                                id="file2"
+                                type="file"
+                                className="input"
+                                name="projectpic"
+                                onChange={(e) => setImage2(e.target.files[0])}
+                              />
+                              <button onClick={updatePic2} id="upload">
+                                <i className="fas fa-upload"></i>
+                              </button>
                             </div>
                           </div>
                           <div className="sec2">
@@ -764,6 +839,8 @@ const Portfolio = () => {
           </div>
         </>
       )}
+
+      <ToastContainer position="top-right" />
     </>
   );
 };

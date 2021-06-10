@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./ContactUs.scss";
 import mclose from "../../assets/mclose.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactUs = () => {
   const [userData, setUserData] = useState({
@@ -62,10 +64,11 @@ const ContactUs = () => {
       }),
     });
     const data = await res.json();
-    if (!data) {
+    if (res.status === 422 || !data) {
+      toast.dark("Plz fill the form!");
       console.log("Message not sent");
     } else {
-      alert("Message sent");
+      toast.dark("Message sent");
       setUserData({ ...userData, message: "" });
     }
   };
@@ -83,8 +86,14 @@ const ContactUs = () => {
             {/* <button onClick={contactForm}>send</button> */}
               </div>
               <br />
-              <br />
-
+              <input
+                type="submit"
+                className="button"
+                id="button"
+                name="signup"
+                value="SEND"
+                onClick={contactForm}
+              />
               <textarea
                 className="textarea"
                 name="message"
@@ -118,14 +127,7 @@ const ContactUs = () => {
                 onChange={handleInputs}
                 placeholder="phone"
               />
-              <input
-                type="submit"
-                className="button"
-                id="button"
-                name="signup"
-                value="SEND"
-                onClick={contactForm}
-              />
+
             </form>
             
             <div className="img-Box">
@@ -134,6 +136,8 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+      
+      <ToastContainer position="top-right"/>
     </>
   );
 };

@@ -8,7 +8,7 @@ const displayuser = async (req, res, next) => {
     if (category == "") {
       rootUser = await User.find();
     } else {
-      rootUser = await User.find({ name: category });
+      rootUser = await User.find({ work: category });
     }
 
     if (!rootUser) {

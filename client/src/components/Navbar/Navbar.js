@@ -26,16 +26,6 @@ const Navbar = () => {
               <i className="far fa-address-book"></i> .Portfolio
             </NavLink>
           </li>
-          <li className="nav-item ">
-            <NavLink className="nav-link" to="/update" exact>
-              <i className="far fa-envelope"></i> .Update
-            </NavLink>
-          </li>
-          <li className="nav-item ">
-            <NavLink className="nav-link" to="/project" exact>
-              <i className="far fa-envelope"></i> .Project
-            </NavLink>
-          </li>
 
           <li className="nav-item ">
             <NavLink className="nav-link" to="/contact" exact>
@@ -126,8 +116,8 @@ const Navbar = () => {
       <div id="navbarContent">
         <ul>
           <div className="hori-selector">
-            <div className="left"></div>
-            <div className="right"></div>
+            <div className="lft"></div>
+            <div className="rgt"></div>
           </div>
 
           <RenderMenu />

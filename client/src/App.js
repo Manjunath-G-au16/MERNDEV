@@ -41,12 +41,6 @@ const Routing = () => {
         <Route path="/signin" exact>
           <SignUpIn />
         </Route>
-        <Route path="/update" exact>
-          <Update />
-        </Route>
-        <Route path="/project" exact>
-          <Project />
-        </Route>
         <Route path="/contact" exact>
           <ContactUs />
         </Route>

@@ -32,6 +32,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  about: {
+    type: String,
+  },
+  exp: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now,
