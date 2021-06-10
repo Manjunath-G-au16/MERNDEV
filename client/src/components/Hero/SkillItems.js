@@ -60,71 +60,71 @@ export const SkillItems = [
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "fab fa-python",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "fab fa-js-square",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "fab fa-php",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "fab fa-html5",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "fab fa-css3-alt",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "fab fa-sass",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "fab fa-react",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "fab fa-node-js",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "devicon-mongodb-plain",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "devicon-android-plain",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "devicon-angularjs-plain",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "devicon-babel-plain",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "devicon-c-plain",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "devicon-cplusplus-plain",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "devicon-csharp-plain",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "devicon-django-plain",
     value: "10",
   },
   {
-    skill: "fas fa-envelope",
+    skill: "devicon-express-original",
     value: "10",
   },
 ];

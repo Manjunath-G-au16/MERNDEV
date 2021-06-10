@@ -176,7 +176,7 @@ const SignUpIn = () => {
                 <div id="olayer"></div>
                 <div id="layer"></div>
                 <h1>Welcome Back!</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                <p>Hello dev! Signup to be a part of Developer family!</p>
                 <button class="ghost" id="signIn" onClick={activeSignIn}>
                   Sign In
                 </button>
@@ -185,7 +185,7 @@ const SignUpIn = () => {
                 <div id="olayer"></div>
                 <div id="layer"></div>
                 <h1>Hello, Dev![]</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                <p>Signin to start a journey with fellow developers</p>
                 <button class="ghost" id="signUp" onClick={activeSignUp}>
                   Sign Up
                 </button>

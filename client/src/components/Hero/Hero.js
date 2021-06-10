@@ -12,6 +12,14 @@ import img from "../../assets/Modimanju.jpg";
 import { SkillItems } from "./SkillItems";
 import { ProjectItems } from "./ProjectItems";
 import { ProfileItems } from "./ProfileItems";
+
+import img2x from "../../assets/pavan.jpg";
+import img8 from "../../assets/Screenshot 2021-06-10 165756.png";
+import img3x from "../../assets/sham.jpg";
+import img4 from "../../assets/vyshak 2edit3.jpg";
+import img5 from "../../assets/kush.jpg";
+import img6 from "../../assets/ot.jpeg";
+import img7 from "../../assets/WhatsApp Image 2021-05-15 at 8.24.34 PM.jpeg";
 const Hero = () => {
   let rows = [];
   for (let i = 0; i < 650; i++) {
@@ -128,8 +136,7 @@ const Hero = () => {
         scrub: 3,
         // end: "bottom top",
       },
-      background: "#ffffff73",
-      opacity: 0.7,
+      border: "3px solid #fff",
       ease: "power1.inOut",
     });
     gsap.to("#psc,#left,#right", {
@@ -464,22 +471,22 @@ const Hero = () => {
               <img src={img} alt="" className="honeycomb-cell-img" />
             </li>
             <li className="honeycomb-cell">
-              <img src={img} alt="" className="honeycomb-cell-img" />
+              <img src={img2x} alt="" className="honeycomb-cell-img" />
             </li>
             <li className="honeycomb-cell">
-              <img src={img} alt="" className="honeycomb-cell-img" />
+              <img src={img3x} alt="" className="honeycomb-cell-img" />
             </li>
             <li className="honeycomb-cell">
-              <img src={img} alt="" className="honeycomb-cell-img" />
+              <img src={img4} alt="" className="honeycomb-cell-img" />
             </li>
             <li className="honeycomb-cell">
-              <img src={img} alt="" className="honeycomb-cell-img" />
+              <img src={img5} alt="" className="honeycomb-cell-img" />
             </li>
             <li className="honeycomb-cell">
-              <img src={img} alt="" className="honeycomb-cell-img" />
+              <img src={img7} alt="" className="honeycomb-cell-img" />
             </li>
             <li className="honeycomb-cell">
-              <img src={img} alt="" className="honeycomb-cell-img" />
+              <img src={img8} alt="" className="honeycomb-cell-img" />
             </li>
             <li className="honeycomb-cell honeycomb_Hidden"></li>
           </ul>
