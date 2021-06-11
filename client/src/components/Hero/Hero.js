@@ -2,28 +2,28 @@ import React from "react";
 import "./style.scss";
 import { gsap } from "gsap";
 import { CSSRulePlugin, cssRule } from "gsap/all";
-// import { useRef } from "react";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import img1 from "../../assets/mobile.png";
-import img2 from "../../assets/Screenshot 2021-06-08 143550.jpg";
 import img3 from "../../assets/download.png";
 import img from "../../assets/Modimanju.jpg";
 import { SkillItems } from "./SkillItems";
 import { ProjectItems } from "./ProjectItems";
 import { ProfileItems } from "./ProfileItems";
-
 import img2x from "../../assets/pavan.jpg";
 import img8 from "../../assets/koushik.jpg";
 import img3x from "../../assets/sham.jpg";
 import img4 from "../../assets/vyshak 2edit3.jpg";
 import img5 from "../../assets/kush.jpg";
 import img6 from "../../assets/ot.jpeg";
-import img7 from "../../assets/WhatsApp Image 2021-05-15 at 8.24.34 PM.jpeg";
 const Hero = () => {
   let rows = [];
   for (let i = 0; i < 650; i++) {
     rows.push(<div className="box">1</div>);
+  }
+  let rowsM = [];
+  for (let i = 0; i < 150; i++) {
+    rowsM.push(<div className="boxM">1</div>);
   }
 
   gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
@@ -41,6 +41,7 @@ const Hero = () => {
         ease: "power1.inOut",
       },
     });
+
     // gsap.fromTo("#xrt",{y:0},{y:"-40vh",duration:2,delay:1.5});
     gsap.to(".box", {
       duration: 1,
@@ -64,6 +65,29 @@ const Hero = () => {
       delay: 6.5,
       background: "none",
     });
+    gsap.to(".boxM", {
+      duration: 1.5,
+      scale: 0.9,
+      ease: "power1.inOut",
+      repeat: 1,
+      repeatDelay: 2,
+      yoyo: true,
+      stagger: {
+        each: 0.1,
+        from: "edges",
+        grid: "auto",
+      },
+    });
+    gsap.to(".boxM", {
+      delay: 3,
+      scale: 1,
+      // background:"#fff",
+    });
+    
+    gsap.to(".xyzM", {
+      delay: 3.6,
+      background: "none",
+    });
     // gsap.fromTo(
     //   "#ps1",
     //   {x:1000
@@ -78,7 +102,9 @@ const Hero = () => {
     //   { x:0,
     //   duration:5,}
     // );
-    gsap.fromTo("#sec1", { scaleX: 0 }, { scaleX: 1, duration: 2 });
+    if (window.innerWidth > 620) {
+      gsap.fromTo("#sec1", { scaleX: 0 }, { scaleX: 1, duration: 2 });
+    } 
     gsap.fromTo("#psc,#ps1,#ps2", { y: 100 }, { y: 0, duration: 2, delay: 3 });
     gsap.fromTo(
       "#img-1,.left,.right,#img-6",
@@ -322,6 +348,7 @@ const Hero = () => {
             <h1>DEV PORTFOLIO</h1>
           </div>
           <div className="xyz">{rows}</div>
+          <div className="xyzM">{rowsM}</div>
         </div>
         <div id="xxx">
           <div id="container">
