@@ -28,6 +28,19 @@ const Hero = () => {
 
   gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
   useEffect(() => {
+    gsap.from(CSSRulePlugin.getRule(".center:before"), {
+      scrollTrigger: {
+        trigger: "#container",
+        start: "top top",
+        scrub: 3,
+        pin: "#container",
+      },
+      cssRule: {
+        scaleX: 1,
+        background: "transparent",
+        ease: "power1.inOut",
+      },
+    });
     gsap.to(CSSRulePlugin.getRule(".center:before"), {
       scrollTrigger: {
         trigger: "#container",
