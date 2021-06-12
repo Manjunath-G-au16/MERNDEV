@@ -1,6 +1,8 @@
 import React from "react";
+import { gsap } from "gsap";
 
 const PortfolioCard = (props) => {
+  gsap.to("#project",{ z: 0, y: 0, duration: 2, delay: 7.5 });
   return (
     <>
       <div id="port-main">
@@ -105,7 +107,7 @@ const PortfolioCard = (props) => {
                       <div className="sec1" id="skillName">
                         <i className={item.skill}></i>
                       </div>
-                      <div className="sec2">
+                      <div className="sec2" >
                         <progress
                           id="bar"
                           value={item.value}

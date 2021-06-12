@@ -1,8 +1,11 @@
 @import ".././sass/default.scss";
 @import ".././sass/variables.scss";
-#project {
+#project,#sv {
   transform: translateZ(50vw);
   transform: translateY(-40vh);
+}
+.fa-spin{
+  font-size: 20px;
 }
 .Modal {
   @include center;
@@ -232,13 +235,13 @@ label,
   font-size: 2rem;
   cursor: pointer;
 }
-label {
+label,#upload {
   bottom: 0;
 }
 #upload {
-  opacity: 0.3;
+  opacity: 1;
   i {
-    opacity: 0.3;
+    opacity: 1;
   }
 }
 #btn {
@@ -405,7 +408,7 @@ label {
             i {
               color: $clr-1;
               font-size: 1rem;
-              box-shadow: 0px 5px 40px $clr;
+              // box-shadow: 0px 5px 40px $clr;
             }
           }
           .sec2::-webkit-scrollbar {
@@ -479,7 +482,10 @@ label {
                 background: $clr-1;
                 // mix-blend-mode: difference;
                 border-radius: 50%;
-                box-shadow: 0px 5px 40px $clr;
+                // box-shadow: 0px 5px 40px $clr;
+              }
+              i{
+                color: $clr-1;
               }
 
               a {
@@ -831,6 +837,14 @@ label {
             overflow: hidden;
             // border-bottom: 1.5px solid #00f3ff;
             // border-right: 1.5px solid #00f3ff;
+            i{
+              position: relative;
+              padding: 10px;
+              border-bottom-right-radius: 10px;
+              cursor: pointer;
+              background: $clr-2;
+              color: $clr-1;
+            }
             a img {
               position: absolute;
               top: 50%;

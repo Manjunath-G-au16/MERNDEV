@@ -9,6 +9,8 @@ const finduser = require("../middleware/finduser");
 const displayuser = require("../middleware/displayuser");
 const userprofile = require("../middleware/userprofile");
 const deleteskill = require("../middleware/deleteskill");
+const deleteproject = require("../middleware/deleteproject");
+const deletesocial = require("../middleware/deletesocial");
 
 router.get("/", (req, res) => {
   res.send("HomePage Server from router");
@@ -124,6 +126,18 @@ router.post("/finduser", finduser, (req, res) => {
 });
 //Delete Skill
 router.delete("/deleteskill", deleteskill, (req, res) => {
+  console.log("Hello from Userdata");
+  res.send(req.rootUser);
+  // res.send(req.rootUser);
+});
+//Delete project
+router.delete("/deleteproject", deleteproject , (req, res) => {
+  console.log("Hello from Userdata");
+  res.send(req.rootUser);
+  // res.send(req.rootUser);
+});
+//Delete social
+router.delete("/deletesocial", deletesocial , (req, res) => {
   console.log("Hello from Userdata");
   res.send(req.rootUser);
   // res.send(req.rootUser);

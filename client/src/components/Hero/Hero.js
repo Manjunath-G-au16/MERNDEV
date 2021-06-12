@@ -70,7 +70,7 @@ const Hero = () => {
       scale: 0.9,
       ease: "power1.inOut",
       repeat: 1,
-      repeatDelay: 2,
+      repeatDelay: 3,
       yoyo: true,
       stagger: {
         each: 0.1,

@@ -1,4 +1,4 @@
-import React,{createContext, useReducer} from "react";
+import React, { createContext, useReducer, useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,15 +12,17 @@ import Signup from "./components/Signup";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar/Navbar";
 import Logout from "./components/Logout";
-import {initialState,reducer} from "../src/reducer/UseReducer"
+import { initialState, reducer } from "../src/reducer/UseReducer";
 import Update from "./components/Update";
 import Find from "./components/Find";
 import Project from "./components/Project";
 import Portfolio from "./components/Protfolio/Portfolio";
 import Search from "./components/Search/Search";
-import SignUpIn from "./components/SignUpIn/SignUpIn"
-import ContactUs from "./components/ContactUs/ContactUs"
+import SignUpIn from "./components/SignUpIn/SignUpIn";
+import ContactUs from "./components/ContactUs/ContactUs";
 import Hero from "./components/Hero/Hero";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import "./App.css"
 
 //Context
 //--------
@@ -30,7 +32,7 @@ const Routing = () => {
     <main>
       <Switch>
         <Route path="/" exact>
-        <Hero />
+          <Hero />
         </Route>
         <Route path="/search" exact>
           <Search />
@@ -54,15 +56,28 @@ const Routing = () => {
 };
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 6000);
+  }, []);
 
   return (
     <>
-      <UserContext.Provider value = {{ state, dispatch }}>
+    { loading ?  <div className="loaderx"> <div className="load"> <ClimbingBoxLoader
+
+
+ color={"#fff"} loading={loading}  size={30}  /></div></div> :
+
+      <UserContext.Provider value={{ state, dispatch }}>
         <Router>
           <Navbar />
           <Routing />
         </Router>
       </UserContext.Provider>
+    }
     </>
   );
 };

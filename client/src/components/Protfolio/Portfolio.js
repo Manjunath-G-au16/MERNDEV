@@ -32,10 +32,20 @@ const Portfolio = () => {
   const [modalIsOpenProject, setModalIsOpenProject] = useState(false);
   const skillpdf = skill.slice(1, 2);
   const [activeUpload, setActiveUpload] = useState("");
+  const [activeUpload2, setActiveUpload2] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const edit = () => {
     setActive("second");
   };
-
+  const pimg = (e) => {
+    setImage(e.target.files[0]);
+    setActiveUpload("true");
+  };
+  const primg = (e) => {
+    setImage2(e.target.files[0]);
+    setActiveUpload2("true");
+  };
   const pdfExportComponent = useRef(null);
 
   const pdf = () => {
@@ -43,6 +53,7 @@ const Portfolio = () => {
   };
   const back = () => {
     setActive("first");
+    callAboutPage();
   };
 
   const handleExportWithComponent = (event) => {
@@ -212,7 +223,6 @@ const Portfolio = () => {
       }),
     });
     const data = await res.json();
-    callAboutPage();
     if (res.status === 422 || !data) {
       toast.dark("Fill all the fields!");
     } else {
@@ -291,76 +301,143 @@ const Portfolio = () => {
       console.log(err);
     }
   };
+  //Delete Project
+  const [projectId, setProjectId] = useState("");
+  const refreshProject = () => {
+    callAboutPage();
+  };
+  const delProject = async () => {
+    console.log("clicked");
+    const pid = profileId;
+    const sid = projectId;
+    try {
+      const res = await fetch("/deleteproject", {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          pid,
+          sid,
+        }),
+      });
+      const data = await res.json();
+
+      console.log(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  //Delete Social
+  const [socialId, setSocialId] = useState("");
+  const refreshSocial = () => {
+    callAboutPage();
+  };
+  const delSocial = async () => {
+    console.log("clicked");
+    const pid = profileId;
+    const sid = socialId;
+    try {
+      const res = await fetch("/deletesocial", {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          pid,
+          sid,
+        }),
+      });
+      const data = await res.json();
+
+      console.log(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   //sending data to backend
-  const updateForm = (e) => {
-    e.preventDefault();
+  const updateForm = async () => {
     const { name, email, phone, work, id, about, exp } = userData;
     const pic = picc;
-    // const cv = cvv;
-    // const messages = msg;
-    // const pic = data.url;
     console.log(userData);
     setActive("first");
+    try {
+      const res = await fetch("/edit", {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          pic,
+          name,
+          email,
+          phone,
+          work,
+          id,
+          about,
+          exp,
+        }),
+      });
+      const data = await res.json();
+      callAboutPage();
 
-    fetch("/edit", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // cv,
-        pic,
-        name,
-        email,
-        phone,
-        work,
-        id,
-        about,
-        exp,
-        // messages,
-      }),
-    });
+      console.log(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  // gsap.to("#project", { z: 0, y: 0, duration: 2, delay: 7.5 });
+  gsap.to("#project", { z: 0, y: 0, duration: 2, delay: 7.5 });
   useEffect(() => {
-    // // Gsap
-    // gsap.fromTo(
-    //   "#port-con",
-    //   { rotateY: "65deg", scale: 0.63, x: "-19vw", y: "-3vh" },
-    //   { rotateY: "0", scale: 1, x: "0", y: "0", duration: 7, delay: 4 }
-    // );
-    // // gsap.fromTo(".port-p1",{z:"20vw",x:"5vw",y:"0vh"});
-    // gsap.fromTo(
-    //   ".port-p2",
-    //   { z: "10vw", x: "12vw", y: "-10vh" },
-    //   { z: 0, x: 0, y: 0, duration: 4, delay: 4 }
-    // );
-    // gsap.fromTo(
-    //   ".port-p4",
-    //   { z: "20vw", x: "13vw" },
-    //   { z: 0, x: 0, duration: 4, delay: 4 }
-    // );
-    // gsap.fromTo(
-    //   ".port-p3",
-    //   { z: "18vw", x: "10vw", y: "11vh" },
-    //   { z: 0, x: 0, y: 0, duration: 4, delay: 4 }
-    // );
-    // gsap.fromTo(
-    //   ".port-p6",
-    //   { z: "25vw", x: "30vw", y: "15vh" },
-    //   { z: 0, x: 0, y: 0, duration: 4, delay: 4 }
-    // );
-    // gsap.fromTo(
-    //   ".port-p5",
-    //   { z: "50vw", x: "40vw" },
-    //   { z: 0, x: 0, duration: 4, delay: 4 }
-    // );
-    // gsap.fromTo(
-    //   "#skill",
-    //   { z: "50vw", x: "40vw" },
-    //   { z: 0, x: 0, duration: 4, delay: 4 }
-    // );
+    // Gsap
+    gsap.fromTo(
+      "#port-con",
+      { rotateY: "65deg", scale: 0.63, x: "-19vw", y: "-3vh" },
+      { rotateY: "0", scale: 1, x: "0", y: "0", duration: 7, delay: 4 }
+    );
+    // gsap.fromTo(".port-p1",{z:"20vw",x:"5vw",y:"0vh"});
+    gsap.fromTo(
+      ".port-p2",
+      { z: "10vw", x: "12vw", y: "-10vh" },
+      { z: 0, x: 0, y: 0, duration: 4, delay: 4 }
+    );
+    gsap.fromTo(
+      ".port-p4",
+      { z: "20vw", x: "13vw" },
+      { z: 0, x: 0, duration: 4, delay: 4 }
+    );
+    gsap.fromTo(
+      ".port-p3",
+      { z: "18vw", x: "10vw", y: "11vh" },
+      { z: 0, x: 0, y: 0, duration: 4, delay: 4 }
+    );
+    gsap.fromTo(
+      ".port-p6",
+      { z: "25vw", x: "30vw", y: "15vh" },
+      { z: 0, x: 0, y: 0, duration: 4, delay: 4 }
+    );
+    gsap.fromTo(
+      ".port-p5",
+      { z: "50vw", x: "40vw" },
+      { z: 0, x: 0, duration: 4, delay: 4 }
+    );
+    gsap.fromTo(
+      "#skill",
+      { z: "50vw", x: "40vw" },
+      { z: 0, x: 0, duration: 4, delay: 4 }
+    );
     callAboutPage();
   }, []);
   return (
@@ -371,9 +448,13 @@ const Portfolio = () => {
           <br />
           <br />
           <div id="pdf-btn">
-          <button onClick={back} className="b1"><i className="fas fa-chevron-circle-left"></i></button>
-            
-          <button onClick={handleExportWithComponent} className="b2"><i className="fas fa-cloud-download-alt"></i></button>
+            <button onClick={back} className="b1">
+              <i className="fas fa-chevron-circle-left"></i>
+            </button>
+
+            <button onClick={handleExportWithComponent} className="b2">
+              <i className="fas fa-cloud-download-alt"></i>
+            </button>
           </div>
           <PDFExport ref={pdfExportComponent} paperSize="A4">
             <div id="pdf">
@@ -399,13 +480,10 @@ const Portfolio = () => {
                         {skill.map((item) => {
                           return (
                             <>
-                            <div className="pdfs1">
-                              <i className={item.skill}></i>
-                        
-                            </div>
-                            <div className="pdfs2">
-                              {item.value}
-                            </div>
+                              <div className="pdfs1">
+                                <i className={item.skill}></i>
+                              </div>
+                              <div className="pdfs2">{item.value}</div>
                             </>
                           );
                         })}
@@ -420,24 +498,20 @@ const Portfolio = () => {
                       <h3>RESUME</h3>
                     </div>
                     <div className="pdf-s2">
-                    <h4>About:</h4>
-                    <p>
-                      {userData.about}</p>
-                    <h4>Experience:</h4>
-                    <p>
-                      {userData.exp}</p>
+                      <h4>About:</h4>
+                      <p>{userData.about}</p>
+                      <h4>Experience:</h4>
+                      <p>{userData.exp}</p>
                     </div>
                     <div className="pdf-s3">
-                    <h4>Projects:</h4>
-                    {project.map((item) => {
-                          return (
-                            <>
+                      <h4>Projects:</h4>
+                      {project.map((item) => {
+                        return (
+                          <>
                             <p>{item.details}</p>
-
-                          
-                            </>
-                          );
-                        })}
+                          </>
+                        );
+                      })}
                     </div>
                   </div>
                   <div className="pdf-con2"></div>
@@ -449,7 +523,7 @@ const Portfolio = () => {
       )}
       {active === "first" && (
         <PortfolioCard
-          pic={userData.pic}
+          pic={upic}
           name={userData.name}
           work={userData.work}
           email={userData.email}
@@ -485,16 +559,22 @@ const Portfolio = () => {
                           <i className="fas fa-camera"></i>
                         </label>
 
-                        {/* {activeUpload === "second" && ( */}
-                        <button
-                          id="upload"
-                          onClick={() => {
-                            updatePic(userData._id);
-                          }}
-                        >
-                          <i className="fas fa-upload"></i>
-                        </button>
-                        {/* )} */}
+                        {activeUpload === "true" && (
+                          <button
+                            id="upload"
+                            onClick={() => {
+                              updatePic(userData._id);
+                              setLoading(true);
+                              setTimeout(() => {
+                                setLoading(false);
+                                setActiveUpload("false");
+                              }, 2000);
+                            }}
+                          >
+                            {loading && <i className="fas fa-sync fa-spin"></i>}
+                            {!loading && <i className="fas fa-upload"></i>}
+                          </button>
+                        )}
                       </div>
                     </div>
                     <div id="imgup">
@@ -506,12 +586,14 @@ const Portfolio = () => {
                         onChange={handleInputs}
                         placeholder="pic"
                       />
+
                       <input
                         type="file"
                         id="file"
                         className="input"
                         name="file"
-                        onChange={(e) => setImage(e.target.files[0])}
+                        onChange={pimg}
+                        // onClick={setActiveUpload("second")}
                       />
                     </div>
                     <div className="content2">
@@ -579,7 +661,13 @@ const Portfolio = () => {
                             placeholder="phone"
                           />
                         </h5>
-                        <button id="btn" onClick={updateForm}>
+
+                        <button
+                          id="btn"
+                          onClick={() => {
+                            updateForm();
+                          }}
+                        >
                           Save
                         </button>
                       </div>
@@ -604,6 +692,7 @@ const Portfolio = () => {
                             <div className="skill">
                               <div className="sec1">
                                 <select onChange={handleSocial}>
+                                  <option value="">Select</option>
                                   <option value="fab fa-linkedin">
                                     Linkedin
                                   </option>
@@ -641,6 +730,17 @@ const Portfolio = () => {
                                 <a href={item.link} target="_blank">
                                   <span className={item.media}></span>
                                 </a>
+
+                                <i
+                                  className="fas fa-trash"
+                                  onMouseEnter={() => {
+                                    setSocialId(item._id);
+                                  }}
+                                  onClick={() => {
+                                    delSocial();
+                                    refreshSocial();
+                                  }}
+                                ></i>
                               </li>
                             );
                           })}
@@ -889,11 +989,29 @@ const Portfolio = () => {
                                 type="file"
                                 className="input"
                                 name="projectpic"
-                                onChange={(e) => setImage2(e.target.files[0])}
+                                onChange={primg}
                               />
-                              <button onClick={updatePic2} id="upload">
-                                <i className="fas fa-upload"></i>
-                              </button>
+
+                              {activeUpload2 === "true" && (
+                                <button
+                                  id="upload"
+                                  onClick={() => {
+                                    updatePic2(userData._id);
+                                    setLoading2(true);
+                                    setTimeout(() => {
+                                      setLoading2(false);
+                                      setActiveUpload2("false");
+                                    }, 2000);
+                                  }}
+                                >
+                                  {loading2 && (
+                                    <i className="fas fa-sync fa-spin"></i>
+                                  )}
+                                  {!loading2 && (
+                                    <i className="fas fa-upload"></i>
+                                  )}
+                                </button>
+                              )}
                             </div>
                           </div>
                           <div className="sec2">
@@ -923,11 +1041,22 @@ const Portfolio = () => {
                   <div className="content2">
                     {project.map((item) => {
                       return (
-                        <div className="section" id="project">
+                        <div className="section">
                           <div className="project">
                             <a href={item.url} target="_blank">
                               <img src={item.projectpic} alt="" />
                             </a>
+
+                            <i
+                              className="fas fa-trash"
+                              onMouseEnter={() => {
+                                setProjectId(item._id);
+                              }}
+                              onClick={() => {
+                                delProject();
+                                refreshProject();
+                              }}
+                            ></i>
                           </div>
                         </div>
                       );
