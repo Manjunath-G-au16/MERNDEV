@@ -104,66 +104,66 @@ router.post("/login", async (req, res) => {
   }
 });
 //About Section
+//--------------------
 router.get("/about", authenticate, (req, res) => {
   console.log("Hello from About");
   res.send(req.rootUser);
 });
+
 //User Profile Section
+//--------------------
 router.post("/xxyyzz", userprofile, (req, res) => {
   console.log("Hello from userProfile");
   res.send(req.rootUser);
 });
 
 //User Data
+//--------------------
 router.get("/userdata", authenticate, (req, res) => {
   console.log("Hello from Userdata");
   res.send(req.rootUser);
 });
+
 //Find
+//--------------------
 router.post("/finduser", finduser, (req, res) => {
   console.log("Hello from Userdata");
   res.send(req.rootUser);
 });
+
 //Delete Skill
+//--------------------
 router.delete("/deleteskill", deleteskill, (req, res) => {
   console.log("Hello from Userdata");
   res.send(req.rootUser);
   // res.send(req.rootUser);
 });
+
 //Delete project
+//--------------------
 router.delete("/deleteproject", deleteproject , (req, res) => {
   console.log("Hello from Userdata");
   res.send(req.rootUser);
   // res.send(req.rootUser);
 });
+
 //Delete social
+//--------------------
 router.delete("/deletesocial", deletesocial , (req, res) => {
   console.log("Hello from Userdata");
   res.send(req.rootUser);
   // res.send(req.rootUser);
 });
+
 //Display all
+//--------------------
 router.post("/displayuser", displayuser, (req, res) => {
   console.log("Hello from Userdata");
   res.send(req.rootUser);
 });
-//Finduser
-// router.get("/finduser", async (req, res) => {
-//   try {
-//     const username = "test3";
-//     const rootUser = await User.findOne({
-//       "name": username,
-//     });
-//     if (!rootUser) {
-//       throw new Error("User not found");
-//     }
-//     req.rootUser = rootUser;
-//   } catch (err) {
-//     res.status(401).send("Unauthorized:No token provided");
-//     console.log(err);
-//   }
-// });
+
 //Update Data
+//--------------------
 router.put("/update", async (req, res) => {
   const newWork = req.body.newWork;
   const id = req.body.id;
@@ -180,7 +180,9 @@ router.put("/update", async (req, res) => {
   console.log("updated");
   res.send("Updated");
 });
+
 //Update Pic
+//--------------------
 router.put("/updatePic", async (req, res) => {
   const newPic = req.body.newPic;
   const id = req.body.id;
@@ -199,6 +201,7 @@ router.put("/updatePic", async (req, res) => {
 });
 
 //Update Data
+//--------------------
 router.put("/edit", async (req, res) => {
   const { name, email, phone, work, id, pic, about, exp} = req.body;
   console.log(id);
@@ -226,7 +229,9 @@ router.put("/edit", async (req, res) => {
   console.log("updated");
   res.send("Updated");
 });
+
 //Contact Section
+//--------------------
 router.post("/contact", authenticate, async (req, res) => {
   try {
     const { name, email, phone, message } = req.body;
@@ -250,7 +255,9 @@ router.post("/contact", authenticate, async (req, res) => {
     console.log(error);
   }
 });
+
 //Contact Section
+//--------------------
 router.post("/project", authenticate, async (req, res) => {
   try {
     const { projectpic, url, details } = req.body;
@@ -273,7 +280,10 @@ router.post("/project", authenticate, async (req, res) => {
     console.log(error);
   }
 });
+
+//--------------------
 //Social Section
+//--------------------
 router.post("/social", authenticate, async (req, res) => {
   try {
     const { media, link,  } = req.body;
@@ -295,7 +305,9 @@ router.post("/social", authenticate, async (req, res) => {
     console.log(error);
   }
 });
+
 //Skill Section
+//--------------------
 router.post("/skill", authenticate, async (req, res) => {
   try {
     const { skill, value,  } = req.body;
@@ -319,6 +331,7 @@ router.post("/skill", authenticate, async (req, res) => {
 });
 
 //Logout Section
+//--------------------
 router.get("/logout", (req, res) => {
   console.log("Hello from Logout");
   res.clearCookie("jwtoken", { path: "/" });

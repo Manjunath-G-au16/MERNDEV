@@ -5,17 +5,9 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
-import Signin from "./components/Signin";
-import Signup from "./components/Signup";
-import Contact from "./components/Contact";
 import Navbar from "./components/Navbar/Navbar";
 import Logout from "./components/Logout";
 import { initialState, reducer } from "../src/reducer/UseReducer";
-import Update from "./components/Update";
-import Find from "./components/Find";
-import Project from "./components/Project";
 import Portfolio from "./components/Protfolio/Portfolio";
 import Search from "./components/Search/Search";
 import SignUpIn from "./components/SignUpIn/SignUpIn";
