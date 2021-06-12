@@ -912,7 +912,7 @@ const Portfolio = () => {
                         <>
                           <div className="sec1" id="skillName">
                             {/* <h3>{item.skill} :</h3> */}
-                            <i className={item.skill}></i>
+                            <i className={item.skill} id="tskill"></i>
                             <i
                               className="fas fa-trash"
                               onMouseEnter={() => {

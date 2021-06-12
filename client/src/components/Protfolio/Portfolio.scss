@@ -210,9 +210,6 @@
     // border-bottom: 1.5px solid #00f3ff;
     // border-left: 1.5px solid #00f3ff;
   }
-  &-thumb:hover {
-    background: $clr;
-  }
 }
 #imgup {
   input[type="file"] {
@@ -425,9 +422,6 @@ label,#upload {
               border-radius: 20px;
               border: 2px solid $clr-2;
             }
-            &-thumb:hover {
-              background: $clr;
-            }
           }
           .sec2 {
             grid-row: 2;
@@ -591,9 +585,6 @@ label,#upload {
           border-radius: 20px;
           border: 2px solid $clr-2;
         }
-        &-thumb:hover {
-          background: $clr;
-        }
       }
 
       .content2 {
@@ -611,6 +602,12 @@ label,#upload {
           display: flex;
           justify-content: space-around;
           cursor: pointer;
+          
+          &:hover #tskill {
+            transition: all 0.5s ease-in-out;
+            transform: scale(1.25);
+          }
+        
         }
         .sec2 {
           grid-column: 2;
@@ -803,9 +800,6 @@ label,#upload {
           border-radius: 20px;
           border: 1px solid #fff;
         }
-        &-thumb:hover {
-          background: $clr;
-        }
       }
       .content2 {
         grid-row: 2;
@@ -844,6 +838,12 @@ label,#upload {
               cursor: pointer;
               background: $clr-2;
               color: $clr-1;
+              &:hover{
+                transition: all 0.5s ease-in-out;
+                transform: scale(1.25);
+                
+
+              }
             }
             a img {
               position: absolute;
